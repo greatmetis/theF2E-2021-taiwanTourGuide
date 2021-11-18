@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JS scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js" integrity="sha512-mvfoZwdzM8yPhlNxN1lU8S5wcfC5aPRCD3W0jsOeA+D75MMCrycxQqIvt6K7c5P7jItn7AXiAreuR+eockUHwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="./style/style.css"></link>
+    <title>The F2E Weekend Tour Guide test</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="region-cards">
+            <div class="region-card" id="north-selector" onclick="getUserData('north')">
+                <h3 class="title">北部地區</h3>
+            </div>
+            <div class="region-card" id="central-selector" onclick="getUserData('central')">
+                <h3 class="title">中部地區</h3>
+            </div>
+            <div class="region-card" id="south-selector"
+            onclick="getUserData('south')">
+                <h3 class="title">南部地區</h3>
+            </div>
+            <div class="region-card" id="east-selector"
+            onclick="getUserData('east')">
+                <h3 class="title">東部地區</h3>
+            </div>
+            <div class="region-card" id="island-selector"
+            onclick="getUserData('islands')">
+                <h3 class="title">離島地區</h3>
+            </div>
+        </div>
+        <!-- results -->
+        <div class="results">
+            <p>我想去...<span class="selected-city"><span></p>
+            <div class="cities"></div>
+            <div class="categories">
+            </div>
+            <div class="current-search-hint">
+                以下為 <span class="keywords"></span> 的搜尋結果：
+            </div>
+            <div class="search">
+                <input class="search-bar" placeholder="請輸入景點名稱" onfocus="clearInput('.search-bar')">      
+                <button class="btn search-btn" onclick="searchKeyword()">搜尋</button>
+            </div>
+        <!-- cards' session -->
+        <div class="container main">
+            <div class="scenic-spot-cards"></div>
+            <!-- <div class="map"></div> -->
+        </div>
+    </div>
+    <script src="all.js"></script>
+</body>
+</html>
