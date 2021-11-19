@@ -1,3 +1,9 @@
+//*TODO: add an alert to ensure user would select city before categories || only show the categories after users select a city option
+
+//*TODO: intergrate resteraunt API into the page
+// https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/Taipei?$top=30&$format=JSON
+
+//*TODO: resteraunt toggle with scenicSpot?
 
 //* ----- Authorisation ----- *//
 const getAuthorisationHeader =()=> {
@@ -45,8 +51,10 @@ const southObj = cityData.region.South
 const eastObj = cityData.region.East
 const islandsObj = cityData.region.Islands
 
+//* ----- Results shown on the left side ----- //
 let scenicSpotData =[];
-let _thisCity; 
+let resterauntData = [];
+let _thisCity, _thisResteraunt; 
 
 //* ----- Filters regions and cities ----- *//
 
@@ -100,7 +108,6 @@ GetUserRegion.prototype.getHtml = function(){
             _thisCity = new CityData(this.region,city,10)
             $(".selected-city").text(city)
             console.log(_thisCity)
-            
         })
         $(".cities").append(resultCitiesEl)
     })
@@ -122,29 +129,41 @@ const CityData = function(region,city,limitNum){
     this.limitNum = limitNum,
     this.keyword = '',
     this.selectedCate = []
+    // !Test
+    this.typeRestaurant = false
+    // !Test END
 }
 
 // Intergrate API
 CityData.prototype.sendGetRequest = async function(){
     let userUrl;
-    // if)類別搜尋 || else)關鍵字搜尋
+    // !Test
+    if(!this.type){
+        userUrl = `https://ptx.transportdata.tw/MOTC/v2/Restaurant/ScenicSpot/${this.city}?$top=${this.limitNum}&$format=JSON`
+    }
+    // !Test END
+    // if)類別搜尋景點 || else)關鍵字搜尋景點
     if(this.selectedCate){
         let filterClass1, filterClass2;
+        let selectedApi='$select=ID,Name,DescriptionDetail,Picture,OpenTime,Class1,Class2,Class3,Position&'
         filterClass1 = `$filter=Class1 eq '${this.selectedCate[0]}' or Class2 eq '${this.selectedCate[0]}' or Class3 eq '${this.selectedCate[0]}'`
-        userUrl = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${this.city}?${filterClass1}&$top=${this.limitNum}&$format=JSON`
+        userUrl = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${this.city}?${selectedApi}${filterClass1}&$top=${this.limitNum}&$format=JSON`
 
         if(this.selectedCate.length===2){
             filterClass2 = `Class1 eq '${this.selectedCate[1]}' or Class2 eq '${this.selectedCate[1]}' or Class3 eq '${this.selectedCate[1]}'`
-            userUrl = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${this.city}?${filterClass1} or ${filterClass2}&$top=${this.limitNum}&$format=JSON`
+            userUrl = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${this.city}?${selectedApi}${filterClass1} or ${filterClass2}&$top=${this.limitNum}&$format=JSON`
         }
 
     }else{
-        userUrl= `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${this.city}?$filter=contains(Name,'${this.keyword}')&$top=${this.limitNum}&$format=JSON`
+        userUrl= `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot/${this.city}?${selectedApi}$filter=contains(Name,'${this.keyword}')&$top=${this.limitNum}&$format=JSON`
     }
 
     try{
         const resp = await axios.get(userUrl,{headers:getAuthorisationHeader()})
         scenicSpotData = resp.data
+        addGeoData()
+        get_leaflet()
+        console.log(scenicSpotData)
         this.updateHtml()
         return scenicSpotData
     }
@@ -153,9 +172,25 @@ CityData.prototype.sendGetRequest = async function(){
     }
 }
 
+//* ---- Resteraunt Data ---- //
+const ResterauntData = function(region,city,limitNum){
+    this.region= region,
+    this.city = city,
+    this.limitNum = limitNum,
+    this.keyword = '',
+    this.selectedCate = []
+}
+
+ResterauntData.prototype.getRequest = async function(){
+    let resterUrl;
+    resterUrl = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/Taipei?$top=30&$format=JSON`
+}
+
+
 //* ----- Update HTML for cards section----- *//
 CityData.prototype.updateHtml = function(){
     $(".scenic-spot-cards").html("")
+    $(".search").css("opacity",1)
     if(scenicSpotData.length ==0){
         $(".scenic-spot-cards").text("oooooOOOOoops! 這裡好像沒有你要的結果...")
         return
@@ -240,6 +275,7 @@ CityData.prototype.updateHtml = function(){
 
 }
 
+
 //*  ---- Funtion to get Data ---- //
 // 使用者選取地區
 function getUserData(r){
@@ -286,9 +322,58 @@ function defineCate(val){
     $(".current-search-hint .keywords").text(val.id)
 }
 
+//***  ===================== ***//
+// * -------  Utility ------- *//
+//***  =================== ***//
+
 //*  ---- Clear text input for better UX---- //
 function clearInput(item){
     document.querySelector(item).value = ''
 }
+
+
+
+//***  ===================== ***//
+// * -----  Leaflet Map ----- *//
+//***  =================== ***//
+
+let mapData =[];
+function addGeoData(){
+    scenicSpotData.forEach(i=>{
+        let tempGeoData = {}
+        tempGeoData.lat = i.Position.PositionLat
+        tempGeoData.lon = i.Position.PositionLon
+        tempGeoData.name=i.Name
+        mapData.push(tempGeoData)
+        return mapData
+    })
+    console.log(mapData)
+}
+function get_leaflet(){
+    let map = new L.Map('map', {
+    preferCanvas:true,
+    center: [mapData[0].lat,mapData[0].lon],
+    zoom: 15,
+    zoomSnap:0.25,
+    });
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    
+    // add markers for each card
+    for(var i =0;i<mapData.length;i++){
+    let tempMark = L.marker([mapData[i].lat,mapData[i].lon]).addTo(map).bindPopup(`${mapData[i].name}`);
+    }
+}
+
+function resterauntToggle(){
+    console.log('fooooood!')
+    // $(".resteraunt-cards").css("display","block")
+    // $(".scenic-spot-cards").css("display","none")
+}
+//*TODO: re-rendering the map is weird
+//  solution 1: remove it, before re-rednering
+    // map.off();
+    // map.remove()
+    
 
 

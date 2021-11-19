@@ -12,9 +12,13 @@
 
 ### Reference
 
+-[TDX API](https://ptx.transportdata.tw/MOTC?t=Tourism&v=2#!/Tourism/TourismApi_ScenicSpot_0)
+
 - [default Image by Tomas Tucker on unsplash](https://unsplash.com/photos/au3CYbd7vCU)
 
-## 地區/城市分類
+- [leaflet.js](https://leafletjs.com/index.html)
+
+### 地區/城市分類
 
 :::spoiler 北部
 
@@ -57,3 +61,19 @@
 - 澎湖縣 PenghuCounty
 - 連江縣 LienchiangCounty
   :::
+
+### 旅遊 API 取回的資料
+
+- ID
+- Name
+- DescriptionDetail,
+- Picture
+  - PictureUrl1
+    -PrictureDescription1
+- OpenTime
+- Class1
+- Class2
+- Class3
+- Position
+  - PositionLon
+  - PositionLat

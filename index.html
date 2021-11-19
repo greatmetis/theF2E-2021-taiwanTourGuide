@@ -8,11 +8,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js" integrity="sha512-mvfoZwdzM8yPhlNxN1lU8S5wcfC5aPRCD3W0jsOeA+D75MMCrycxQqIvt6K7c5P7jItn7AXiAreuR+eockUHwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
     <link rel="stylesheet" href="./style/style.css"></link>
     <title>The F2E Weekend Tour Guide test</title>
 </head>
 <body>
-    <div class="wrapper">
+    <div class=" container wrapper">
+        <div class="btn resteraunt-toggle" onclick="resterauntToggle()">
+            <span>附近美食</span>
+        </div>
         <div class="region-cards">
             <div class="region-card" id="north-selector" onclick="getUserData('north')">
                 <h3 class="title">北部地區</h3>
@@ -33,25 +40,107 @@
                 <h3 class="title">離島地區</h3>
             </div>
         </div>
+        
         <!-- results -->
         <div class="results">
             <p>我想去...<span class="selected-city"><span></p>
             <div class="cities"></div>
             <div class="categories">
             </div>
-            <div class="current-search-hint">
-                以下為 <span class="keywords"></span> 的搜尋結果：
-            </div>
+
+            <!-- search by keywords -->
             <div class="search">
-                <input class="search-bar" placeholder="請輸入景點名稱" onfocus="clearInput('.search-bar')">      
-                <button class="btn search-btn" onclick="searchKeyword()">搜尋</button>
+                <div class="search-bar" >
+                    <input placeholder="請輸入景點名稱" onfocus="clearInput('.search-bar')">      
+                    <button class="btn search-btn" onclick="searchKeyword()">搜尋</button>
+                </div>
+                <div class="current-search-hint">
+                    以下為 <span class="keywords"></span> 的搜尋結果：
+                </div>
             </div>
         <!-- cards' session -->
-        <div class="container main">
-            <div class="scenic-spot-cards"></div>
-            <!-- <div class="map"></div> -->
+            <div class="container-fluid main">
+                <div class="scenic-spot-cards"></div>
+                <div class="resteraunt-cards">
+                吃吃吃吃吃吃吃吃吃給我吃吃吃吃吃吃
+                </div>
+                <div id="map"></div>
+            </div>
+
+            <!-- Test map -->
+            <!-- <div class="container-fluid main">
+                <div class="scenic-spot-cards">
+                    <div class="scenic-spot-card" data-id="123">
+                        <div class="imgbox">
+                            <div class="imgbox-fit-inner">
+                                <div class="imgbox-fit">
+                                    <img src="./assets/taiwan-default-image.jpg" alt="景點照片:${item.Picture.PictureDescription1}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="card-title">THis Temp</h2>
+                            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quibusdam provident velit explicabo harum vel enim officiis iure hic doloribus quod quos iste perspiciatis doloremque? Dolores et inventore, iste consequatur quis voluptatum earum quo, voluptas quidem tempore ipsum optio ipsa pariatur mollitia itaque! Id expedita voluptate, laboriosam impedit asperiores est odio qui rerum quia iste iusto ea dolorum suscipit amet! Voluptas aspernatur optio facilis id nesciunt voluptatum ipsam accusantium non, facere reiciendis autem laborum ut harum sit accusamus ullam repudiandae.</p>
+                            <div class="open-time">
+                                <h4 class="label">開放時間:</h4>
+                                <p>Mon 12-19</p>
+                            </div>
+                            <div class="tags">
+                                <div class="tag type">景點</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scenic-spot-card" data-id="123">
+                        <div class="imgbox">
+                            <div class="imgbox-fit-inner">
+                                <div class="imgbox-fit">
+                                    <img src="./assets/taiwan-default-image.jpg" alt="景點照片:${item.Picture.PictureDescription1}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="card-title">THis Temp</h2>
+                            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quibusdam provident velit explicabo harum vel enim officiis iure hic doloribus quod quos iste perspiciatis doloremque? Dolores et inventore, iste </p>
+                            <div class="open-time">
+                                <h4 class="label">開放時間:</h4>
+                                <p>Mon 12-19</p>
+                            </div>
+                            <div class="tags">
+                                <div class="tag type">景點</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scenic-spot-card" data-id="123">
+                        <div class="imgbox">
+                            <div class="imgbox-fit-inner">
+                                <div class="imgbox-fit">
+                                    <img src="./assets/taiwan-default-image.jpg" alt="景點照片:${item.Picture.PictureDescription1}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="card-title">THis Temp</h2>
+                            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quibusdam provident velit explicabo harum vel enim officiis iure hic doloribus quod quos iste perspiciatis doloremque? Dolores et inventore, iste consequatur quis voluptatum earum quo, voluptas quidem tempore ipsum optio ipsa pariatur mollitia itaque! Id expedita voluptate, laboriosam impedit asperiores est odio qui rerum quia iste iusto ea dolorum suscipit amet! Voluptas aspernatur optio facilis id nesciunt voluptatum ipsam accusantium non, facere reiciendis autem laborum ut harum sit accusamus ullam repudiandae.</p>
+                            <div class="open-time">
+                                <h4 class="label">開放時間:</h4>
+                                <p>Mon 12-19</p>
+                            </div>
+                            <div class="tags">
+                                <div class="tag type">景點</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="map"></div>
+            </div> -->
         </div>
     </div>
+
+    <!-- JS Scripts -->  
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <script src="leaflet-map.js"></script>
     <script src="all.js"></script>
 </body>
 </html>

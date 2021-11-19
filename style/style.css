@@ -7,27 +7,116 @@
   font-family: Helvetica, sans-serif, Arial;
 }
 
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html body {
   width: 100%;
   height: 100%;
 }
 
-html body .wrapper {
-  margin: 80px 80px;
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container,
+  .container-sm {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container,
+  .container-sm,
+  .container-md {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    max-width: 1140px;
+  }
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.wrapper {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 16px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.resteraunt-toggle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #ac5dd4;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  -webkit-box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.2);
+  margin-left: auto;
 }
 
 .region-cards {
@@ -72,6 +161,7 @@ html body .wrapper {
 
 .results {
   opacity: 0;
+  margin-top: 40px;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
@@ -167,19 +257,31 @@ html body .wrapper {
 }
 
 .results .search {
+  opacity: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 16px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
   margin-top: 40px;
 }
 
-.results .search > * {
+.results .search input,
+.results .search .btn {
   height: 40px;
   padding: 8px;
 }
 
 .results .search .search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.results .search .search-bar input {
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
@@ -187,26 +289,37 @@ html body .wrapper {
   outline-color: rgba(98, 137, 4, 0.6);
 }
 
-.results .search .btn.search-btn {
+.results .search .search-bar .btn.search-btn {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  cursor: pointer;
+}
+
+.results .main {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .results .scenic-spot-cards {
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  max-height: 85vh;
+  overflow-y: scroll;
 }
 
 .results .scenic-spot-cards .scenic-spot-card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 16px;
   border: 1px solid #000;
   padding: 40px;
   cursor: pointer;
@@ -248,9 +361,6 @@ html body .wrapper {
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
 }
 
 .results .scenic-spot-cards .scenic-spot-card .card-content {
@@ -287,5 +397,19 @@ html body .wrapper {
 .results .scenic-spot-cards .scenic-spot-card .card-content .tags .tag.type {
   background-color: #fffab7;
   color: #666;
+}
+
+.results .resteraunt-cards {
+  display: none;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.results #map {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  max-height: 85vh;
 }
 /*# sourceMappingURL=style.css.map */
