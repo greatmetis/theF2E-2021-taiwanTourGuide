@@ -107,3 +107,55 @@ function nextUpdate() {
   progressWidth();
   btnDisable();
 }
+
+// TODO: color-theme
+function load() {
+	const $html = document.querySelector('html');
+	const switcher = document.querySelector("#color-theme");
+
+	// 透過 useDark.matches 判斷是否為暗模式，將 boolean 寫入 Toggle checked 屬性
+	function setToggleCheck(check) {
+		switcher.checked = check;
+	}
+
+	function setDarkMode(state) {
+		const hasClass = $html.classList.contains('dark-mode');
+		if (state) {
+			if (!hasClass) {
+				$html.classList.toggle('dark-mode')
+			}
+
+		} else {
+			if (hasClass) {
+				$html.classList.remove('dark-mode')
+			}
+		}
+	}
+
+	// state 代表使用者裝置是否為深色主題
+	function toggleDarkMode(state) {
+		setToggleCheck(state);
+		setDarkMode(state);
+	}
+
+	const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+	// user change prefers-color-scheme trigger the listener
+	useDark.addListener(function(evt) {
+		console.log(evt);
+		toggleDarkMode(evt.matches);
+	});
+
+	// first page loading
+	let darkModeState = useDark.matches;
+	toggleDarkMode(darkModeState);
+
+	// toggle 
+	function switchListener() {
+		darkModeState = !darkModeState;
+		toggleDarkMode(darkModeState);
+	}
+
+	// toggle listener
+	switcher.addEventListener("click", switchListener);
+}

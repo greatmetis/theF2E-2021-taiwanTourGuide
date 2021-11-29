@@ -7,11 +7,8 @@
     <link rel="stylesheet" href="assets/style/all.css" />
     <title>Document</title>
   </head>
-  <body>
-    <div class="position-absolute top-15" style="height: calc(65vh);width: 130px;right: 56px">
-      <div class="pe-10">
-        
-      </div>
+  <body onload="load()">
+    <div class="d-none d-xxl-block position-absolute top-15" style="height: calc(65vh);width: 130px;right: 56px">
       <div class="">
         <div class="progress-bar">
           <div class="progress" id="progress"></div>
@@ -60,13 +57,7 @@
             <a class="text-end" href="">閱讀更多</a>
           </div>
         </div>
-        <div type="checkbox" class="color-theme" id="btn">	
-          <div class="sun">
-            <img src="assets/images/color_theme_toggle_moon_LG.svg.svg" alt="">
-          </div>
-          <div class="moon">
-          </div>
-        </div>
+        <div type="checkbox" class="color-theme" id="color-theme"></div>
       </div>
       <div class="container d-none d-xxl-block">
         <ul class="row g-0">
