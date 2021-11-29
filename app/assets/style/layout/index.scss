@@ -118,3 +118,105 @@
   border-left: 8px solid transparent;
   transition: .3s;
 }
+
+// dot scooter
+.circle-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  font-weight: 400;
+  color: #cccccc;
+  &.active {
+    color: var(--bs-body-color);
+    & .circle-item-triangle {
+      border-color: transparent transparent transparent var(--bs-body-color);
+    }
+    & .circle-item-number {
+      color: var(--bs-body-color);
+      &::after {
+        border-color: var(--bs-body-color);
+        background: var(--bs-secondary);
+        color: var(--bs-body-color);
+      }
+    }
+  }
+  &.done {
+    color: var(--bs-body-color);
+    & .circle-item-triangle {
+      border-color: transparent transparent transparent var(--bs-body-color);
+    }
+    & .circle-item-number {
+      color: var(--bs-white);
+      &::after {
+        border-color: var(--bs-body-color);
+        background: var(--bs-gray-900);
+        color: var(--bs-white);
+      }
+    }
+  }
+}
+.circle-item-number {
+  z-index: 1;
+  margin-right: 18px;
+  &::after {
+    content: '';
+    position: absolute;
+    top: .7rem;
+    left: 83%;
+    transform: translate(-50%,-50%);
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--bs-secondary);
+    border-radius: 50%;
+    background-color: var(--bs-primary);
+    transition: 0.3s linear;
+    z-index: -1;
+  }
+}
+.circle-item-triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 8.7px;
+  border-color: transparent transparent transparent var(--bs-gray-500);
+}
+
+.dog-scooter {
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  bottom: calc(0% - 30px);
+  right: -40px;
+  z-index: 100;
+  transform: translateY(-0) scaleX(-1);
+  transition: 0.4s ease;
+  
+  .a{fill:#d980bb;}
+  .b{fill:#2d2d2d;}
+  .c{fill:#fff;}
+  .d{fill:#fcc11e;}
+  .e{fill:#335d2e;}
+  .f{fill:#0497b9;}
+  .g{fill:#ec132f;}
+  .h{fill:#fec920;}
+}
+
+.progress-bar {
+  height: calc(100% - 1px);
+  width: 4px;
+  position: absolute;
+  right: 20px;
+  outline: 1px solid var(--bs-body-color);
+  background-color: transparent;
+}
+.progress {
+  height: 0%;
+  width: 4px;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--bs-secondary);
+  transition: 0.4s ease;
+}
