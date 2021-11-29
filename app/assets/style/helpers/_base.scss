@@ -1,0 +1,40 @@
+*,*::before,*::after{
+  box-sizing:border-box ;
+}
+
+ul{
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+a {
+  display: block;
+  transition: .3s;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  opacity: 1;
+}
+
+body{
+  // font-family: 'source-han-serif-sc', serif, $font-family-sans-serif;
+  // font-family: 'Noto Serif TC', serif, $font-family-sans-serif;
+  font-family: 'Noto Serif SC', serif, $font-family-sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.5;
+  background: $primary;
+  color: $black;
+}
+
+.font-noto {
+  font-family: 'Noto Sans TC', serif;
+  font-weight: 400;
+  font-style: normal;
+}
