@@ -31,8 +31,18 @@
           transform: rotate(8deg) scaleX(-1);
 }
 
+:root.dark-mode .color-theme {
+  background-image: url(../images/color_theme_toggle_moon_LG.svg);
+}
+
 .color-theme {
-  background-image: url(../../images/color_theme_toggle_moon_LG.svg.svg);
+  width: 66px;
+  height: 34px;
+  background-image: url(../images/color_theme_toggle_sun_LG.svg);
+  cursor: pointer;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
 }
 
 .popup-content-bounce-in-up {
