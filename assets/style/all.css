@@ -18235,9 +18235,9 @@ fieldset:disabled .btn {
 
 .activity-popover-defaule {
   position: absolute;
-  -webkit-transition: all .1s .3s linear;
-  -o-transition: all .1s .3s linear;
-  transition: all .1s .3s linear;
+  -webkit-transition: all .1s .18s linear;
+  -o-transition: all .1s .18s linear;
+  transition: all .1s .18s linear;
 }
 
 .activity-popover-card {
