@@ -1,12 +1,9 @@
 // dog-eating
-const activity = document.getElementById('activity-popover');
-const activityDef = document.getElementById('activity-popover-defaule');
-const activityCard = document.getElementById('activity-popover-card')
-activityDef.addEventListener('click', () => {
-  if (activityDef.getAttribute('class').indexOf('d-none') === -1) {
-    activityDef.classList.add('d-none');
-    activityCard.classList.remove('d-none');
-  }
+const activity = document.getElementById('activity-popover-content');
+// const activityDef = document.getElementById('activity-popover-defaule');
+// const activityCard = document.getElementById('activity-popover-card')
+activity.addEventListener('click', () => {
+  activity.classList.toggle('active');
 });
 const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {

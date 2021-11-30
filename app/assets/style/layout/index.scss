@@ -4,20 +4,45 @@
 }
 
 .activity-popover {
-  width: 304px;
+  // width: 304px;
+  // height: 112px;
   position: absolute;
   top: 115px;
   left: 95px;
   border-radius: 15px;
   background: var(--bs-white);
   box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
-  opacity: 1;
 }
 .activity-popover-tail {
   position: absolute;
   top: -5px;
   left: 0;
   filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
+}
+.activity-popover-defaule {
+  // opacity: 1;
+  // transition: all .5s ease-in-out;
+  transform: translate(0, 0);
+  transition: height .25s ease-out, translate .55s ease-out;
+}
+.activity-popover-card {
+  opacity: 0;
+  // transition: max-height 0.15s ease-out;
+}
+.activity-popover-content {
+  width: 304px;
+  height: 112px;
+  // overflow: hidden;
+  // transition: height .25s ease-out, translate .25s ease-out;
+  transition: all .25s ease-out;
+  &.active {
+    // height: 412px;
+    & > .activity-popover-defaule {
+      transform: translate(0, 300px);
+    }
+  }
+  // &.active > .activity-popover-defaule {
+  // }
 }
 
 :root.dark-mode {
