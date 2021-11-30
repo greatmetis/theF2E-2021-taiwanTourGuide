@@ -10,7 +10,7 @@ dogEating.addEventListener('click', () => {
 
 let stickyPopup = document.getElementsByClassName("sticky-popup");
 let stickyPopups = document.querySelector(".sticky-popups");
-let sticyPopupInfo = [
+let stickyPopupInfo = [
   {region:'北部地區', city:'台北市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
 {region:'中部地區', city:'台中市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
 {region:'南部地區', city:'高雄市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
@@ -22,7 +22,7 @@ window.addEventListener('load',load)
 
 function addTogglePopup(){
     for(let i = 0; i < stickyPopup.length;i++){
-    stickyPopup[i].addEventListener('click',togglePopup)
+      stickyPopup[i].addEventListener('click',togglePopup)
     }
 };
 function togglePopup(e){
@@ -94,7 +94,7 @@ function createStickyPopups({id,region,city,tempeture,weather,shortDescription})
 
 (function(){
   let str = '';
-  sticyPopupInfo.forEach((item,index)=>{
+  stickyPopupInfo.forEach((item,index)=>{
     let tempStickyHtml = createStickyPopups({id:index,region:item.region,city:item.city,tempeture:item.city,weather:item.weather,shortDescription:item.shortDescription});
     str += tempStickyHtml;
     stickyPopups.innerHTML = str;
