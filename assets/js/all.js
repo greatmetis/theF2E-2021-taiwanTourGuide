@@ -1,18 +1,32 @@
 "use strict";
 
-// TODO: sticky-popup
+// dog-eating
+var activity = document.getElementById('activity-popover');
+var activityDef = document.getElementById('activity-popover-defaule');
+var activityCard = document.getElementById('activity-popover-card');
+activityDef.addEventListener('click', function () {
+  if (activityDef.getAttribute('class').indexOf('d-none') === -1) {
+    activityDef.classList.add('d-none');
+    activityCard.classList.remove('d-none');
+  }
+});
+var dogEating = document.getElementById('dog-eating');
+dogEating.addEventListener('click', function () {
+  activity.classList.toggle('d-none');
+}); // sticky-popup
+
 document.getElementById("sticky-popup").addEventListener("click", togglePopup); // document.querySelectorAll('#sticky-popup').forEach(item => {
 //   item.addEventListener('click', togglePopup(e));
 // })
-// var stickyPopup = document.querySelector("#sticky-popup");
+// let stickyPopup = document.querySelectorAll(".sticky-popup");
 // for( let i = 0 ; i < stickyPopup.length ; i++) {
-//   stickyPopup[i].addEventListener("click", togglePopup());
+//   stickyPopup[i].addEventListener("click", togglePopup(stickyPopup[i]));
 // }
 
 function togglePopup() {
   console.log('click');
   var element = document.getElementById("sticky-popup");
-  element.classList.toggle("open"); // item.classList.toggle("open");
+  element.classList.toggle("open"); // e.classList.toggle("open");
 
   var type = document.querySelector(".dot-menu");
 
@@ -21,7 +35,7 @@ function togglePopup() {
   } else {
     type.classList.add("active");
   }
-} // TODO: dogScooter
+} // dogScooter
 
 
 var prev = document.getElementById('prev');
@@ -153,4 +167,6 @@ function load() {
 
   switcher.addEventListener("click", switchListener);
 }
+
+document.addEventListener("DOMContentLoaded", load);
 //# sourceMappingURL=all.js.map

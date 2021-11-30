@@ -17,7 +17,7 @@
 }
 
 .dot {
-  background: var(--black);
+  background: var(--bs-body-color);
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -57,6 +57,7 @@
 .dot-menu.active .line1 {
   width: 20px;
   border-radius: 0px;
+  top: 4px;
 }
 
 .dot-menu.active .line2 {
