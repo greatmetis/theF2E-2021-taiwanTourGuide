@@ -1,0 +1,44 @@
+.activity-popover {
+  position: absolute;
+  top: 115px;
+  left: 95px;
+  border-radius: 15px;
+  background: var(--bs-white);
+  box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
+}
+.activity-popover-tail {
+  position: absolute;
+  display: block;
+  top: -5px;
+  left: 0;
+  filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
+}
+.activity-popover-content {
+  width: 304px;
+  height: 112px;
+  overflow: hidden;
+  transition: all .3s linear;
+  &.active {
+    transition: all .3s .15s linear;
+    height: 412px;
+  }
+  &.active > .activity-popover-defaule {
+    transition: all .1s linear;
+    opacity: 0;
+  }
+  &.active > .activity-popover-card {
+    transition: all .3s .15s linear;
+    opacity: 1;
+  }
+  &.d-none + .activity-popover-tail {
+    display: none;
+  }
+}
+.activity-popover-defaule {
+  position: absolute;
+  transition: all .1s .3s linear;
+}
+.activity-popover-card {
+  opacity: 0;
+  transition: all .3s linear;
+}
