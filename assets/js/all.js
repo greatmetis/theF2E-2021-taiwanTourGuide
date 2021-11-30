@@ -11,7 +11,7 @@ dogEating.addEventListener('click', function () {
 });
 var stickyPopup = document.getElementsByClassName("sticky-popup");
 var stickyPopups = document.querySelector(".sticky-popups");
-var sticyPopupInfo = [{
+var stickyPopupInfo = [{
   region: '北部地區',
   city: '台北市',
   tempeture: 28,
@@ -75,7 +75,7 @@ function createStickyPopups(_ref) {
 
 (function () {
   var str = '';
-  sticyPopupInfo.forEach(function (item, index) {
+  stickyPopupInfo.forEach(function (item, index) {
     var tempStickyHtml = createStickyPopups({
       id: index,
       region: item.region,

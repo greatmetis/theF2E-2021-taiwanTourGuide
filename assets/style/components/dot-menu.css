@@ -42,33 +42,4 @@
           transform: rotateZ(45deg);
 }
 
-.dot-menu.active .dot1 {
-  -webkit-transform: translateY(12px);
-      -ms-transform: translateY(12px);
-          transform: translateY(12px);
-}
-
-.dot-menu.active .dot2 {
-  -webkit-transform: translateY(-12px);
-      -ms-transform: translateY(-12px);
-          transform: translateY(-12px);
-}
-
-.dot-menu.active .line1 {
-  width: 20px;
-  border-radius: 0px;
-  top: 4px;
-  -webkit-transform: rotateZ(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotateZ(45deg);
-}
-
-.dot-menu.active .line2 {
-  width: 20px;
-  -webkit-transform: rotateZ(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotateZ(-45deg);
-  border-radius: 0px;
-}
-
 /*# sourceMappingURL=dot-menu.css.map */
