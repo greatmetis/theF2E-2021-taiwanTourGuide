@@ -134,14 +134,9 @@ const CityData = function(region,city,limitNum){
     // !Test END
 }
 
-// Intergrate API
+//* ---- Integrate scenicSpot Data ---- //
 CityData.prototype.sendGetRequest = async function(){
     let userUrl;
-    // !Test
-    if(!this.type){
-        userUrl = `https://ptx.transportdata.tw/MOTC/v2/Restaurant/ScenicSpot/${this.city}?$top=${this.limitNum}&$format=JSON`
-    }
-    // !Test END
     // if)類別搜尋景點 || else)關鍵字搜尋景點
     if(this.selectedCate){
         let filterClass1, filterClass2;
@@ -159,7 +154,7 @@ CityData.prototype.sendGetRequest = async function(){
     }
 
     try{
-        const resp = await axios.get(userUrl,{headers:getAuthorisationHeader()})
+        let resp = await axios.get(userUrl,{headers:getAuthorisationHeader()})
         scenicSpotData = resp.data
         addGeoData()
         get_leaflet()
@@ -171,30 +166,28 @@ CityData.prototype.sendGetRequest = async function(){
         console.error(err)
     }
 }
-
-//* ---- Resteraunt Data ---- //
-const ResterauntData = function(region,city,limitNum){
-    this.region= region,
-    this.city = city,
-    this.limitNum = limitNum,
-    this.keyword = '',
-    this.selectedCate = []
+//* ---- Integrate Resteraunt Data ---- //
+CityData.prototype.sendRestaurantRequest = async function(){
+    userUrl = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/${this.city}?&$format=JSON`
+    try{
+        let resp = await axios.get(userUrl,{headers:getAuthorisationHeader()});
+        resterauntData = resp.data;
+        // console.log(resterauntData)
+        this.updateHtml()
+    }
+    catch(err){
+        console.error(err)
+    }
 }
-
-ResterauntData.prototype.getRequest = async function(){
-    let resterUrl;
-    resterUrl = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/Taipei?$top=30&$format=JSON`
-}
-
 
 //* ----- Update HTML for cards section----- *//
 CityData.prototype.updateHtml = function(){
     $(".scenic-spot-cards").html("")
     $(".search").css("opacity",1)
-    if(scenicSpotData.length ==0){
-        $(".scenic-spot-cards").text("oooooOOOOoops! 這裡好像沒有你要的結果...")
-        return
-    }
+    // if(scenicSpotData.length ==0){
+    //     $(".scenic-spot-cards").text("oooooOOOOoops! 這裡好像沒有你要的結果...")
+    //     return
+    // }
     scenicSpotData.forEach(item=>{
         let cardClose = true;
         let imgUrl='';
@@ -322,6 +315,18 @@ function defineCate(val){
     $(".current-search-hint .keywords").text(val.id)
 }
 
+//  使用者切換美食頁面
+function showRestaurants(){
+    console.log('fooooood!')
+    _thisCity.typeRestaurant = !_thisCity.typeRestaurant;
+    if(_thisCity.typeRestaurant == true){
+        _thisCity.sendRestaurantRequest()
+        return
+    }
+    
+}
+
+
 //***  ===================== ***//
 // * -------  Utility ------- *//
 //***  =================== ***//
@@ -366,7 +371,7 @@ function get_leaflet(){
 }
 
 function resterauntToggle(){
-    console.log('fooooood!')
+    
     // $(".resteraunt-cards").css("display","block")
     // $(".scenic-spot-cards").css("display","none")
 }
