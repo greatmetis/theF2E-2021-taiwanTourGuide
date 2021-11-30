@@ -12,6 +12,8 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 // components
+@import "./helpers/image";
+@import "./helpers/hover";
 @import "./components/dot-menu.scss";
 
 @import "./helpers/base";
