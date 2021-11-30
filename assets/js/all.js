@@ -1,41 +1,94 @@
 "use strict";
 
 // dog-eating
-var activity = document.getElementById('activity-popover');
-var activityDef = document.getElementById('activity-popover-defaule');
-var activityCard = document.getElementById('activity-popover-card');
-activityDef.addEventListener('click', function () {
-  if (activityDef.getAttribute('class').indexOf('d-none') === -1) {
-    activityDef.classList.add('d-none');
-    activityCard.classList.remove('d-none');
-  }
+var activity = document.getElementById('activity-popover-content');
+activity.addEventListener('click', function () {
+  activity.classList.toggle('active');
 });
 var dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', function () {
   activity.classList.toggle('d-none');
-}); // sticky-popup
+});
+var stickyPopup = document.getElementsByClassName("sticky-popup");
+var stickyPopups = document.querySelector(".sticky-popups");
+var sticyPopupInfo = [{
+  region: '北部地區',
+  city: '台北市',
+  tempeture: 28,
+  weather: '多雲有太陽',
+  shortDescription: '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'
+}, {
+  region: '中部地區',
+  city: '台中市',
+  tempeture: 28,
+  weather: '多雲有太陽',
+  shortDescription: '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'
+}, {
+  region: '南部地區',
+  city: '高雄市',
+  tempeture: 28,
+  weather: '多雲有太陽',
+  shortDescription: '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'
+}, {
+  region: '東部地區',
+  city: '花蓮縣',
+  tempeture: 28,
+  weather: '多雲有太陽',
+  shortDescription: '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'
+}, {
+  region: '離島地區',
+  city: '澎湖縣',
+  tempeture: 28,
+  weather: '多雲有太陽',
+  shortDescription: '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'
+}];
+window.addEventListener('load', load); // Generate stickyPopups html from Database
 
-document.getElementById("sticky-popup").addEventListener("click", togglePopup); // document.querySelectorAll('#sticky-popup').forEach(item => {
-//   item.addEventListener('click', togglePopup(e));
-// })
-// let stickyPopup = document.querySelectorAll(".sticky-popup");
-// for( let i = 0 ; i < stickyPopup.length ; i++) {
-//   stickyPopup[i].addEventListener("click", togglePopup(stickyPopup[i]));
-// }
-
-function togglePopup() {
-  console.log('click');
-  var element = document.getElementById("sticky-popup");
-  element.classList.toggle("open"); // e.classList.toggle("open");
-
-  var type = document.querySelector(".dot-menu");
-
-  if (type.classList.contains("active") === true) {
-    type.classList.remove("active");
-  } else {
-    type.classList.add("active");
+function addTogglePopup() {
+  for (var i = 0; i < stickyPopup.length; i++) {
+    stickyPopup[i].addEventListener('click', togglePopup);
   }
-} // dogScooter
+}
+
+;
+
+function togglePopup(e) {
+  e.currentTarget.classList.toggle("open"); // TODO: toggle active class for dots in dot-menu
+}
+
+;
+
+function createStickyPopups(_ref) {
+  var id = _ref.id,
+      region = _ref.region,
+      city = _ref.city,
+      tempeture = _ref.tempeture,
+      weather = _ref.weather,
+      shortDescription = _ref.shortDescription;
+  return (
+    /*html*/
+    "\n      <li class=\"col\">\n        <div\n          class=\"sticky-popup open_sticky_popup popup-content-bounce-in-up\" data-id=\"".concat(id, "\">\n          <div class=\"popup-header\">\n            <span class=\"popup-title fs-4\">\n              <div class=\"\n                  d-flex\n                  justify-content-between\n                  align-items-center\n                  px-6\n                  py-4\">\n                <h2 class=\"fs-2\">").concat(region, "</h2>\n                <div class=\"dot-menu\">\n                  <div class=\"dot dot1\"></div>\n                  <div class=\"dot line1\"></div>\n                  <div class=\"dot line2\"></div>\n                  <div class=\"dot dot2\"></div>\n                </div>\n              </div>\n            </span>\n          </div>\n          <div class=\"popup-content-trapezoid\"></div>\n          <div class=\"popup-content\">\n            <div class=\"border border-2 border-dark px-6 py-6\">\n              <button class=\"btn btn-lg btn-yellow border lh-sm text-black mb-2\">").concat(tempeture, "&#8451;</button>\n              <h3 class=\"fs-l mb-1\">").concat(weather, "</h3>\n              <span class=\"d-block text-muted fs-5 mb-6\">").concat(city, "\u4ECA\u65E5\u65E9\u4E0A</span>\n              <p class=\"mb-6 popup-body fw-6\">\n                ").concat(shortDescription, "\n              </p>\n              <button\n                class=\"btn btn-secondary w-100 rounded-0 border border-1\">\n                <span class=\"align-middle text-black\">\u9078\u57CE\u5E02</span>\n                <svg\n                  width=\"43\"\n                  height=\"18\"\n                  viewBox=\"0 0 43 18\"\n                  fill=\"none\"\n                  xmlns=\"http://www.w3.org/2000/svg\">\n                  <path\n                    d=\"M0 9.16699H40.8333\"\n                    stroke=\"#131313\"\n                    stroke-width=\"1.5\"/>\n                  <path\n                    d=\"M42.0004 9.40023C39.0448 9.78912 33.0871 11.9669 32.9004 17.5669\"\n                    stroke=\"#131313\"\n                    stroke-width=\"1.5\"/>\n                  <path\n                    d=\"M42.0004 9.16667C39.0448 8.77778 33.0871 6.6 32.9004 1\"\n                    stroke=\"#131313\"\n                    stroke-width=\"1.5\"/>\n                </svg>\n              </button>\n            </div>\n          </div>\n        </div>\n      </li>\n    ")
+  );
+}
+
+;
+
+(function () {
+  var str = '';
+  sticyPopupInfo.forEach(function (item, index) {
+    var tempStickyHtml = createStickyPopups({
+      id: index,
+      region: item.region,
+      city: item.city,
+      tempeture: item.city,
+      weather: item.weather,
+      shortDescription: item.shortDescription
+    });
+    str += tempStickyHtml;
+    stickyPopups.innerHTML = str;
+  });
+  addTogglePopup();
+})(); // TODO: dogScooter
 
 
 var prev = document.getElementById('prev');
@@ -81,6 +134,8 @@ function progressWidth() {
   dogScooter.style.transform = "scaleX(-1)";
 }
 
+;
+
 function btnDisable() {
   // 判斷何時要將按鈕做disable處理
   if (currentActive <= 1) {
@@ -92,6 +147,8 @@ function btnDisable() {
     next.disabled = false;
   }
 }
+
+;
 
 function prevUpdate() {
   // set finish
@@ -107,6 +164,8 @@ function prevUpdate() {
   btnDisable();
 }
 
+;
+
 function nextUpdate() {
   // set finish
   circleItems[currentActive - 2].classList.add('done');
@@ -118,8 +177,9 @@ function nextUpdate() {
   circleItems[currentActive - 1].classList.add('active');
   progressWidth();
   btnDisable();
-} // TODO: color-theme
+}
 
+; // TODO: color-theme
 
 function load() {
   var $html = document.querySelector('html');
@@ -168,5 +228,5 @@ function load() {
   switcher.addEventListener("click", switchListener);
 }
 
-document.addEventListener("DOMContentLoaded", load);
+;
 //# sourceMappingURL=all.js.map

@@ -3,26 +3,6 @@
   overflow: hidden;
 }
 
-.activity-popover {
-  width: 304px;
-  position: absolute;
-  top: 115px;
-  left: 95px;
-  border-radius: 15px;
-  background: var(--bs-white);
-  -webkit-box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
-          box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
-  opacity: 1;
-}
-
-.activity-popover-tail {
-  position: absolute;
-  top: -5px;
-  left: 0;
-  -webkit-filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
-          filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
-}
-
 :root.dark-mode .color-theme {
   background-image: url(../images/color_theme_toggle_moon_LG.svg);
 }

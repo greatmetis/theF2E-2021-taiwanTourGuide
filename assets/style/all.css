@@ -18167,6 +18167,9 @@ fieldset:disabled .btn {
   width: 20px;
   border-radius: 0px;
   top: 4px;
+  -webkit-transform: rotateZ(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotateZ(45deg);
 }
 
 .dot-menu.active .line2 {
@@ -18175,6 +18178,73 @@ fieldset:disabled .btn {
       -ms-transform: rotate(-45deg);
           transform: rotateZ(-45deg);
   border-radius: 0px;
+}
+
+.activity-popover {
+  position: absolute;
+  top: 115px;
+  left: 95px;
+  border-radius: 15px;
+  background: var(--bs-white);
+  -webkit-box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
+          box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
+}
+
+.activity-popover-tail {
+  position: absolute;
+  display: block;
+  top: -5px;
+  left: 0;
+  -webkit-filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
+          filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
+}
+
+.activity-popover-content {
+  width: 304px;
+  height: 112px;
+  overflow: hidden;
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  transition: all .3s linear;
+}
+
+.activity-popover-content.active {
+  -webkit-transition: all .3s .15s linear;
+  -o-transition: all .3s .15s linear;
+  transition: all .3s .15s linear;
+  height: 412px;
+}
+
+.activity-popover-content.active > .activity-popover-defaule {
+  -webkit-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  transition: all .1s linear;
+  opacity: 0;
+}
+
+.activity-popover-content.active > .activity-popover-card {
+  -webkit-transition: all .3s .15s linear;
+  -o-transition: all .3s .15s linear;
+  transition: all .3s .15s linear;
+  opacity: 1;
+}
+
+.activity-popover-content.d-none + .activity-popover-tail {
+  display: none;
+}
+
+.activity-popover-defaule {
+  position: absolute;
+  -webkit-transition: all .1s .3s linear;
+  -o-transition: all .1s .3s linear;
+  transition: all .1s .3s linear;
+}
+
+.activity-popover-card {
+  opacity: 0;
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  transition: all .3s linear;
 }
 
 *,
@@ -18224,26 +18294,6 @@ body {
 .menu {
   min-height: calc(100vh);
   overflow: hidden;
-}
-
-.activity-popover {
-  width: 304px;
-  position: absolute;
-  top: 115px;
-  left: 95px;
-  border-radius: 15px;
-  background: var(--bs-white);
-  -webkit-box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
-          box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
-  opacity: 1;
-}
-
-.activity-popover-tail {
-  position: absolute;
-  top: -5px;
-  left: 0;
-  -webkit-filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
-          filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
 }
 
 :root.dark-mode .color-theme {

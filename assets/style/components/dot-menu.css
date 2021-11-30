@@ -58,6 +58,9 @@
   width: 20px;
   border-radius: 0px;
   top: 4px;
+  -webkit-transform: rotateZ(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotateZ(45deg);
 }
 
 .dot-menu.active .line2 {
