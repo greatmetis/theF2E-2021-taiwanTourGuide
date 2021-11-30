@@ -4,16 +4,16 @@ document.getElementById("sticky-popup").addEventListener("click", togglePopup);
 // document.querySelectorAll('#sticky-popup').forEach(item => {
 //   item.addEventListener('click', togglePopup(e));
 // })
-// var stickyPopup = document.querySelector("#sticky-popup");
+// let stickyPopup = document.querySelectorAll(".sticky-popup");
 // for( let i = 0 ; i < stickyPopup.length ; i++) {
-//   stickyPopup[i].addEventListener("click", togglePopup());
+//   stickyPopup[i].addEventListener("click", togglePopup(stickyPopup[i]));
 // }
 
 function togglePopup() {
   console.log('click');
   var element = document.getElementById("sticky-popup");
   element.classList.toggle("open");
-  // item.classList.toggle("open");
+  // e.classList.toggle("open");
   
   var type = document.querySelector(".dot-menu");
   if(type.classList.contains("active") === true){
@@ -159,3 +159,4 @@ function load() {
 	// toggle listener
 	switcher.addEventListener("click", switchListener);
 }
+document.addEventListener("DOMContentLoaded", load);
