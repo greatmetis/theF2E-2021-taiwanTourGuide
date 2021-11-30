@@ -27,6 +27,16 @@ $utilities: map-merge(
       class: cs,
       values: pointer
     ),
+    "top": map-merge(
+      map-get($utilities, "top"), (
+        responsive: true
+      )
+    ),
+    "position": map-merge(
+      map-get($utilities, "position"), (
+        responsive: true
+      )
+    ),
   )
 );
 

@@ -14,8 +14,8 @@
   filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
 }
 .activity-popover-content {
-  width: 304px;
-  height: 112px;
+  width: 141px;
+  height: 40px;
   overflow: hidden;
   transition: all .3s linear;
   &.active {
@@ -34,9 +34,16 @@
     display: none;
   }
 }
+@media screen and (min-width: 1400px) {
+  .activity-popover-content {
+    width: 304px;
+    height: 112px;
+  }
+}
+
 .activity-popover-defaule {
   z-index: 1;
-  position: absolute;
+  // position: absolute;
   transition: all .1s .18s linear;
 }
 .activity-popover-card {
