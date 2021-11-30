@@ -60,6 +60,25 @@
     transform: translateY(.5px);
     transition:.3s;
   }
+  &.open .popup-header .popup-title .dot-menu {
+    .dot1{
+      transform: translateY(12px);
+    }
+    .dot2 {
+      transform: translateY(-12px);
+    }
+    .line1 {
+      width: 20px;
+      border-radius: 0px;
+      top: 4px;
+      transform: rotateZ(45deg);
+    }
+    .line2 {
+      width: 20px;
+      transform: rotateZ(-45deg);
+      border-radius: 0px;
+    }
+  }
 }
 // sticky_popup bottom 效果
 .open_sticky_popup {
