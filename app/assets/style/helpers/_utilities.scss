@@ -10,5 +10,24 @@ $utilities: map-merge(
         )
       )
     ),
+    "rounded": map-merge(
+      map-get($utilities, "rounded"),
+      (
+        responsive: true,
+        values: map-merge(
+          map-get(map-get($utilities, "font-weight"), "values"), (
+            'm': 8px,
+          )
+        )
+      )
+    ),
+    "cursor": (
+      property: cursor,
+      responsive: true,
+      class: cs,
+      values: pointer
+    ),
   )
 );
+
+

@@ -30,7 +30,8 @@ $theme-colors: (
   "green":      $green,
   "blue":       $blue,
   "purple":     $purple,
-  "pink":       $pink
+  "pink":       $pink,
+  "light":      $gray-100,
 ) !default;
 
 $spacer: 1rem !default;
@@ -103,6 +104,7 @@ $headings-line-height:              1.25 !default;
 $enable-negative-margins:           true !default;
 $enable-reduced-motion:             false !default;
 $enable-important-utilities:        true !default;
+$enable-rfs:                        false !default;
 
 $border-width:                      2px !default;
 $border-color:                      $black !default;

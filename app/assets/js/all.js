@@ -1,4 +1,19 @@
-// TODO: sticky-popup
+// dog-eating
+const activity = document.getElementById('activity-popover');
+const activityDef = document.getElementById('activity-popover-defaule');
+const activityCard = document.getElementById('activity-popover-card')
+activityDef.addEventListener('click', () => {
+  if (activityDef.getAttribute('class').indexOf('d-none') === -1) {
+    activityDef.classList.add('d-none');
+    activityCard.classList.remove('d-none');
+  }
+});
+const dogEating = document.getElementById('dog-eating');
+dogEating.addEventListener('click', () => {
+  activity.classList.toggle('d-none');
+});
+
+// sticky-popup
 document.getElementById("sticky-popup").addEventListener("click", togglePopup);
 
 // document.querySelectorAll('#sticky-popup').forEach(item => {
@@ -11,11 +26,11 @@ document.getElementById("sticky-popup").addEventListener("click", togglePopup);
 
 function togglePopup() {
   console.log('click');
-  var element = document.getElementById("sticky-popup");
+  let element = document.getElementById("sticky-popup");
   element.classList.toggle("open");
   // e.classList.toggle("open");
   
-  var type = document.querySelector(".dot-menu");
+  let type = document.querySelector(".dot-menu");
   if(type.classList.contains("active") === true){
       type.classList.remove("active");
     }else{
@@ -23,7 +38,7 @@ function togglePopup() {
     }
 }
 
-// TODO: dogScooter
+// dogScooter
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
 const circleItems = document.querySelectorAll('.circle-item');
