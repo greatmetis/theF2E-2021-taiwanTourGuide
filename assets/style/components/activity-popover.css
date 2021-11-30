@@ -18,8 +18,8 @@
 }
 
 .activity-popover-content {
-  width: 304px;
-  height: 112px;
+  width: 141px;
+  height: 40px;
   overflow: hidden;
   -webkit-transition: all .3s linear;
   -o-transition: all .3s linear;
@@ -51,9 +51,15 @@
   display: none;
 }
 
+@media screen and (min-width: 1400px) {
+  .activity-popover-content {
+    width: 304px;
+    height: 112px;
+  }
+}
+
 .activity-popover-defaule {
   z-index: 1;
-  position: absolute;
   -webkit-transition: all .1s .18s linear;
   -o-transition: all .1s .18s linear;
   transition: all .1s .18s linear;

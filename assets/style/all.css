@@ -10797,6 +10797,36 @@ fieldset:disabled .btn {
   .d-sm-none {
     display: none !important;
   }
+  .position-sm-static {
+    position: static !important;
+  }
+  .position-sm-relative {
+    position: relative !important;
+  }
+  .position-sm-absolute {
+    position: absolute !important;
+  }
+  .position-sm-fixed {
+    position: fixed !important;
+  }
+  .position-sm-sticky {
+    position: sticky !important;
+  }
+  .top-sm-0 {
+    top: 0 !important;
+  }
+  .top-sm-15 {
+    top: 15% !important;
+  }
+  .top-sm-35 {
+    top: 35% !important;
+  }
+  .top-sm-50 {
+    top: 50% !important;
+  }
+  .top-sm-100 {
+    top: 100% !important;
+  }
   .flex-sm-fill {
     -webkit-box-flex: 1 !important;
         -ms-flex: 1 1 auto !important;
@@ -12258,6 +12288,36 @@ fieldset:disabled .btn {
   }
   .d-md-none {
     display: none !important;
+  }
+  .position-md-static {
+    position: static !important;
+  }
+  .position-md-relative {
+    position: relative !important;
+  }
+  .position-md-absolute {
+    position: absolute !important;
+  }
+  .position-md-fixed {
+    position: fixed !important;
+  }
+  .position-md-sticky {
+    position: sticky !important;
+  }
+  .top-md-0 {
+    top: 0 !important;
+  }
+  .top-md-15 {
+    top: 15% !important;
+  }
+  .top-md-35 {
+    top: 35% !important;
+  }
+  .top-md-50 {
+    top: 50% !important;
+  }
+  .top-md-100 {
+    top: 100% !important;
   }
   .flex-md-fill {
     -webkit-box-flex: 1 !important;
@@ -13721,6 +13781,36 @@ fieldset:disabled .btn {
   .d-lg-none {
     display: none !important;
   }
+  .position-lg-static {
+    position: static !important;
+  }
+  .position-lg-relative {
+    position: relative !important;
+  }
+  .position-lg-absolute {
+    position: absolute !important;
+  }
+  .position-lg-fixed {
+    position: fixed !important;
+  }
+  .position-lg-sticky {
+    position: sticky !important;
+  }
+  .top-lg-0 {
+    top: 0 !important;
+  }
+  .top-lg-15 {
+    top: 15% !important;
+  }
+  .top-lg-35 {
+    top: 35% !important;
+  }
+  .top-lg-50 {
+    top: 50% !important;
+  }
+  .top-lg-100 {
+    top: 100% !important;
+  }
   .flex-lg-fill {
     -webkit-box-flex: 1 !important;
         -ms-flex: 1 1 auto !important;
@@ -15183,6 +15273,36 @@ fieldset:disabled .btn {
   .d-xl-none {
     display: none !important;
   }
+  .position-xl-static {
+    position: static !important;
+  }
+  .position-xl-relative {
+    position: relative !important;
+  }
+  .position-xl-absolute {
+    position: absolute !important;
+  }
+  .position-xl-fixed {
+    position: fixed !important;
+  }
+  .position-xl-sticky {
+    position: sticky !important;
+  }
+  .top-xl-0 {
+    top: 0 !important;
+  }
+  .top-xl-15 {
+    top: 15% !important;
+  }
+  .top-xl-35 {
+    top: 35% !important;
+  }
+  .top-xl-50 {
+    top: 50% !important;
+  }
+  .top-xl-100 {
+    top: 100% !important;
+  }
   .flex-xl-fill {
     -webkit-box-flex: 1 !important;
         -ms-flex: 1 1 auto !important;
@@ -16644,6 +16764,36 @@ fieldset:disabled .btn {
   }
   .d-xxl-none {
     display: none !important;
+  }
+  .position-xxl-static {
+    position: static !important;
+  }
+  .position-xxl-relative {
+    position: relative !important;
+  }
+  .position-xxl-absolute {
+    position: absolute !important;
+  }
+  .position-xxl-fixed {
+    position: fixed !important;
+  }
+  .position-xxl-sticky {
+    position: sticky !important;
+  }
+  .top-xxl-0 {
+    top: 0 !important;
+  }
+  .top-xxl-15 {
+    top: 15% !important;
+  }
+  .top-xxl-35 {
+    top: 35% !important;
+  }
+  .top-xxl-50 {
+    top: 50% !important;
+  }
+  .top-xxl-100 {
+    top: 100% !important;
   }
   .flex-xxl-fill {
     -webkit-box-flex: 1 !important;
@@ -18212,8 +18362,8 @@ fieldset:disabled .btn {
 }
 
 .activity-popover-content {
-  width: 304px;
-  height: 112px;
+  width: 141px;
+  height: 40px;
   overflow: hidden;
   -webkit-transition: all .3s linear;
   -o-transition: all .3s linear;
@@ -18245,9 +18395,15 @@ fieldset:disabled .btn {
   display: none;
 }
 
+@media screen and (min-width: 1400px) {
+  .activity-popover-content {
+    width: 304px;
+    height: 112px;
+  }
+}
+
 .activity-popover-defaule {
   z-index: 1;
-  position: absolute;
   -webkit-transition: all .1s .18s linear;
   -o-transition: all .1s .18s linear;
   transition: all .1s .18s linear;
