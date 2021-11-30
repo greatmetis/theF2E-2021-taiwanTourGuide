@@ -18246,6 +18246,7 @@ fieldset:disabled .btn {
 }
 
 .activity-popover-defaule {
+  z-index: 1;
   position: absolute;
   -webkit-transition: all .1s .18s linear;
   -o-transition: all .1s .18s linear;
@@ -18253,6 +18254,7 @@ fieldset:disabled .btn {
 }
 
 .activity-popover-card {
+  z-index: -1;
   opacity: 0;
   -webkit-transition: all .3s linear;
   -o-transition: all .3s linear;
