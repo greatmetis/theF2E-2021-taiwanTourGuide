@@ -18107,6 +18107,18 @@ fieldset:disabled .btn {
      object-fit: cover;
 }
 
+.arrow-hover {
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  transition: all .3s linear;
+}
+
+.arrow-hover:hover {
+  -webkit-transform: translateX(8px);
+      -ms-transform: translateX(8px);
+          transform: translateX(8px);
+}
+
 .dot-menu {
   width: 15px;
   height: 30px;
