@@ -15,7 +15,7 @@ $utilities: map-merge(
       (
         responsive: true,
         values: map-merge(
-          map-get(map-get($utilities, "font-weight"), "values"), (
+          map-get(map-get($utilities, "rounded"), "values"), (
             'm': 8px,
           )
         )
