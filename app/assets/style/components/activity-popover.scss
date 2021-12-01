@@ -42,7 +42,7 @@
   }
   
 }
-@include media-breakpoint-up(xxl) { 
+@media (min-width: 1400px) {
   .activity-popover-content {
     width: 304px;
     height: 112px;
