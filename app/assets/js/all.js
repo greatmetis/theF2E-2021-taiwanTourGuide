@@ -234,5 +234,11 @@ function progressWidth() {
   };
 
 
+  // 不要鬧啦！！！！！！
+  // THIS IS A NEW COMMMENT LINE FOR TESTING
+
+function invisible(){
+  console.log(`Hello Sharon and Kent, can you see me`)
+}
 
 //# sourceMappingURL=all.js.map
