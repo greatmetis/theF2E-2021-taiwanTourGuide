@@ -6,18 +6,19 @@
   background: var(--bs-white);
   box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
 }
-.activity-popover-tail {
-  position: absolute;
-  display: block;
-  top: -5px;
-  left: 0;
-  filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
-}
 .activity-popover-content {
   width: 141px;
   height: 40px;
   overflow: hidden;
   transition: all .3s linear;
+  &::before {
+    content: url(../images/Tail.svg);
+    position: absolute;
+    top: -5px;
+    left: 0;
+    display: block;
+    filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
+  }
   &.active {
     transition: all .3s .15s linear;
     height: 412px;
@@ -30,24 +31,20 @@
     transition: all .3s .15s linear;
     opacity: 1;
   }
-  &.d-none + .activity-popover-tail {
-    display: none;
+  .activity-popover-defaule {
+    z-index: 1;
+    transition: all .1s .18s linear;
   }
+  .activity-popover-card {
+    z-index: -1;
+    opacity: 0;
+    transition: all .3s linear;
+  }
+  
 }
-@media screen and (min-width: 1400px) {
+@include media-breakpoint-up(xxl) { 
   .activity-popover-content {
     width: 304px;
     height: 112px;
   }
-}
-
-.activity-popover-defaule {
-  z-index: 1;
-  // position: absolute;
-  transition: all .1s .18s linear;
-}
-.activity-popover-card {
-  z-index: -1;
-  opacity: 0;
-  transition: all .3s linear;
 }

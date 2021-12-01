@@ -27,7 +27,6 @@ function addTogglePopup(){
 };
 function togglePopup(e){
     e.currentTarget.classList.toggle("open")
-    // TODO: toggle active class for dots in dot-menu
 };
 function createStickyPopups({id,region,city,tempeture,weather,shortDescription}){
   return /*html*/`
