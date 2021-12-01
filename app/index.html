@@ -1,90 +1,95 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/style/all.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="d-none d-xxl-block position-absolute top-15" style="height: calc(65vh);width: 130px;right: 56px">
-      <div class="progress-bar">
-        <div class="progress" id="progress"></div>
-      </div>
-      <img src="assets/images/dog.svg" class="dog-scooter" id="dog-scooter" alt="dog scooter image">
-      <div class="position-relative h-100">
-        <ul class="d-flex flex-column-reverse justify-content-between h-100 mb-3">
-          <li class="circle-item active">
-            <span class="circle-item-number invisible">1</span>
-            <div class="circle-item-triangle"></div>
-            <span>抵達頁面</span>
-          </li>
-          <li class="circle-item">
-            <span class="circle-item-number">2</span>
-            <div class="circle-item-triangle"></div>
-            <span>選擇城市</span>
-          </li>
-          <li class="circle-item">
-            <span class="circle-item-number">3</span>
-            <div class="circle-item-triangle"></div>
-            <span>選擇活動</span>
-          </li>
-          <li class="circle-item">
-            <span class="circle-item-number">4</span>
-            <div class="circle-item-triangle"></div>
-            <span>開始推播</span>
-          </li>
-        </ul>
-      </div>
-      <!-- TODO dev -->
-      <div>
-        <button class="btn" id="prev" disabled>Prev</button>
-        <button class="btn" id="next">Next</button>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/style/all.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="d-none d-xxl-block position-absolute top-15" style="height: calc(65vh);width: 130px;right: 56px">
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
     </div>
-    <div class="menu d-flex flex-column justify-content-between">
-      <div class="d-flex justify-content-between pt-10 px-10 pe-xxl-l">
-        <button class="btn btn-link rounded-0 p-0" id="dog-eating">
-          <img src="assets/images/Dog Eating Donut.svg" alt="dog eating image">
-        </button>
-        <div class="activity-popover cs-pointer">
-          <div class="activity-popover-content font-noto px-4 py-2 py-xxl-4" id="activity-popover-content">
-            <div class="activity-popover-defaule position-absolute">
-              <div class="d-flex flex-row-reverse flex-xxl-row justify-content-start justify-xxl-content-between">
-                <span class="d-none d-xxl-block me-3">活動快訊</span>
-                <span class="d-block d-xxl-none ms-3">活動快訊...</span>
-                <div class="d-none d-xxl-block">🍭</div>
-                <div class="d-block d-xxl-none">🍭</div>
-              </div>
-              <div class="d-none d-xxl-block">
-                <p class="mb-2">本月全國前三大最強盛事，不容錯過！</p>
-                <a class="text-end" href="javascript: void(0)">閱讀更多</a>
-              </div>
+    <img src="assets/images/dog.svg" class="dog-scooter" id="dog-scooter" alt="dog scooter image">
+    <div class="position-relative h-100">
+      <ul class="d-flex flex-column-reverse justify-content-between h-100 mb-3">
+        <li class="circle-item active">
+          <span class="circle-item-number invisible">1</span>
+          <div class="circle-item-triangle"></div>
+          <span>抵達頁面</span>
+        </li>
+        <li class="circle-item">
+          <span class="circle-item-number">2</span>
+          <div class="circle-item-triangle"></div>
+          <span>選擇城市</span>
+        </li>
+        <li class="circle-item">
+          <span class="circle-item-number">3</span>
+          <div class="circle-item-triangle"></div>
+          <span>選擇活動</span>
+        </li>
+        <li class="circle-item">
+          <span class="circle-item-number">4</span>
+          <div class="circle-item-triangle"></div>
+          <span>開始推播</span>
+        </li>
+      </ul>
+    </div>
+    <!-- TODO dev -->
+    <div>
+      <button class="btn" id="prev" disabled>Prev</button>
+      <button class="btn" id="next">Next</button>
+    </div>
+  </div>
+  <div class="menu d-flex flex-column justify-content-between">
+    <div class="d-flex justify-content-between pt-10 px-10 pe-xxl-l">
+      <button class="btn btn-link rounded-0 p-0" id="dog-eating">
+        <img src="assets/images/Dog Eating Donut.svg" alt="dog eating image">
+      </button>
+      <div class="activity-popover cs-pointer">
+        <div class="activity-popover-content font-noto px-4 py-2 py-xxl-4" id="activity-popover-content">
+          <div class="activity-popover-defaule position-absolute">
+            <div class="d-flex flex-row-reverse flex-xxl-row justify-content-start justify-xxl-content-between">
+              <span class="d-none d-xxl-block me-3">活動快訊</span>
+              <span class="d-block d-xxl-none ms-3">活動快訊...</span>
+              <div class="d-none d-xxl-block">🍭</div>
+              <div class="d-block d-xxl-none">🍭</div>
             </div>
-            <div class="activity-popover-card">
-              <h3 class="fs-3 mb-3">2021草嶺古道芒花季</h3>
-              <img class="activity-popover-img rounded-m mb-3" src="assets/images/unsplash_MeKtJNTfnxs.jpg" alt="草嶺古道芒花季照片" >
-              <p class="mb-3 fw-3">為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。</p>
-              <span class="d-block fs-5 fw-5">活動結束時間：2021.11.28</span>
-              <a class="d-inline fs-5 fw-5" href="javascript: void(0)">活動連結</a>
-              <div class="text-end">
-                <button class="btn btn-line text-decoration-none p-0" href="javascript: void(0)">
-                  <span class="align-middle fw-5">下一則</span>
-                  <img src="assets/images/Arrow_Next_SM.svg" class="arrow-hover" alt="arrow icon">
-                </button>
-              </div>
+            <div class="d-none d-xxl-block">
+              <p class="mb-2">本月全國前三大最強盛事，不容錯過！</p>
+              <a class="text-end" href="javascript: void(0)">閱讀更多</a>
+            </div>
+          </div>
+          <div class="activity-popover-card">
+            <h3 class="fs-3 mb-3">2021草嶺古道芒花季</h3>
+            <img class="activity-popover-img rounded-m mb-3" src="assets/images/unsplash_MeKtJNTfnxs.jpg"
+              alt="草嶺古道芒花季照片">
+            <p class="mb-3 fw-3">為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。</p>
+            <span class="d-block fs-5 fw-5">活動結束時間：2021.11.28</span>
+            <a class="d-inline fs-5 fw-5" href="javascript: void(0)">活動連結</a>
+            <div class="text-end">
+              <button class="btn btn-line text-decoration-none p-0" href="javascript: void(0)">
+                <span class="align-middle fw-5">下一則</span>
+                <img src="assets/images/Arrow_Next_SM.svg" class="arrow-hover" alt="arrow icon">
+              </button>
             </div>
           </div>
         </div>
-        <div type="checkbox" class="color-theme" id="color-theme"></div>
       </div>
-      <div class="container d-none d-xxl-block">
-        <ul class="row g-0 sticky-popups">
-        </ul>
-      </div>
+      <div type="checkbox" class="color-theme" id="color-theme"></div>
     </div>
-    <!-- js file -->
-    <script src="assets/js/all.js"></script>
-  </body>
+    <div class="container d-none d-xxl-block">
+      <ul class="row g-0 sticky-popups">
+      </ul>
+    </div>
+  </div>
+  <!-- js file -->
+  <script src="assets/js/all.js"></script>
+</body>
+
 </html>
+aaaaaa
