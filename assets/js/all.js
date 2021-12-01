@@ -53,7 +53,7 @@ function addTogglePopup() {
 ;
 
 function togglePopup(e) {
-  e.currentTarget.classList.toggle("open"); // TODO: toggle active class for dots in dot-menu
+  e.currentTarget.classList.toggle("open");
 }
 
 ;

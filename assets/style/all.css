@@ -18361,15 +18361,6 @@ fieldset:disabled .btn {
           box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
 }
 
-.activity-popover-tail {
-  position: absolute;
-  display: block;
-  top: -5px;
-  left: 0;
-  -webkit-filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
-          filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
-}
-
 .activity-popover-content {
   width: 141px;
   height: 40px;
@@ -18377,6 +18368,16 @@ fieldset:disabled .btn {
   -webkit-transition: all .3s linear;
   -o-transition: all .3s linear;
   transition: all .3s linear;
+}
+
+.activity-popover-content::before {
+  content: url(../images/Tail.svg);
+  position: absolute;
+  top: -5px;
+  left: 0;
+  display: block;
+  -webkit-filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
+          filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
 }
 
 .activity-popover-content.active {
@@ -18400,30 +18401,26 @@ fieldset:disabled .btn {
   opacity: 1;
 }
 
-.activity-popover-content.d-none + .activity-popover-tail {
-  display: none;
-}
-
-@media screen and (min-width: 1400px) {
-  .activity-popover-content {
-    width: 304px;
-    height: 112px;
-  }
-}
-
-.activity-popover-defaule {
+.activity-popover-content .activity-popover-defaule {
   z-index: 1;
   -webkit-transition: all .1s .18s linear;
   -o-transition: all .1s .18s linear;
   transition: all .1s .18s linear;
 }
 
-.activity-popover-card {
+.activity-popover-content .activity-popover-card {
   z-index: -1;
   opacity: 0;
   -webkit-transition: all .3s linear;
   -o-transition: all .3s linear;
   transition: all .3s linear;
+}
+
+@media (min-width: 1400px) {
+  .activity-popover-content {
+    width: 304px;
+    height: 112px;
+  }
 }
 
 *,
