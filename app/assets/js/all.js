@@ -1,12 +1,41 @@
 // dog-eating
 const activity = document.getElementById('activity-popover-content');
 activity.addEventListener('click', () => {
-  activity.classList.toggle('active');
+  if (activity.getAttribute('class').indexOf('active') === -1) {
+    activity.classList.add('active');
+    // activity.classList.toggle('active');
+  }
 });
 const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {
   activity.classList.toggle('d-none');
 });
+
+// activity popover
+let nextActivity1 = document.getElementById('nextActivity1');
+let activity1 = document.getElementById('activity1');
+let nextActivity2 = document.getElementById('nextActivity2');
+let activity2 = document.getElementById('activity2');
+let prevActivity = document.getElementById('prevActivity');
+let activity3 = document.getElementById('activity3');
+
+nextActivity1.addEventListener('click', function () {
+  activity1.classList.toggle('left-slider');
+  activity1.classList.toggle('now');
+  activity2.classList.toggle('now');
+});
+nextActivity2.addEventListener('click', function () {
+  activity2.classList.toggle('left-slider');
+  activity2.classList.toggle('now');
+  activity3.classList.toggle('now');
+});
+prevActivity.addEventListener('click', function () {
+  activity2.classList.toggle('left-slider');
+  activity3.classList.toggle('now');
+  activity3.classList.toggle('right-slider');
+  activity2.classList.toggle('now');
+});
+
 
 let stickyPopup = document.getElementsByClassName("sticky-popup");
 let stickyPopups = document.querySelector(".sticky-popups");

@@ -7,6 +7,7 @@
   box-shadow: 0 0 9px rgba(45, 45, 45, 0.15);
 }
 .activity-popover-content {
+  position: relative;
   width: 141px;
   height: 40px;
   overflow: hidden;
@@ -31,16 +32,39 @@
     transition: all .3s .15s linear;
     opacity: 1;
   }
-  .activity-popover-defaule {
-    z-index: 1;
-    transition: all .1s .18s linear;
+}
+.activity-popover-defaule {
+  // z-index: 1;
+  // opacity: 0;
+  transition: all .1s .18s linear;
+}
+.activity-popover-card {
+  // z-index: -1;
+  // position: relative;
+  opacity: 0;
+  // opacity: 1;
+  transition: all .3s linear;
+  background: var(--bs-white);
+}
+.activity-popover-card-item {
+  position: absolute;
+  top: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  transform: translateX(300px);
+  &.now {
+    transition: all .4s linear;
+    transform: translateX(0);
   }
-  .activity-popover-card {
-    z-index: -1;
-    opacity: 0;
-    transition: all .3s linear;
+  &.left-slider {
+    transition: all .4s linear;
+    transform: translateX(-300px);
   }
-  
+  &.right-slider {
+    transition: all .4s linear;
+    transform: translateX(300px);
+  }
 }
 @include media-breakpoint-up(xxl) { 
   .activity-popover-content {
