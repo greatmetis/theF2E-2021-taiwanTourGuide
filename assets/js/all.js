@@ -3,11 +3,36 @@
 // dog-eating
 var activity = document.getElementById('activity-popover-content');
 activity.addEventListener('click', function () {
-  activity.classList.toggle('active');
+  if (activity.getAttribute('class').indexOf('active') === -1) {
+    activity.classList.add('active'); // activity.classList.toggle('active');
+  }
 });
 var dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', function () {
   activity.classList.toggle('d-none');
+}); // activity popover
+
+var nextActivity1 = document.getElementById('nextActivity1');
+var activity1 = document.getElementById('activity1');
+var nextActivity2 = document.getElementById('nextActivity2');
+var activity2 = document.getElementById('activity2');
+var prevActivity = document.getElementById('prevActivity');
+var activity3 = document.getElementById('activity3');
+nextActivity1.addEventListener('click', function () {
+  activity1.classList.toggle('left-slider');
+  activity1.classList.toggle('now');
+  activity2.classList.toggle('now');
+});
+nextActivity2.addEventListener('click', function () {
+  activity2.classList.toggle('left-slider');
+  activity2.classList.toggle('now');
+  activity3.classList.toggle('now');
+});
+prevActivity.addEventListener('click', function () {
+  activity2.classList.toggle('left-slider');
+  activity3.classList.toggle('now');
+  activity3.classList.toggle('right-slider');
+  activity2.classList.toggle('now');
 });
 var stickyPopup = document.getElementsByClassName("sticky-popup");
 var stickyPopups = document.querySelector(".sticky-popups");

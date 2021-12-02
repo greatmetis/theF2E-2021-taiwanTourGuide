@@ -18362,6 +18362,7 @@ fieldset:disabled .btn {
 }
 
 .activity-popover-content {
+  position: relative;
   width: 141px;
   height: 40px;
   overflow: hidden;
@@ -18401,19 +18402,56 @@ fieldset:disabled .btn {
   opacity: 1;
 }
 
-.activity-popover-content .activity-popover-defaule {
-  z-index: 1;
+.activity-popover-defaule {
   -webkit-transition: all .1s .18s linear;
   -o-transition: all .1s .18s linear;
   transition: all .1s .18s linear;
 }
 
-.activity-popover-content .activity-popover-card {
-  z-index: -1;
+.activity-popover-card {
   opacity: 0;
   -webkit-transition: all .3s linear;
   -o-transition: all .3s linear;
   transition: all .3s linear;
+  background: var(--bs-white);
+}
+
+.activity-popover-card-item {
+  position: absolute;
+  top: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  -webkit-transform: translateX(300px);
+      -ms-transform: translateX(300px);
+          transform: translateX(300px);
+}
+
+.activity-popover-card-item.now {
+  -webkit-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.activity-popover-card-item.left-slider {
+  -webkit-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+  -webkit-transform: translateX(-300px);
+      -ms-transform: translateX(-300px);
+          transform: translateX(-300px);
+}
+
+.activity-popover-card-item.right-slider {
+  -webkit-transition: all .4s linear;
+  -o-transition: all .4s linear;
+  transition: all .4s linear;
+  -webkit-transform: translateX(300px);
+      -ms-transform: translateX(300px);
+          transform: translateX(300px);
 }
 
 @media (min-width: 1400px) {
