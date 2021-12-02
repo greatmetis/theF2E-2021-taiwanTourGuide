@@ -1,3 +1,5 @@
+window.addEventListener('load',load)
+
 // dog-eating
 const activity = document.getElementById('activity-popover-content');
 activity.addEventListener('click', () => {
@@ -8,6 +10,7 @@ dogEating.addEventListener('click', () => {
   activity.classList.toggle('d-none');
 });
 
+// Sticky-popup
 let stickyPopup = document.getElementsByClassName("sticky-popup");
 let stickyPopups = document.querySelector(".sticky-popups");
 let stickyPopupInfo = [
@@ -16,17 +19,24 @@ let stickyPopupInfo = [
 {region:'南部地區', city:'高雄市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
 {region:'東部地區', city:'花蓮縣',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
 {region:'離島地區', city:'澎湖縣',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'}];
-window.addEventListener('load',load)
 
 // Generate stickyPopups html from Database
 
 function addTogglePopup(){
-    for(let i = 0; i < stickyPopup.length;i++){
-      stickyPopup[i].addEventListener('click',togglePopup)
-    }
+  for(let i = 0; i < stickyPopup.length;i++){
+    stickyPopup[i].addEventListener('click',togglePopup)
+  }
 };
 function togglePopup(e){
-    e.currentTarget.classList.toggle("open")
+  let currentCard = e.currentTarget;
+  let currentId = currentCard.getAttribute("data-id");
+  let stickyPopupArr = [...stickyPopup];
+  stickyPopupArr.forEach(item=>{
+    if(item.getAttribute("data-id") !== currentId){
+      item.classList.remove("open");
+    }
+  })
+  currentCard.classList.toggle("open");
 };
 function createStickyPopups({id,region,city,tempeture,weather,shortDescription}){
   return /*html*/`
@@ -229,10 +239,7 @@ function progressWidth() {
       toggleDarkMode(darkModeState);
   } // toggle listener
   
-  
   switcher.addEventListener("click", switchListener);
   };
-
-
 
 //# sourceMappingURL=all.js.map
