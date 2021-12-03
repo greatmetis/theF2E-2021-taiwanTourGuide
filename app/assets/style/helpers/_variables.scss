@@ -91,7 +91,7 @@ $line-height-base:                  1.5 !default;
 $body-bg:                           $primary !default;
 $body-color:                        $black !default;
 $paragraph-margin-bottom:           0 !default;
-// $link-decoration:                   none !default;
+$link-decoration:                   underline !default;
 $link-color:                        $black !default;
 $link-hover-color:                  shift-color($secondary, 20%) !default;
 $text-muted:                        rgba(19, 19, 19, 0.6) !default;

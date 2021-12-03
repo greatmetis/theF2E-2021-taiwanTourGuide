@@ -1,13 +1,14 @@
 // dog-eating
 const activity = document.getElementById('activity-popover-content');
-activity.addEventListener('click', () => {
+const activityDefaule = document.getElementById('activity-popover-defaule');
+activityDefaule.addEventListener('click', () => {
   if (activity.getAttribute('class').indexOf('active') === -1) {
     activity.classList.add('active');
   }
 });
 const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {
-  activity.classList.toggle('d-none');
+  activity.classList.toggle('close');
 });
 
 // activity popover
@@ -19,8 +20,8 @@ const activityPopoverData = [
 const activityPopoverCard = document.querySelector(".activity-popover-card .card_top");
 const activityControlPrev = document.querySelector(".activity-popover-card .arrow_prev_js");
 const activityControlNext = document.querySelector(".activity-popover-card .arrow_next_js");
-const prevActivityBtn = document.getElementById("prevActivity");
-const nextActivityBtn = document.getElementById("nextActivity");
+const prevActivityBtn = document.getElementById("prevActivityBtn");
+const nextActivityBtn = document.getElementById("nextActivityBtn");
 
 function createActivityCards({id,title,imgUrl,description,endDate,link}){
   let newCardItem = document.createElement("li");

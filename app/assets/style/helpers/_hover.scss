@@ -19,7 +19,7 @@
     transform: translateX(0);
   }
   &:hover {
-    transition: filter .3s linear;
+    transition: filter .1s linear;
     filter: invert(85%) sepia(40%) saturate(2729%) hue-rotate(342deg) brightness(105%) contrast(98%);
   }
   &:hover .default-prev-hover{
@@ -46,7 +46,7 @@
     transform: translateX(0);
   }
   &:hover {
-    transition: filter .3s linear;
+    transition: filter .1s linear;
     filter: invert(85%) sepia(40%) saturate(2729%) hue-rotate(342deg) brightness(105%) contrast(98%);
   }
   &:hover .default-next-hover{

@@ -31,16 +31,21 @@
   }
   &.active > .activity-popover-card {
     transition: all .3s .15s linear;
-    opacity: 1;
+    visibility: visible;
+  }
+  &.close {
+    transition: height .3s linear, padding .1s .2s linear;
+    height: 0;
+    padding: 0 !important;
   }
 }
 .activity-popover-defaule {
   transition: all .1s .18s linear;
 }
 .activity-popover-card {
-  opacity: 0;
   background: var(--bs-white);
   white-space: nowrap;
+  visibility: hidden;
   .card_top {
     width: 100%;
     position: relative;
@@ -67,6 +72,11 @@
     &.active {
       width: 304px;
       height: 418px;
+    }
+    &.close {
+      transition: height .3s linear, padding .1s .2s linear;
+      height: 0;
+      padding: 0 !important;
     }
   }
 }
