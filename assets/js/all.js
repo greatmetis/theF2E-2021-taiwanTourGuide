@@ -4,7 +4,7 @@
 var activity = document.getElementById('activity-popover-content');
 activity.addEventListener('click', function () {
   if (activity.getAttribute('class').indexOf('active') === -1) {
-    activity.classList.add('active'); // activity.classList.toggle('active');
+    activity.classList.add('active');
   }
 });
 var dogEating = document.getElementById('dog-eating');
@@ -12,28 +12,118 @@ dogEating.addEventListener('click', function () {
   activity.classList.toggle('d-none');
 }); // activity popover
 
-var nextActivity1 = document.getElementById('nextActivity1');
-var activity1 = document.getElementById('activity1');
-var nextActivity2 = document.getElementById('nextActivity2');
-var activity2 = document.getElementById('activity2');
-var prevActivity = document.getElementById('prevActivity');
-var activity3 = document.getElementById('activity3');
-nextActivity1.addEventListener('click', function () {
-  activity1.classList.toggle('left-slider');
-  activity1.classList.toggle('now');
-  activity2.classList.toggle('now');
+var activityPopoverData = [{
+  title: '2021草嶺古道芒花季-1',
+  imgUrl: 'assets/images/unsplash_MeKtJNTfnxs.jpg',
+  description: '為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',
+  endDate: '2021.11.28',
+  link: '#'
+}, {
+  title: '2021草嶺古道芒花季-2',
+  imgUrl: 'assets/images/unsplash_MeKtJNTfnxs.jpg',
+  description: '為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',
+  endDate: '2021.10.28',
+  link: '#'
+}, {
+  title: '2021草嶺古道芒花季-3',
+  imgUrl: 'assets/images/unsplash_MeKtJNTfnxs.jpg',
+  description: '為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',
+  endDate: '2021.9.28',
+  link: '#'
+}];
+var activityPopoverCard = document.querySelector(".activity-popover-card .card_top");
+var activityControlPrev = document.querySelector(".activity-popover-card .arrow_prev_js");
+var activityControlNext = document.querySelector(".activity-popover-card .arrow_next_js");
+var prevActivityBtn = document.getElementById("prevActivity");
+var nextActivityBtn = document.getElementById("nextActivity");
+
+function createActivityCards(_ref) {
+  var id = _ref.id,
+      title = _ref.title,
+      imgUrl = _ref.imgUrl,
+      description = _ref.description,
+      endDate = _ref.endDate,
+      link = _ref.link;
+  var newCardItem = document.createElement("li");
+  newCardItem.classList.add("activity-popover-card-item", "mx-4", "mt-2", "mt-xxl-0");
+  newCardItem.setAttribute("data-id", "".concat(id));
+  var cardHtml =
+  /*html*/
+  "\n    <h3 class=\"fs-3 mb-3\">".concat(title, "</h3>\n    <div class=\"activity-popover-img rounded-m mb-3\" style=\"background-image:url('").concat(imgUrl, "')\"></div>\n    <p class=\"mb-3 fw-3\">").concat(description, "</p>\n    <span class=\"d-block fs-5 fw-5\">\u6D3B\u52D5\u7D50\u675F\u6642\u9593\uFF1A").concat(endDate, "</span>\n    <a class=\"d-inline fs-5 fw-5\" href=\"").concat(link, "\">\u6D3B\u52D5\u9023\u7D50</a>");
+  newCardItem.innerHTML = cardHtml;
+  activityPopoverCard.appendChild(newCardItem);
+  return activityPopoverCard;
+}
+
+activityPopoverData.forEach(function (item, index) {
+  createActivityCards({
+    id: index,
+    title: item.title,
+    imgUrl: item.imgUrl,
+    description: item.description,
+    endDate: item.endDate,
+    link: item.link
+  });
 });
-nextActivity2.addEventListener('click', function () {
-  activity2.classList.toggle('left-slider');
-  activity2.classList.toggle('now');
-  activity3.classList.toggle('now');
+window.addEventListener('resize', function () {
+  document.querySelector(".activity-popover-content").classList.remove("active");
+}); // the span will overflow when resize
+
+var currentCardIndex = 0;
+
+function activityControls(index) {
+  if (currentCardIndex < 0 || currentCardIndex > activityPopoverData.length) {
+    return;
+  }
+
+  console.log('activityControls');
+  var span = 382; // card width 
+
+  currentCardIndex += index;
+
+  if (currentCardIndex >= activityPopoverData.length || currentCardIndex < 0) {
+    currentCardIndex = 0;
+  }
+
+  if (window.innerWidth >= 1400) {
+    span = 304;
+  }
+
+  var computed_left = -(currentCardIndex * span) + "px";
+  activityPopoverCard.style.left = computed_left;
+}
+
+activityControlPrev.addEventListener('click', function () {
+  console.log('activityControlPrev', activityPopoverData.length);
+  activityControls(-1);
+  activityBtn(currentCardIndex);
 });
-prevActivity.addEventListener('click', function () {
-  activity2.classList.toggle('left-slider');
-  activity3.classList.toggle('now');
-  activity3.classList.toggle('right-slider');
-  activity2.classList.toggle('now');
+activityControlNext.addEventListener('click', function () {
+  console.log('activityControlNext', activityPopoverData.length);
+  activityControls(1);
+  activityBtn(currentCardIndex);
 });
+
+function activityBtn(index) {
+  if (currentCardIndex < 0 || currentCardIndex > activityPopoverData.length) {
+    return;
+  }
+
+  if (index === 0) {
+    prevActivityBtn.classList.toggle("invisible");
+  } else if (index === activityPopoverData.length - 1) {
+    nextActivityBtn.classList.toggle("invisible");
+  } else {
+    if (prevActivityBtn.getAttribute('class').indexOf('invisible') !== -1) {
+      prevActivityBtn.classList.remove("invisible");
+    }
+
+    if (nextActivityBtn.getAttribute('class').indexOf('invisible') !== -1) {
+      nextActivityBtn.classList.remove("invisible");
+    }
+  }
+}
+
 var stickyPopup = document.getElementsByClassName("sticky-popup");
 var stickyPopups = document.querySelector(".sticky-popups");
 var stickyPopupInfo = [{
@@ -83,13 +173,13 @@ function togglePopup(e) {
 
 ;
 
-function createStickyPopups(_ref) {
-  var id = _ref.id,
-      region = _ref.region,
-      city = _ref.city,
-      tempeture = _ref.tempeture,
-      weather = _ref.weather,
-      shortDescription = _ref.shortDescription;
+function createStickyPopups(_ref2) {
+  var id = _ref2.id,
+      region = _ref2.region,
+      city = _ref2.city,
+      tempeture = _ref2.tempeture,
+      weather = _ref2.weather,
+      shortDescription = _ref2.shortDescription;
   return (
     /*html*/
     "\n      <li class=\"col\">\n        <div\n          class=\"sticky-popup open_sticky_popup popup-content-bounce-in-up\" data-id=\"".concat(id, "\">\n          <div class=\"popup-header\">\n            <span class=\"popup-title fs-4\">\n              <div class=\"\n                  d-flex\n                  justify-content-between\n                  align-items-center\n                  px-6\n                  py-4\">\n                <h2 class=\"fs-2\">").concat(region, "</h2>\n                <div class=\"dot-menu\">\n                  <div class=\"dot dot1\"></div>\n                  <div class=\"dot line1\"></div>\n                  <div class=\"dot line2\"></div>\n                  <div class=\"dot dot2\"></div>\n                </div>\n              </div>\n            </span>\n          </div>\n          <div class=\"popup-content-trapezoid\"></div>\n          <div class=\"popup-content\">\n            <div class=\"border border-2 border-dark px-6 py-6\">\n              <button class=\"btn btn-lg btn-yellow border lh-sm text-black mb-2\">").concat(tempeture, "&#8451;</button>\n              <h3 class=\"fs-l mb-1\">").concat(weather, "</h3>\n              <span class=\"d-block text-muted fs-5 mb-6\">").concat(city, "\u4ECA\u65E5\u65E9\u4E0A</span>\n              <p class=\"mb-6 popup-body fw-6\">\n                ").concat(shortDescription, "\n              </p>\n              <button\n                class=\"btn btn-secondary w-100 rounded-0 border border-1\">\n                <span class=\"align-middle text-black\">\u9078\u57CE\u5E02</span>\n                <svg\n                  width=\"43\"\n                  height=\"18\"\n                  viewBox=\"0 0 43 18\"\n                  fill=\"none\"\n                  xmlns=\"http://www.w3.org/2000/svg\">\n                  <path\n                    d=\"M0 9.16699H40.8333\"\n                    stroke=\"#131313\"\n                    stroke-width=\"1.5\"/>\n                  <path\n                    d=\"M42.0004 9.40023C39.0448 9.78912 33.0871 11.9669 32.9004 17.5669\"\n                    stroke=\"#131313\"\n                    stroke-width=\"1.5\"/>\n                  <path\n                    d=\"M42.0004 9.16667C39.0448 8.77778 33.0871 6.6 32.9004 1\"\n                    stroke=\"#131313\"\n                    stroke-width=\"1.5\"/>\n                </svg>\n              </button>\n            </div>\n          </div>\n        </div>\n      </li>\n    ")

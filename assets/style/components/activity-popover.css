@@ -32,7 +32,8 @@
   -webkit-transition: all .3s .15s linear;
   -o-transition: all .3s .15s linear;
   transition: all .3s .15s linear;
-  height: 412px;
+  height: 395px;
+  width: 382px;
 }
 
 .activity-popover-content.active > .activity-popover-defaule {
@@ -57,54 +58,44 @@
 
 .activity-popover-card {
   opacity: 0;
-  -webkit-transition: all .3s linear;
-  -o-transition: all .3s linear;
-  transition: all .3s linear;
   background: var(--bs-white);
+  white-space: nowrap;
 }
 
-.activity-popover-card-item {
-  position: absolute;
-  top: 0;
+.activity-popover-card .card_top {
+  width: 100%;
+  position: relative;
+  left: 0px;
+  -webkit-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.activity-popover-card .card_top .activity-popover-card-item {
+  display: inline-block;
+  position: relative;
+}
+
+.activity-popover-card .card_top .activity-popover-card-item * {
+  white-space: normal;
+}
+
+.activity-popover-card .card_bottom {
+  position: relative;
   padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 1rem;
-  -webkit-transform: translateX(300px);
-      -ms-transform: translateX(300px);
-          transform: translateX(300px);
-}
-
-.activity-popover-card-item.now {
-  -webkit-transition: all .4s linear;
-  -o-transition: all .4s linear;
-  transition: all .4s linear;
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
-}
-
-.activity-popover-card-item.left-slider {
-  -webkit-transition: all .4s linear;
-  -o-transition: all .4s linear;
-  transition: all .4s linear;
-  -webkit-transform: translateX(-300px);
-      -ms-transform: translateX(-300px);
-          transform: translateX(-300px);
-}
-
-.activity-popover-card-item.right-slider {
-  -webkit-transition: all .4s linear;
-  -o-transition: all .4s linear;
-  transition: all .4s linear;
-  -webkit-transform: translateX(300px);
-      -ms-transform: translateX(300px);
-          transform: translateX(300px);
 }
 
 @media (min-width: 1400px) {
   .activity-popover-content {
     width: 304px;
     height: 112px;
+  }
+  .activity-popover-content.active {
+    width: 304px;
+    height: 418px;
   }
 }
 
