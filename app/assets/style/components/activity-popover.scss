@@ -11,7 +11,7 @@
   width: 141px;
   height: 40px;
   overflow: hidden;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
   &::before {
     content: url(../images/Tail.svg);
     position: absolute;
@@ -21,52 +21,58 @@
     filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
   }
   &.active {
-    transition: all .3s .15s linear;
+    transition: all 0.3s 0.15s linear;
     height: 412px;
   }
   &.active > .activity-popover-defaule {
-    transition: all .1s linear;
+    transition: all 0.1s linear;
     opacity: 0;
   }
   &.active > .activity-popover-card {
-    transition: all .3s .15s linear;
+    transition: all 0.3s 0.15s linear;
     opacity: 1;
   }
 }
 .activity-popover-defaule {
   // z-index: 1;
   // opacity: 0;
-  transition: all .1s .18s linear;
+  transition: all 0.1s 0.18s linear;
 }
 .activity-popover-card {
   // z-index: -1;
   // position: relative;
   opacity: 0;
   // opacity: 1;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
   background: var(--bs-white);
+
+  .card_top {
+    position: relative;
+    white-space: nowrap;
+    left: 0px;
+    transition: all 0.4s linear;
+    .activity-popover-card-item {
+      position: relative;
+      display: inline-block;
+      margin: 0 24px;
+
+      p {
+        white-space: normal;
+      }
+    }
+  }
+  .card_bottom {
+    position: relative;
+    //FIXME: unsure the value for $pt
+    padding-top: 1rem;
+    .arrow-hover {
+      &.arrow-reverse {
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
-.activity-popover-card-item {
-  position: absolute;
-  top: 0;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 1rem;
-  transform: translateX(300px);
-  &.now {
-    transition: all .4s linear;
-    transform: translateX(0);
-  }
-  &.left-slider {
-    transition: all .4s linear;
-    transform: translateX(-300px);
-  }
-  &.right-slider {
-    transition: all .4s linear;
-    transform: translateX(300px);
-  }
-}
-@include media-breakpoint-up(xxl) { 
+@include media-breakpoint-up(xxl) {
   .activity-popover-content {
     width: 304px;
     height: 112px;

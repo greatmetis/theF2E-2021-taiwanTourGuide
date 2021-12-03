@@ -12,30 +12,53 @@ dogEating.addEventListener('click', () => {
 });
 
 // activity popover
-let nextActivity1 = document.getElementById('nextActivity1');
-let activity1 = document.getElementById('activity1');
-let nextActivity2 = document.getElementById('nextActivity2');
-let activity2 = document.getElementById('activity2');
-let prevActivity = document.getElementById('prevActivity');
-let activity3 = document.getElementById('activity3');
+const activityPopoverData = [
+  {title:'2021草嶺古道芒花季-1',imgUrl:'assets/images/unsplash_MeKtJNTfnxs.jpg',description:'為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',endDate:'2021.11.28',link:'#'},
+  {title:'2021草嶺古道芒花季-2',imgUrl:'assets/images/unsplash_MeKtJNTfnxs.jpg',description:'為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',endDate:'2021.10.28',link:'#'},
+  {title:'2021草嶺古道芒花季-3',imgUrl:'assets/images/unsplash_MeKtJNTfnxs.jpg',description:'為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',endDate:'2021.9.28',link:'#'}
+];
+const activityPopoverCard = document.querySelector(".activity-popover-card .card_top");
+const activityControlPrev = document.querySelector(".activity-popover-card .control_prev");
+const activityControlNext = document.querySelector(".activity-popover-card .control_next");
 
-nextActivity1.addEventListener('click', function () {
-  activity1.classList.toggle('left-slider');
-  activity1.classList.toggle('now');
-  activity2.classList.toggle('now');
-});
-nextActivity2.addEventListener('click', function () {
-  activity2.classList.toggle('left-slider');
-  activity2.classList.toggle('now');
-  activity3.classList.toggle('now');
-});
-prevActivity.addEventListener('click', function () {
-  activity2.classList.toggle('left-slider');
-  activity3.classList.toggle('now');
-  activity3.classList.toggle('right-slider');
-  activity2.classList.toggle('now');
-});
+function createActivityCards({id,title,imgUrl,description,endDate,link}){
+  let newCardItem = document.createElement("li");
+  newCardItem.setAttribute("class","activity-popover-card-item");
+  newCardItem.setAttribute("data-id",`${id}`);
+  let cardHtml = /*html*/`
+  <h3 class="fs-3 mb-3">${title}</h3>
+    <img class="rounded-m mb-3" src="${imgUrl}"
+      alt="活動照片">
+    <p class="mb-3 fw-3">${description}</p>
+    <span class="d-block fs-5 fw-5">活動結束時間：${endDate}</span>
+    <a class="d-inline fs-5 fw-5" href="${link}">活動連結</a>`;
+  newCardItem.innerHTML = cardHtml;
+  activityPopoverCard.appendChild(newCardItem)
+  return activityPopoverCard
+}
+activityPopoverData.forEach((item,index)=>{
+  createActivityCards({id:index,title:item.title,imgUrl:item.imgUrl,description:item.description,endDate:item.endDate,link:item.link})
+})
 
+
+// TODO: create a version for md/sm screen
+let currentCardIndex = 0;
+function activityControls(i){
+  currentCardIndex += i;
+  if( currentCardIndex >= activityPopoverData.length || currentCardIndex < 0){
+    currentCardIndex = 0;
+  }
+  let span = 272; // card width - card padding For xxl screen
+  let computed_left = -(currentCardIndex * span)+ "px";
+  console.log(computed_left);
+  activityPopoverCard.style.left = computed_left;
+}
+activityControlPrev.addEventListener('click',function(){
+  activityControls(-1)
+})
+activityControlNext.addEventListener('click',function(){
+  activityControls(1)
+})
 
 let stickyPopup = document.getElementsByClassName("sticky-popup");
 let stickyPopups = document.querySelector(".sticky-popups");
