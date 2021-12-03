@@ -22,7 +22,7 @@
   }
   &.active {
     transition: all .3s .15s linear;
-    height: 412px;
+    height: 425px;
   }
   &.active > .activity-popover-defaule {
     transition: all .1s linear;
@@ -66,7 +66,7 @@
     transform: translateX(300px);
   }
 }
-@include media-breakpoint-up(xxl) { 
+@media (min-width: 1400px) { 
   .activity-popover-content {
     width: 304px;
     height: 112px;

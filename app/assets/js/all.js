@@ -1,10 +1,10 @@
 // dog-eating
 const activity = document.getElementById('activity-popover-content');
 activity.addEventListener('click', () => {
-  if (activity.getAttribute('class').indexOf('active') === -1) {
-    activity.classList.add('active');
-    // activity.classList.toggle('active');
-  }
+  // if (activity.getAttribute('class').indexOf('active') === -1) {
+  //   activity.classList.add('active');
+  // }
+  activity.classList.toggle('active');
 });
 const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {
