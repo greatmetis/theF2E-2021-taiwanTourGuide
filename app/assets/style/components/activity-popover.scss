@@ -22,7 +22,8 @@
   }
   &.active {
     transition: all .3s .15s linear;
-    height: 425px;
+    height: 395px;
+    width: 382px;
   }
   &.active > .activity-popover-defaule {
     transition: all .1s linear;
@@ -34,41 +35,38 @@
   }
 }
 .activity-popover-defaule {
-  // z-index: 1;
-  // opacity: 0;
   transition: all .1s .18s linear;
 }
 .activity-popover-card {
-  // z-index: -1;
-  // position: relative;
   opacity: 0;
-  // opacity: 1;
-  transition: all .3s linear;
   background: var(--bs-white);
-}
-.activity-popover-card-item {
-  position: absolute;
-  top: 0;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 1rem;
-  transform: translateX(300px);
-  &.now {
-    transition: all .4s linear;
-    transform: translateX(0);
+  white-space: nowrap;
+  .card_top {
+    width: 100%;
+    position: relative;
+    left: 0px;
+    transition: all 0.4s linear;
+    transition: all 0.3s linear;
+    .activity-popover-card-item {
+      display: inline-block;
+      position: relative;
+      * {
+        white-space: normal;
+      }
+    }
   }
-  &.left-slider {
-    transition: all .4s linear;
-    transform: translateX(-300px);
-  }
-  &.right-slider {
-    transition: all .4s linear;
-    transform: translateX(300px);
+  .card_bottom {
+    position: relative;
+    padding-top: 1rem;
   }
 }
 @media (min-width: 1400px) { 
   .activity-popover-content {
     width: 304px;
     height: 112px;
+    &.active {
+      width: 304px;
+      height: 418px;
+    }
   }
 }

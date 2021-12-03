@@ -16,7 +16,7 @@
     <div class="position-relative h-100">
       <ul class="d-flex flex-column-reverse justify-content-between h-100 mb-3">
         <li class="circle-item active">
-          <span class="circle-item-number invisible">1</span>
+          <span class="circle-item-number">1</span>
           <div class="circle-item-triangle"></div>
           <span>抵達頁面</span>
         </li>
@@ -49,69 +49,33 @@
         <img src="assets/images/Dog Eating Donut.svg" alt="dog eating image">
       </button>
       <div class="activity-popover cs-pointer">
-        <div class="activity-popover-content font-noto px-4 py-2 py-xxl-4" id="activity-popover-content">
-          <div class="activity-popover-defaule position-absolute">
-            <div class="d-flex flex-row-reverse flex-xxl-row justify-content-start justify-xxl-content-between">
-              <span class="d-none d-xxl-block me-3">活動快訊</span>
-              <span class="d-block d-xxl-none ms-3">活動快訊...</span>
-              <div class="d-none d-xxl-block">🍭</div>
-              <div class="d-block d-xxl-none">🍭</div>
+        <div class="activity-popover-content font-noto pt-2 pt-xxl-4 pb-2 pb-xxl-6" id="activity-popover-content">
+          <div class="activity-popover-defaule position-absolute mx-4">
+            <div class="d-flex">
+              <span>🍭</span>
+              <span class="d-none d-xxl-block ms-2">活動快訊</span>
+              <span class="d-block d-xxl-none ms-2">活動快訊...</span>
             </div>
             <div class="d-none d-xxl-block">
               <p class="mb-2">本月全國前三大最強盛事，不容錯過！</p>
               <a class="text-end" href="javascript: void(0)">閱讀更多</a>
             </div>
           </div>
-          <ul class="activity-popover-card">
-            <li class="activity-popover-card-item now" id="activity1">
-              <h3 class="fs-3 mb-3">2021草嶺古道芒花季-1</h3>
-              <img class="activity-popover-img rounded-m mb-3" src="assets/images/unsplash_MeKtJNTfnxs.jpg"
-                alt="草嶺古道芒花季照片">
-              <p class="mb-3 fw-3">為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。</p>
-              <span class="d-block fs-5 fw-5">活動結束時間：2021.11.28</span>
-              <a class="d-inline fs-5 fw-5" href="javascript: void(0)">活動連結</a>
-              <div class="d-flex justify-content-between mt-6">
-                <div id="nextActivity1" class="d-flex align-items-center activity-arrow-prev-hover text-decoration-none p-0" href="javascript: void(0)">
-                  <img src="assets/images/arrow_default.svg" class="default-prev-hover me-2" alt="arrow icon">
-                  <span class="d-block text-prev-hover fw-5">上一則</span>
-                  <img src="assets/images/arrow_expand.svg" class="expand-prev-hover ms-1" alt="arrow icon">
-                </div>
-                <div id="nextActivity1" class="d-flex align-items-center activity-arrow-next-hover text-decoration-none p-0" href="javascript: void(0)">
-                  <img src="assets/images/arrow_expand.svg" class="expand-next-hover me-1" alt="arrow icon">
-                  <span class="d-block text-next-hover fw-5">下一則</span>
-                  <img src="assets/images/arrow_default.svg" class="default-next-hover ms-2" alt="arrow icon">
-                </div>
-              </div>
-            </li>
-            <li class="activity-popover-card-item" id="activity2">
-              <h3 class="fs-3 mb-3">2021草嶺古道芒花季-2</h3>
-              <img class="activity-popover-img rounded-m mb-3" src="assets/images/unsplash_MeKtJNTfnxs.jpg"
-                alt="草嶺古道芒花季照片">
-              <p class="mb-3 fw-3">為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。</p>
-              <span class="d-block fs-5 fw-5">活動結束時間：2021.11.28</span>
-              <a class="d-inline fs-5 fw-5" href="javascript: void(0)">活動連結</a>
-              <div class="text-end">
-                <button id="nextActivity2" class="btn btn-link text-decoration-none p-0" href="javascript: void(0)">
-                  <span class="align-middle fw-5">下一則</span>
-                  <img src="assets/images/Arrow_Next_SM.svg" class="arrow-hover" alt="arrow icon">
-                </button>
-              </div>
-            </li>
-            <li class="activity-popover-card-item" id="activity3">
-              <h3 class="fs-3 mb-3">2021草嶺古道芒花季-3</h3>
-              <img class="activity-popover-img rounded-m mb-3" src="assets/images/unsplash_MeKtJNTfnxs.jpg"
-                alt="草嶺古道芒花季照片">
-              <p class="mb-3 fw-3">為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。</p>
-              <span class="d-block fs-5 fw-5">活動結束時間：2021.11.28</span>
-              <a class="d-inline fs-5 fw-5" href="javascript: void(0)">活動連結</a>
-              <div class="text-start">
-                <button id="prevActivity" class="btn btn-link text-decoration-none p-0" href="javascript: void(0)">
-                  <span class="align-middle fw-5">上一則</span>
-                  <img src="assets/images/Arrow_Next_SM.svg" class="arrow-hover" alt="arrow icon">
-                </button>
-              </div>
-            </li>
-          </ul>
+          <div class="activity-popover-card">
+            <ul class="card_top"></ul>
+            <div class="card_bottom d-flex justify-content-between mx-4">
+              <button id="prevActivity" class="arrow_prev_js d-flex align-items-center bg-transparent border-transparent invisible activity-arrow-prev-hover p-0">
+                <img src="assets/images/arrow_default.svg" class="default-prev-hover me-2" alt="arrow icon">
+                <span class="d-block text-prev-hover fw-5 lh-sm lh-xxl-base fs-5">上一則</span>
+                <img src="assets/images/arrow_expand.svg" class="expand-prev-hover ms-1" alt="arrow icon">
+              </button>
+              <button id="nextActivity" class="arrow_next_js d-flex align-items-center bg-transparent border-transparent activity-arrow-next-hover p-0">
+                <img src="assets/images/arrow_expand.svg" class="expand-next-hover me-1" alt="arrow icon">
+                <span class="d-block text-next-hover fw-5 lh-sm lh-xxl-base fs-5">下一則</span>
+                <img src="assets/images/arrow_default.svg" class="default-next-hover ms-2" alt="arrow icon">
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div type="checkbox" class="color-theme" id="color-theme"></div>
