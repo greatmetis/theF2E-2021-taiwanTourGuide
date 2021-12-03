@@ -47,7 +47,15 @@
   -webkit-transition: all .3s .15s linear;
   -o-transition: all .3s .15s linear;
   transition: all .3s .15s linear;
-  opacity: 1;
+  visibility: visible;
+}
+
+.activity-popover-content.close {
+  -webkit-transition: height .3s linear, padding .1s .2s linear;
+  -o-transition: height .3s linear, padding .1s .2s linear;
+  transition: height .3s linear, padding .1s .2s linear;
+  height: 0;
+  padding: 0 !important;
 }
 
 .activity-popover-defaule {
@@ -57,9 +65,9 @@
 }
 
 .activity-popover-card {
-  opacity: 0;
   background: var(--bs-white);
   white-space: nowrap;
+  visibility: hidden;
 }
 
 .activity-popover-card .card_top {
@@ -96,6 +104,13 @@
   .activity-popover-content.active {
     width: 304px;
     height: 418px;
+  }
+  .activity-popover-content.close {
+    -webkit-transition: height .3s linear, padding .1s .2s linear;
+    -o-transition: height .3s linear, padding .1s .2s linear;
+    transition: height .3s linear, padding .1s .2s linear;
+    height: 0;
+    padding: 0 !important;
   }
 }
 

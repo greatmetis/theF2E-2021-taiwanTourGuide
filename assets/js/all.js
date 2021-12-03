@@ -2,14 +2,15 @@
 
 // dog-eating
 var activity = document.getElementById('activity-popover-content');
-activity.addEventListener('click', function () {
+var activityDefaule = document.getElementById('activity-popover-defaule');
+activityDefaule.addEventListener('click', function () {
   if (activity.getAttribute('class').indexOf('active') === -1) {
     activity.classList.add('active');
   }
 });
 var dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', function () {
-  activity.classList.toggle('d-none');
+  activity.classList.toggle('close');
 }); // activity popover
 
 var activityPopoverData = [{
@@ -34,8 +35,8 @@ var activityPopoverData = [{
 var activityPopoverCard = document.querySelector(".activity-popover-card .card_top");
 var activityControlPrev = document.querySelector(".activity-popover-card .arrow_prev_js");
 var activityControlNext = document.querySelector(".activity-popover-card .arrow_next_js");
-var prevActivityBtn = document.getElementById("prevActivity");
-var nextActivityBtn = document.getElementById("nextActivity");
+var prevActivityBtn = document.getElementById("prevActivityBtn");
+var nextActivityBtn = document.getElementById("nextActivityBtn");
 
 function createActivityCards(_ref) {
   var id = _ref.id,

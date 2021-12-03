@@ -48,7 +48,7 @@
       <button class="btn btn-link rounded-0 p-0" id="dog-eating">
         <img src="assets/images/Dog Eating Donut.svg" alt="dog eating image">
       </button>
-      <div class="activity-popover cs-pointer">
+      <div class="activity-popover">
         <div class="activity-popover-content font-noto pt-2 pt-xxl-4 pb-2 pb-xxl-6" id="activity-popover-content">
           <div class="activity-popover-defaule position-absolute mx-4">
             <div class="d-flex">
@@ -58,18 +58,20 @@
             </div>
             <div class="d-none d-xxl-block">
               <p class="mb-2">本月全國前三大最強盛事，不容錯過！</p>
-              <a class="text-end" href="javascript: void(0)">閱讀更多</a>
+              <div class="text-end">
+                <button class="btn btn-link cs-pointer p-0" id="activity-popover-defaule">閱讀更多</button>
+              </div>
             </div>
           </div>
           <div class="activity-popover-card">
             <ul class="card_top"></ul>
             <div class="card_bottom d-flex justify-content-between mx-4">
-              <button id="prevActivity" class="arrow_prev_js d-flex align-items-center bg-transparent border-transparent invisible activity-arrow-prev-hover p-0">
+              <button id="prevActivityBtn" class="arrow_prev_js d-flex align-items-center bg-transparent border-transparent invisible activity-arrow-prev-hover p-0">
                 <img src="assets/images/arrow_default.svg" class="default-prev-hover me-2" alt="arrow icon">
                 <span class="d-block text-prev-hover fw-5 lh-sm lh-xxl-base fs-5">上一則</span>
                 <img src="assets/images/arrow_expand.svg" class="expand-prev-hover ms-1" alt="arrow icon">
               </button>
-              <button id="nextActivity" class="arrow_next_js d-flex align-items-center bg-transparent border-transparent activity-arrow-next-hover p-0">
+              <button id="nextActivityBtn" class="arrow_next_js d-flex align-items-center bg-transparent border-transparent activity-arrow-next-hover p-0">
                 <img src="assets/images/arrow_expand.svg" class="expand-next-hover me-1" alt="arrow icon">
                 <span class="d-block text-next-hover fw-5 lh-sm lh-xxl-base fs-5">下一則</span>
                 <img src="assets/images/arrow_default.svg" class="default-next-hover ms-2" alt="arrow icon">
