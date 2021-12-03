@@ -2,23 +2,109 @@ window.addEventListener('load',load)
 
 // dog-eating
 const activity = document.getElementById('activity-popover-content');
-activity.addEventListener('click', () => {
-  activity.classList.toggle('active');
+const activityDefaule = document.getElementById('activity-popover-defaule');
+activityDefaule.addEventListener('click', () => {
+  if (activity.getAttribute('class').indexOf('active') === -1) {
+    activity.classList.add('active');
+  }
 });
 const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {
-  activity.classList.toggle('d-none');
+  activity.classList.toggle('close');
 });
 
-// Sticky-popup
+// activity popover
+const activityPopoverData = [
+  {title:'2021草嶺古道芒花季-1',imgUrl:'assets/images/unsplash_MeKtJNTfnxs.jpg',description:'為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',endDate:'2021.11.28',link:'#'},
+  {title:'2021草嶺古道芒花季-2',imgUrl:'assets/images/unsplash_MeKtJNTfnxs.jpg',description:'為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',endDate:'2021.10.28',link:'#'},
+  {title:'2021草嶺古道芒花季-3',imgUrl:'assets/images/unsplash_MeKtJNTfnxs.jpg',description:'為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',endDate:'2021.9.28',link:'#'}
+];
+const activityPopoverCard = document.querySelector(".activity-popover-card .card_top");
+const activityControlPrev = document.querySelector(".activity-popover-card .arrow_prev_js");
+const activityControlNext = document.querySelector(".activity-popover-card .arrow_next_js");
+const prevActivityBtn = document.getElementById("prevActivityBtn");
+const nextActivityBtn = document.getElementById("nextActivityBtn");
+
+function createActivityCards({id,title,imgUrl,description,endDate,link}){
+  let newCardItem = document.createElement("li");
+  newCardItem.classList.add("activity-popover-card-item","mx-4", "mt-2", "mt-xxl-0");
+  newCardItem.setAttribute("data-id",`${id}`);
+  let cardHtml = /*html*/`
+    <h3 class="fs-3 mb-3">${title}</h3>
+    <div class="activity-popover-img rounded-m mb-3" style="background-image:url('${imgUrl}')"></div>
+    <p class="mb-3 fw-3">${description}</p>
+    <span class="d-block fs-5 fw-5">活動結束時間：${endDate}</span>
+    <a class="d-inline fs-5 fw-5" href="${link}">活動連結</a>`;
+  newCardItem.innerHTML = cardHtml;
+  activityPopoverCard.appendChild(newCardItem);
+  return activityPopoverCard;
+}
+activityPopoverData.forEach((item,index)=>{
+  createActivityCards({id:index,title:item.title,imgUrl:item.imgUrl,description:item.description,endDate:item.endDate,link:item.link});
+})
+
+window.addEventListener('resize',function(){
+  document.querySelector(".activity-popover-content").classList.remove("active");
+})
+
+// the span will overflow when resize
+let currentCardIndex = 0;
+function activityControls(index){
+  if (currentCardIndex < 0 || currentCardIndex > activityPopoverData.length) {
+    return;
+  }
+  console.log('activityControls');
+  let span = 382; // card width 
+  currentCardIndex += index;
+
+  if( currentCardIndex >= activityPopoverData.length || currentCardIndex < 0){
+    currentCardIndex = 0;
+  }
+  if(window.innerWidth >=1400){
+    span = 304;
+  }
+  let computed_left = -(currentCardIndex * span)+ "px";
+  activityPopoverCard.style.left = computed_left;
+}
+activityControlPrev.addEventListener('click',function(){
+  console.log('activityControlPrev', activityPopoverData.length);
+  activityControls(-1);
+  activityBtn(currentCardIndex);
+})
+activityControlNext.addEventListener('click',function(){
+  console.log('activityControlNext', activityPopoverData.length);
+  activityControls(1);
+  activityBtn(currentCardIndex);
+})
+function activityBtn (index) {
+  if (currentCardIndex < 0 || currentCardIndex > activityPopoverData.length) {
+    return;
+  }
+  if (index === 0) {
+    prevActivityBtn.classList.toggle("invisible");
+  } else if (index === activityPopoverData.length - 1) {
+    nextActivityBtn.classList.toggle("invisible");
+  } else {
+    if (prevActivityBtn.getAttribute('class').indexOf('invisible') !== -1) {
+      prevActivityBtn.classList.remove("invisible");
+    }
+    if (nextActivityBtn.getAttribute('class').indexOf('invisible') !== -1) {
+      nextActivityBtn.classList.remove("invisible");
+    }
+  }
+}
+
+
 let stickyPopup = document.getElementsByClassName("sticky-popup");
 let stickyPopups = document.querySelector(".sticky-popups");
 let stickyPopupInfo = [
   {region:'北部地區', city:'台北市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
-{region:'中部地區', city:'台中市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
-{region:'南部地區', city:'高雄市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
-{region:'東部地區', city:'花蓮縣',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
-{region:'離島地區', city:'澎湖縣',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'}];
+  {region:'中部地區', city:'台中市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
+  {region:'南部地區', city:'高雄市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
+  {region:'東部地區', city:'花蓮縣',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
+  {region:'離島地區', city:'澎湖縣',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'}
+];
+window.addEventListener('load',load);
 
 // Generate stickyPopups html from Database
 
@@ -124,20 +210,20 @@ var currentActive = 1;
 var itemNum = 4; // next按鈕行為
 
 next.addEventListener('click', function () {
-currentActive++; // 讓currentActive數值與 itemNum 同步
+  currentActive++; // 讓currentActive數值與 itemNum 同步
 
-if (currentActive > itemNum) {
+  if (currentActive > itemNum) {
     currentActive = itemNum;
-}
+  }
 
-nextUpdate();
+  nextUpdate();
 }); // prev按鈕行為
 
 prev.addEventListener('click', function () {
 currentActive--; // 讓currentActive數值與 itemNum 同步
 
 if (currentActive < 1) {
-    currentActive = 1;
+  currentActive = 1;
 }
 
 prevUpdate();
@@ -160,81 +246,81 @@ function progressWidth() {
   function btnDisable() {
   // 判斷何時要將按鈕做disable處理
   if (currentActive <= 1) {
-      prev.disabled = true;
+    prev.disabled = true;
   } else if (currentActive === itemNum) {
-      next.disabled = true;
+    next.disabled = true;
   } else {
-      prev.disabled = false;
-      next.disabled = false;
+    prev.disabled = false;
+    next.disabled = false;
   }
   };
   
   function prevUpdate() {
-  // set finish
-  circleItems[currentActive - 1].classList.remove('done');
-  circleItems[currentActive - 1].classList.add('active');
-  circleItemNumbers[currentActive - 1].classList.add('invisible');
-  circleItemNumbers[currentActive - 1].classList.add('done');
-  circleItemNumbers[currentActive - 1].classList.remove('done'); // set now
-  
-  circleItems[currentActive].classList.remove('active');
-  circleItemNumbers[currentActive].classList.remove('invisible');
-  progressWidth();
-  btnDisable();
+    // set finish
+    circleItems[currentActive - 1].classList.remove('done');
+    circleItems[currentActive - 1].classList.add('active');
+    circleItemNumbers[currentActive - 1].classList.add('invisible');
+    circleItemNumbers[currentActive - 1].classList.add('done');
+    circleItemNumbers[currentActive - 1].classList.remove('done'); // set now
+
+    circleItems[currentActive].classList.remove('active');
+    circleItemNumbers[currentActive].classList.remove('invisible');
+    progressWidth();
+    btnDisable();
   };
   
   function nextUpdate() {
-  // set finish
-  circleItems[currentActive - 2].classList.add('done');
-  circleItems[currentActive - 2].classList.remove('active');
-  circleItemNumbers[currentActive - 2].classList.remove('invisible');
-  circleItemNumbers[currentActive - 2].classList.add('done'); // set now
-  
-  circleItemNumbers[currentActive - 1].classList.add('invisible');
-  circleItems[currentActive - 1].classList.add('active');
-  progressWidth();
-  btnDisable();
+    // set finish
+    circleItems[currentActive - 2].classList.add('done');
+    circleItems[currentActive - 2].classList.remove('active');
+    circleItemNumbers[currentActive - 2].classList.remove('invisible');
+    circleItemNumbers[currentActive - 2].classList.add('done'); // set now
+    
+    circleItemNumbers[currentActive - 1].classList.add('invisible');
+    circleItems[currentActive - 1].classList.add('active');
+    progressWidth();
+    btnDisable();
   }; // TODO: color-theme
   
   function load() {
-  var $html = document.querySelector('html');
-  var switcher = document.querySelector("#color-theme"); // 透過 useDark.matches 判斷是否為暗模式，將 boolean 寫入 Toggle checked 屬性
-  
-  function setToggleCheck(check) {
+    var $html = document.querySelector('html');
+    var switcher = document.querySelector("#color-theme"); // 透過 useDark.matches 判斷是否為暗模式，將 boolean 寫入 Toggle checked 屬性
+    
+    function setToggleCheck(check) {
       switcher.checked = check;
-  }
-  
-  function setDarkMode(state) {
+    }
+    
+    function setDarkMode(state) {
       var hasClass = $html.classList.contains('dark-mode');
   
       if (state) {
       if (!hasClass) {
-          $html.classList.toggle('dark-mode');
+        $html.classList.toggle('dark-mode');
       }
       } else {
       if (hasClass) {
-          $html.classList.remove('dark-mode');
+        $html.classList.remove('dark-mode');
       }
       }
-  } // state 代表使用者裝置是否為深色主題
-  
-  
-  function toggleDarkMode(state) {
+    } // state 代表使用者裝置是否為深色主題
+    
+    
+    function toggleDarkMode(state) {
       setToggleCheck(state);
       setDarkMode(state);
-  }
-  
-  var useDark = window.matchMedia("(prefers-color-scheme: dark)"); // user change prefers-color-scheme trigger the listener
-  
-  useDark.addListener(function (evt) {
+    }
+    
+    var useDark = window.matchMedia("(prefers-color-scheme: dark)"); // user change prefers-color-scheme trigger the listener
+    
+    useDark.addListener(function (evt) {
       console.log(evt);
       toggleDarkMode(evt.matches);
-  }); // first page loading
-  
-  var darkModeState = useDark.matches;
-  toggleDarkMode(darkModeState); // toggle 
-  
-  function switchListener() {
+    }); // first page loading
+    
+    var darkModeState = useDark.matches;
+    toggleDarkMode(darkModeState); // toggle 
+    
+    function switchListener() {
       darkModeState = !darkModeState;
       toggleDarkMode(darkModeState);
   } // toggle listener
