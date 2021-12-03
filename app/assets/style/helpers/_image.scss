@@ -1,6 +1,10 @@
-// FIXME: I didn't use this class
-// .activity-popover-img {
-//   width: 100%;
-//   height: 140px;
-//   object-fit: cover;
-// }
+// FIXME: I  used bgc instead
+.activity-popover-img {
+  //   width: 100%;
+  //   height: 140px;
+  //   object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 140px;
+}

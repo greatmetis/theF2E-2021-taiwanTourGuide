@@ -21,8 +21,10 @@
     filter: drop-shadow(-2px -3px 5px rgba(75, 59, 59, 0.15));
   }
   &.active {
+    // FIXME: check default opened card width
     transition: all 0.3s 0.15s linear;
     height: 412px;
+    width: 382px;
   }
   &.active > .activity-popover-defaule {
     transition: all 0.1s linear;
@@ -43,20 +45,18 @@
   // position: relative;
   opacity: 0;
   // opacity: 1;
-  transition: all 0.3s linear;
   background: var(--bs-white);
-
+  white-space: nowrap;
   .card_top {
+    width: 100%;
     position: relative;
-    white-space: nowrap;
     left: 0px;
     transition: all 0.4s linear;
+    transition: all 0.3s linear;
     .activity-popover-card-item {
-      position: relative;
       display: inline-block;
-      margin: 0 24px;
-
-      p {
+      position: relative;
+      * {
         white-space: normal;
       }
     }
@@ -76,5 +76,8 @@
   .activity-popover-content {
     width: 304px;
     height: 112px;
+    &.active {
+      width: 304px;
+    }
   }
 }

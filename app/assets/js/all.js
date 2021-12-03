@@ -23,12 +23,11 @@ const activityControlNext = document.querySelector(".activity-popover-card .cont
 
 function createActivityCards({id,title,imgUrl,description,endDate,link}){
   let newCardItem = document.createElement("li");
-  newCardItem.setAttribute("class","activity-popover-card-item");
+  newCardItem.classList.add("activity-popover-card-item","mx-4");
   newCardItem.setAttribute("data-id",`${id}`);
   let cardHtml = /*html*/`
   <h3 class="fs-3 mb-3">${title}</h3>
-    <img class="rounded-m mb-3" src="${imgUrl}"
-      alt="活動照片">
+    <div class="activity-popover-img rounded-m mb-3" style="background-image:url('${imgUrl}')"></div>
     <p class="mb-3 fw-3">${description}</p>
     <span class="d-block fs-5 fw-5">活動結束時間：${endDate}</span>
     <a class="d-inline fs-5 fw-5" href="${link}">活動連結</a>`;
@@ -40,17 +39,22 @@ activityPopoverData.forEach((item,index)=>{
   createActivityCards({id:index,title:item.title,imgUrl:item.imgUrl,description:item.description,endDate:item.endDate,link:item.link})
 })
 
+window.addEventListener('resize',function(){
+  document.querySelector(".activity-popover-content").classList.remove("active");
+})
 
-// TODO: create a version for md/sm screen
+// FIXME: the span will overflow when resize
 let currentCardIndex = 0;
 function activityControls(i){
+  let span = 382; // card width 
   currentCardIndex += i;
   if( currentCardIndex >= activityPopoverData.length || currentCardIndex < 0){
     currentCardIndex = 0;
   }
-  let span = 272; // card width - card padding For xxl screen
+  if(window.innerWidth >=1400){
+    span = 304;
+  }
   let computed_left = -(currentCardIndex * span)+ "px";
-  console.log(computed_left);
   activityPopoverCard.style.left = computed_left;
 }
 activityControlPrev.addEventListener('click',function(){
