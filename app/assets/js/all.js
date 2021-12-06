@@ -1,8 +1,7 @@
-window.addEventListener('load',load)
 
-// dog-eating
+// ===== dog-eating ===== //
 const activity = document.getElementById('activity-popover-content');
-const activityDefaule = document.getElementById('activity-popover-defaule');
+const activityDefaule = document.getElementById('activity-popover-default');
 activityDefaule.addEventListener('click', () => {
   if (activity.getAttribute('class').indexOf('active') === -1) {
     activity.classList.add('active');
@@ -13,7 +12,7 @@ dogEating.addEventListener('click', () => {
   activity.classList.toggle('close');
 });
 
-// activity popover
+// ===== activity popover ===== //
 const activityPopoverData = [
   {title:'2021草嶺古道芒花季-1',imgUrl:'assets/images/unsplash_MeKtJNTfnxs.jpg',description:'為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',endDate:'2021.11.28',link:'#'},
   {title:'2021草嶺古道芒花季-2',imgUrl:'assets/images/unsplash_MeKtJNTfnxs.jpg',description:'為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',endDate:'2021.10.28',link:'#'},
@@ -94,7 +93,7 @@ function activityBtn (index) {
   }
 }
 
-
+//  ===== Sticky Popup ===== //
 let stickyPopup = document.getElementsByClassName("sticky-popup");
 let stickyPopups = document.querySelector(".sticky-popups");
 let stickyPopupInfo = [
@@ -197,7 +196,8 @@ function createStickyPopups({id,region,city,tempeture,weather,shortDescription})
 addTogglePopup();
 }());
 
-// TODO: dogScooter
+// ===== Progress bar ===== //
+//TODO: dogScooter
 
 var prev = document.getElementById('prev');
 var next = document.getElementById('next');
@@ -282,6 +282,10 @@ function progressWidth() {
     btnDisable();
   }; // TODO: color-theme
   
+
+  // ===== Theme Toggle  ===== //
+  window.addEventListener('load',load)
+
   function load() {
     var $html = document.querySelector('html');
     var switcher = document.querySelector("#color-theme"); // 透過 useDark.matches 判斷是否為暗模式，將 boolean 寫入 Toggle checked 屬性
