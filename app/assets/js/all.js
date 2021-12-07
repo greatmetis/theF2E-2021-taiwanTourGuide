@@ -103,6 +103,7 @@ axios
       activityPopoverCard.appendChild(newCardItem);
       return activityPopoverCard;
     }
+    // the span will overflow when resize
     let currentCardIndex = 0;
     function activityControls(index) {
       if (
@@ -202,135 +203,11 @@ function getRandomAct(arr, num) {
   return randomActivities;
 }
 
-// activity popover
-// const activityPopoverData = [
-//   {
-//     title: '2021草嶺古道芒花季-1',
-//     imgUrl: 'assets/images/unsplash_MeKtJNTfnxs.jpg',
-//     description:
-//       '為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',
-//     endDate: '2021.11.28',
-//     link: '#',
-//   },
-//   {
-//     title: '2021草嶺古道芒花季-2',
-//     imgUrl: 'assets/images/unsplash_MeKtJNTfnxs.jpg',
-//     description:
-//       '為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',
-//     endDate: '2021.10.28',
-//     link: '#',
-//   },
-//   {
-//     title: '2021草嶺古道芒花季-3',
-//     imgUrl: 'assets/images/unsplash_MeKtJNTfnxs.jpg',
-//     description:
-//       '為讓遊客欣賞大片芒花壯闊盛開之景，感受草嶺古道那段跨越百年山海時光長廊的記憶，東北角暨宜蘭海岸國家風景。',
-//     endDate: '2021.9.28',
-//     link: '#',
-//   },
-// ];
-
-// const activityPopoverCard = document.querySelector(
-//   '.activity-popover-card .card_top'
-// );
-// const activityControlPrev = document.querySelector(
-//   '.activity-popover-card .arrow_prev_js'
-// );
-// const activityControlNext = document.querySelector(
-//   '.activity-popover-card .arrow_next_js'
-// );
-// const prevActivityBtn = document.getElementById('prevActivityBtn');
-// const nextActivityBtn = document.getElementById('nextActivityBtn');
-
-// function createActivityCards({
-//   id,
-//   title,
-//   imgUrl,
-//   description,
-//   endDate,
-//   link,
-// }) {
-//   let newCardItem = document.createElement('li');
-//   newCardItem.classList.add(
-//     'activity-popover-card-item',
-//     'mx-4',
-//     'mt-2',
-//     'mt-xxl-0'
-//   );
-//   newCardItem.setAttribute('data-id', `${id}`);
-//   let cardHtml = /*html*/ `
-//     <h3 class="fs-3 mb-3">${title}</h3>
-//     <div class="activity-popover-img rounded-m mb-3" style="background-image:url('${imgUrl}')"></div>
-//     <p class="mb-3 fw-3">${description}</p>
-//     <span class="d-block fs-5 fw-5">活動結束時間：${endDate}</span>
-//     <a class="d-inline fs-5 fw-5" href="${link}">活動連結</a>`;
-//   newCardItem.innerHTML = cardHtml;
-//   activityPopoverCard.appendChild(newCardItem);
-//   return activityPopoverCard;
-// }
-// activityPopoverData.forEach((item, index) => {
-//   createActivityCards({
-//     id: index,
-//     title: item.title,
-//     imgUrl: item.imgUrl,
-//     description: item.description,
-//     endDate: item.endDate,
-//     link: item.link,
-//   });
-// });
-
 window.addEventListener('resize', function () {
   document
     .querySelector('.activity-popover-content')
     .classList.remove('active');
 });
-
-// the span will overflow when resize
-// let currentCardIndex = 0;
-// function activityControls(index) {
-//   if (currentCardIndex < 0 || currentCardIndex > activityPopoverData.length) {
-//     return;
-//   }
-//   console.log('activityControls');
-//   let span = 382; // card width
-//   currentCardIndex += index;
-
-//   if (currentCardIndex >= activityPopoverData.length || currentCardIndex < 0) {
-//     currentCardIndex = 0;
-//   }
-//   if (window.innerWidth >= 1400) {
-//     span = 304;
-//   }
-//   let computed_left = -(currentCardIndex * span) + 'px';
-//   activityPopoverCard.style.left = computed_left;
-// }
-// activityControlPrev.addEventListener('click', function () {
-//   console.log('activityControlPrev', activityPopoverData.length);
-//   activityControls(-1);
-//   activityBtn(currentCardIndex);
-// });
-// activityControlNext.addEventListener('click', function () {
-//   console.log('activityControlNext', activityPopoverData.length);
-//   activityControls(1);
-//   activityBtn(currentCardIndex);
-// });
-// function activityBtn(index) {
-//   if (currentCardIndex < 0 || currentCardIndex > activityPopoverData.length) {
-//     return;
-//   }
-//   if (index === 0) {
-//     prevActivityBtn.classList.toggle('invisible');
-//   } else if (index === activityPopoverData.length - 1) {
-//     nextActivityBtn.classList.toggle('invisible');
-//   } else {
-//     if (prevActivityBtn.getAttribute('class').indexOf('invisible') !== -1) {
-//       prevActivityBtn.classList.remove('invisible');
-//     }
-//     if (nextActivityBtn.getAttribute('class').indexOf('invisible') !== -1) {
-//       nextActivityBtn.classList.remove('invisible');
-//     }
-//   }
-// }
 
 let stickyPopup = document.getElementsByClassName('sticky-popup');
 let stickyPopups = document.querySelector('.sticky-popups');
