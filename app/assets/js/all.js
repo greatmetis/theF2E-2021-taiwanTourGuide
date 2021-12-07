@@ -51,9 +51,9 @@ axios
       }
       return item.WebsiteUrl !== undefined && new Date(item.EndTime) - now > 0;
     });
-    console.log(allActivities);
+
     let activityPopoverData = converDataForm(getRandomAct(allActivities, 3));
-    console.log(activityPopoverData);
+
     const activityPopoverCard = document.querySelector(
       '.activity-popover-card .card_top'
     );
@@ -66,7 +66,6 @@ axios
     const prevActivityBtn = document.getElementById('prevActivityBtn');
     const nextActivityBtn = document.getElementById('nextActivityBtn');
     activityPopoverData.forEach((item, index) => {
-      console.log(activityPopoverData);
       createActivityCards({
         id: index,
         title: item.title,
@@ -98,7 +97,6 @@ axios
         <p class="mb-3 fw-3 ellipsis">${description}</p>
         <span class="d-block fs-5 fw-5">活動結束時間：${endDate}</span>
         <a class="d-inline fs-5 fw-5" href="${link}">活動連結</a>`;
-      console.log(cardHtml);
       newCardItem.innerHTML = cardHtml;
       activityPopoverCard.appendChild(newCardItem);
       return activityPopoverCard;
@@ -172,7 +170,6 @@ const converDataForm = function (arr) {
     obj['link'] = item.WebsiteUrl;
     dataArray.push(obj);
   });
-  console.log(dataArray);
   return dataArray;
 };
 
