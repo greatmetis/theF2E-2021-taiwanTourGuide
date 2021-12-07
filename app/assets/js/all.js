@@ -13,32 +13,7 @@ dogEating.addEventListener('click', () => {
   activity.classList.toggle('close');
 });
 
-/****** get activityData ******/
-//TODO fix :babel cannot use async await
-// const sendActRequest = async () => {
-//   try {
-//     const { data } = await axios.get(
-//       'https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$format=JSON'
-//       // {
-//       //   headers: getAuthorizationHeader(),
-//       // }
-//     );
-//     let now = new Date();
-//     let allActivities = data.filter((item) => {
-//       if (!item.Picture.PictureUrl1 || !item.Picture.PictureDescription1) {
-//         item.Picture.PictureUrl1 = `https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80`;
-//         item.Picture.PictureDescription1 = `活動示意圖片`;
-//       }
-//       return item.WebsiteUrl !== undefined && new Date(item.EndTime) - now > 0;
-//     });
-//     console.log(allActivities);
-//     let activityPopoverData = converDataForm(getRandomAct(allActivities));
-//     console.log(activityPopoverData);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-// sendActRequest();
+/** get activityApiData and render start */
 axios
   .get('https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$format=JSON')
   .then((res) => {
@@ -199,6 +174,8 @@ function getRandomAct(arr, num) {
   });
   return randomActivities;
 }
+
+/** get activityApiData and render end */
 
 window.addEventListener('resize', function () {
   document
