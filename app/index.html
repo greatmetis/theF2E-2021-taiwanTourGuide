@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="assets/style/all.css" />
   <title>Document</title>
 </head>
+
 <body>
   <div class="d-none d-xxl-block position-absolute top-15" style="height: calc(65vh);width: 130px;right: 56px">
     <div class="progress-bar">
@@ -66,12 +68,14 @@
           <div class="activity-popover-card">
             <ul class="card_top"></ul>
             <div class="card_bottom d-flex justify-content-between mx-4">
-              <button id="prevActivityBtn" class="arrow_prev_js d-flex align-items-center bg-transparent border-transparent invisible activity-arrow-prev-hover p-0">
+              <button id="prevActivityBtn"
+                class="arrow_prev_js d-flex align-items-center bg-transparent border-transparent invisible activity-arrow-prev-hover p-0">
                 <img src="assets/images/arrow_default.svg" class="default-prev-hover me-2" alt="arrow icon">
                 <span class="d-block text-prev-hover fw-5 lh-sm lh-xxl-base fs-5">上一則</span>
                 <img src="assets/images/arrow_expand.svg" class="expand-prev-hover ms-1" alt="arrow icon">
               </button>
-              <button id="nextActivityBtn" class="arrow_next_js d-flex align-items-center bg-transparent border-transparent activity-arrow-next-hover p-0">
+              <button id="nextActivityBtn"
+                class="arrow_next_js d-flex align-items-center bg-transparent border-transparent activity-arrow-next-hover p-0">
                 <img src="assets/images/arrow_expand.svg" class="expand-next-hover me-1" alt="arrow icon">
                 <span class="d-block text-next-hover fw-5 lh-sm lh-xxl-base fs-5">下一則</span>
                 <img src="assets/images/arrow_default.svg" class="default-next-hover ms-2" alt="arrow icon">
@@ -87,7 +91,15 @@
       </ul>
     </div>
   </div>
+
+  <!-- axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- jsSHA -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"></script>
+  <!-- moment -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <!-- js file -->
   <script src="assets/js/all.js"></script>
 </body>
+
 </html>
