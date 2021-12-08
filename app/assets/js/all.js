@@ -98,11 +98,24 @@ function activityBtn (index) {
 let stickyPopup = document.getElementsByClassName("sticky-popup");
 let stickyPopups = document.querySelector(".sticky-popups");
 let stickyPopupInfo = [
-  {region:'北部地區', city:'台北市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
-  {region:'中部地區', city:'台中市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
-  {region:'南部地區', city:'高雄市',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
-  {region:'東部地區', city:'花蓮縣',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
-  {region:'離島地區', city:'澎湖縣',tempeture:28, weather:'多雲有太陽',shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'}
+  {region:'北部地區', city:'台北市',tempeture:28, weather:'多雲有太陽', weatherEmoji: '🌤', shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
+  {region:'中部地區', city:'台中市',tempeture:28, weather:'多雲有太陽', weatherEmoji: '🌤', shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
+  {region:'南部地區', city:'高雄市',tempeture:28, weather:'多雲有太陽', weatherEmoji: '🌤', shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
+  {region:'東部地區', city:'花蓮縣',tempeture:28, weather:'多雲有太陽', weatherEmoji: '🌤', shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'},
+  {region:'離島地區', city:'澎湖縣',tempeture:28, weather:'多雲有太陽', weatherEmoji: '🌤', shortDescription:'臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。'}
+];
+let cityTags = [
+  '台北市',
+  '新北市',
+  '基隆市',
+  '桃園市',
+  '新竹市',
+  '苗栗縣',
+  '台中市',
+  '彰化縣'
+];
+let activityTags = [
+  "逛大自然風景", "樂活之旅", "古蹟廟宇", "國家風景區", "藝術文化", "溫泉之旅", "建築工廠", "想要戶外走看看", "其他"
 ];
 window.addEventListener('load',load);
 
@@ -114,6 +127,7 @@ function addTogglePopup(){
   }
 };
 function togglePopup(e){
+  console.log(e.currentTarget, e.target, e.target.parentNode);
   let currentCard = e.currentTarget;
   let currentId = currentCard.getAttribute("data-id");
   let stickyPopupArr = [...stickyPopup];
@@ -124,77 +138,107 @@ function togglePopup(e){
   })
   currentCard.classList.toggle("open");
 };
-function createStickyPopups({id,region,city,tempeture,weather,shortDescription}){
+function createStickyPopups({id,region,city,tempeture,weather,weatherEmoji,shortDescription, cityTags, activityTags}){
   return /*html*/`
-      <li class="col">
+      <li class="w-20">
         <div
           class="sticky-popup open_sticky_popup popup-content-bounce-in-up" data-id="${id}">
-          <div class="popup-header">
-            <span class="popup-title fs-4">
-              <div class="
-                  d-flex
-                  justify-content-between
-                  align-items-center
-                  px-6
-                  py-4">
-                <h2 class="fs-2">${region}</h2>
-                <div class="dot-menu">
-                  <div class="dot dot1"></div>
-                  <div class="dot line1"></div>
-                  <div class="dot line2"></div>
-                  <div class="dot dot2"></div>
-                </div>
-              </div>
-            </span>
+          <div class="popup-header d-flex justify-content-between align-items-center">
+            <h2 class="popup-title">${region}</h2>
+            <div class="dot-menu">
+              <div class="dot dot1"></div>
+              <div class="dot line1"></div>
+              <div class="dot line2"></div>
+              <div class="dot dot2"></div>
+            </div>
           </div>
           <div class="popup-content-trapezoid"></div>
-          <div class="popup-content">
-            <div class="border border-2 border-dark px-6 py-6">
-              <button class="btn btn-lg btn-yellow border lh-sm text-black mb-2">${tempeture}&#8451;</button>
-              <h3 class="fs-l mb-1">${weather}</h3>
-              <span class="d-block text-muted fs-5 mb-6">${city}今日早上</span>
-              <p class="mb-6 popup-body fw-6">
-                ${shortDescription}
-              </p>
+          <div class="popup-content popup-body-city">
+            <p class="">我想去...</p>
+            <ul class="overflow-scroll bottom-popup-tag mb-3">
+              ${cityTags}
+            </ul>
+            <div id="popup-activity" class="popup-body-activity">
+              <p class="">我想要...</p>
+              <div class="overflow-scroll bottom-popup-tag">
+                ${activityTags}
+              </div>
               <button
-                class="btn btn-secondary w-100 rounded-0 border border-1">
-                <span class="align-middle text-black">選城市</span>
-                <svg
-                  width="43"
-                  height="18"
-                  viewBox="0 0 43 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M0 9.16699H40.8333"
-                    stroke="#131313"
-                    stroke-width="1.5"/>
-                  <path
-                    d="M42.0004 9.40023C39.0448 9.78912 33.0871 11.9669 32.9004 17.5669"
-                    stroke="#131313"
-                    stroke-width="1.5"/>
-                  <path
-                    d="M42.0004 9.16667C39.0448 8.77778 33.0871 6.6 32.9004 1"
-                    stroke="#131313"
-                    stroke-width="1.5"/>
-                </svg>
+                class="btn btn-secondary w-100 rounded-0 border border-1 rounded-2 mt-3">
+                <span class="align-middle text-black">下一步</span>
+                <img src="assets/images/arrow_expand.svg" class="arrow-hover ms-1" alt="arrow icon">
               </button>
             </div>
+          </div>
+          <div class="popup-content border border-2 border-dark border-bottom-0 px-6 py-6">
+            <button class="btn btn-lg btn-yellow border border-2 lh-sm text-black mb-2">${tempeture}&#8451;</button>
+            <h3 class="fs-l mb-1">${weather}
+              <span class="">${weatherEmoji}</span>
+            </h3>
+            <span class="d-block text-muted fs-5">${city}今日早上</span>
+          </div>
+          <div class="popup-content popup-body-description border border-2 border-dark border-top-0 px-6 pb-6">
+            <p class="mb-6 fw-6">
+              ${shortDescription}
+            </p>
+            <button class="d-flex justify-content-center align-items-center bg-secondary w-100 rounded-2 border py-1 px-4">
+              選城市
+              <img src="assets/images/arrow_expand.svg" class="arrow-hover ms-1" alt="arrow icon">
+            </button>
           </div>
         </div>
       </li>
     `
 };
 
-
+function addEventToCityTag() {
+  let cityTags = document.getElementsByClassName("city-tags");
+  const popupActivityTags = document.getElementById("popup-activity");
+  for(let i = 0; i < cityTags.length;i++){
+    cityTags[i].addEventListener('click', function() {
+      if (popupActivityTags.getAttribute("class").includes("popup-body-activity")) {
+        popupActivityTags.classList.remove("popup-body-activity");
+      }
+    });
+  }
+}
+function createActivityTags(items) {
+  let str = "";
+  items.forEach((item) => {
+    str += `
+      <li class="d-inline">
+        <button class="btn btn-outline-dark">
+          <span class="align-middle">${item}</span>
+          <img src="assets/images/${item}.svg" class="ms-1" alt="${item} icon">
+        </button>
+      </li>`;
+  });
+  return str;
+}
 (function(){
-  let str = '';
+  let strPopup = '';
+  let strActivity = '';
+  let strCity = '';
+  let activityTagColumn = [activityTags.slice(0, Math.ceil(activityTags.length / 2)), activityTags.slice(Math.ceil(activityTags.length / 2))];
+  console.log(activityTagColumn);
+  cityTags.forEach((item)=>{
+    let tempCityHtml = `<li class="d-inline"><button class="btn btn-outline-dark city-tags">${item}</button></li>`;
+    strCity += tempCityHtml;
+  });
+  activityTagColumn.forEach((item) => {
+    strActivity += `
+      <ul class="bottom-popup-tag">
+        ${createActivityTags(item)}
+      </ul>
+    `;
+  });
+  
   stickyPopupInfo.forEach((item,index)=>{
-    let tempStickyHtml = createStickyPopups({id:index,region:item.region,city:item.city,tempeture:item.city,weather:item.weather,shortDescription:item.shortDescription});
-    str += tempStickyHtml;
-    stickyPopups.innerHTML = str;
-})
-addTogglePopup();
+    let tempStickyHtml = createStickyPopups({id:index, region:item.region, city:item.city, tempeture:item.city, weather:item.weather, weatherEmoji:item.weatherEmoji, shortDescription:item.shortDescription, cityTags:strCity, activityTags:strActivity});
+    strPopup += tempStickyHtml;
+    stickyPopups.innerHTML = strPopup;
+  });
+  addTogglePopup();
 }());
 
 // TODO: dogScooter
