@@ -1,15 +1,15 @@
-
+// FIXME: toggle the activity card by tap the icon or bg, also show the default mode when it is closed
 // ===== dog-eating ===== //
 const activity = document.getElementById('activity-popover-content');
-const activityDefaule = document.getElementById('activity-popover-default');
-activityDefaule.addEventListener('click', () => {
-  if (activity.getAttribute('class').indexOf('active') === -1) {
-    activity.classList.add('active');
+const activityDefault = document.getElementById('activity-popover-default');
+activity.addEventListener('click',(e)=>{
+  if(e.currentTarget == e.target || e.target == activityDefault){
+    activity.classList.toggle("active");
   }
 });
 const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {
-  activity.classList.toggle('close');
+  activity.classList.toggle("active");
 });
 
 // ===== activity popover ===== //
