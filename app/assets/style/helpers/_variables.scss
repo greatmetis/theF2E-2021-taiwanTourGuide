@@ -32,6 +32,7 @@ $theme-colors: (
   "purple":     $purple,
   "pink":       $pink,
   "light":      $gray-100,
+  "dark":       $black,
 ) !default;
 
 $spacer: 1rem !default;
@@ -106,7 +107,7 @@ $enable-reduced-motion:             false !default;
 $enable-important-utilities:        true !default;
 $enable-rfs:                        false !default;
 
-$border-width:                      2px !default;
+$border-width:                      1px !default;
 $border-color:                      $black !default;
 
 // Button

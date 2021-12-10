@@ -53,6 +53,24 @@ $utilities: map-merge(
         )
       )
     ),
+    "width": map-merge(
+      map-get($utilities, "width"), (
+        values: map-merge(
+          map-get(map-get($utilities, "width"), "values"), (
+            '20': 20%,
+          )
+        )
+      )
+    ),
+    "max-width": (
+      map-get($utilities, "max-width"), (
+        values: map-merge(
+          map-get(map-get($utilities, "max-width"), "values"), (
+            '20': 20%,
+          )
+        )
+      )
+    ),
   )
 );
 
