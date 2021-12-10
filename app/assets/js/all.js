@@ -178,6 +178,7 @@ function getRandomAct(arr, num) {
 /** get activityApiData and render end */
 
 window.addEventListener('resize', function () {
+  console.log('resize');
   document
     .querySelector('.activity-popover-content')
     .classList.remove('active');
@@ -240,7 +241,7 @@ let cityTags = [
 let activityTags = [
   "逛大自然風景", "樂活之旅", "古蹟廟宇", "國家風景區", "藝術文化", "溫泉之旅", "建築工廠", "想要戶外走看看", "其他"
 ];
-window.addEventListener('load', load);
+// window.addEventListener('load', load);
 
 // Generate stickyPopups html from Database
 
@@ -341,6 +342,10 @@ function createActivityTags(items) {
 }
 
 (function(){
+  console.log(document.body.clientWidth, document.body.clientWidth - 280);
+  const popupContainer = document.querySelector('.sticky-popup-container');
+  popupContainer.style.maxWidth = `${document.body.clientWidth - 280}px`;
+
   let strPopup = '';
   let strActivity = '';
   let strCity = '';
