@@ -48,8 +48,8 @@
 .sticky-popup {
   position: relative;
   width: 100%;
+  height: 100%;
   bottom: -86.3%;
-  cursor: pointer;
   &.open {
     bottom: 0;
   }
@@ -57,10 +57,32 @@
     opacity: 1;
   }
   &.open .popup-header {
+    padding: 12px 24px;
     transform: translateY(.5px);
-    transition:.3s;
+    transition: .3s all;
   }
-  &.open .popup-header .popup-title .dot-menu {
+  &.open .popup-title {
+    background: var(--bs-body-color);
+    color: var(--bs-white);
+    border-radius: 25px;
+    font-size: 16px;
+    padding: 8px 16px;
+    transition: opacity .5s linear;
+  }
+  &.city .popup-body-city {
+    height: 260px;
+    border: 2px solid var(--bs-body-color);
+    border-bottom: 0px;
+    padding: 24px;
+    transition: all 0.5s linear;
+  }
+  &.city .popup-body-description {
+    height: 0;
+    padding: 0 !important;
+    transition: all 0.5s linear;
+  }
+  // &.open .popup-header .popup-title .dot-menu {
+  &.open .popup-header .dot-menu {
     .dot1{
       transform: translateY(12px);
     }
@@ -89,28 +111,54 @@
 }
 
 .popup-header {
-  transition: .1s;
-  transform: translateY(10px);
   border: 2px solid var(--bs-body-color);
   background: var(--bs-gray-100);
+  cursor: pointer;
+  padding: 16px 24px;
+  transition: .1s;
+  transform: translateY(10px);
   &:hover {
     transform: translateY(.5px);
     transition: .3s;
   }
 }
-
+.popup-title {
+  font-size: 24px;
+  transition: opacity .5s linear;
+}
 .popup-content {
   width: 100%;
-  height: 40%;
   overflow-x: hidden;
-  overflow-y: auto;
   background: var(--bs-gray-100);
   opacity: 0;
   transition: opacity .8s;
 }
-.popup-body {
-  height: 10%;
-  overflow-x: hidden;
+.popup-body-city {
+  height: 0;
+}
+.popup-body-description {
+  height: 300px;
+  transition: all 0.5s linear;
+}
+.popup-body-activity {
+  pointer-events: none;
+  opacity: .35;
+  transition: all 0.5s linear;
+}
+.bottom-popup-tag {
+  white-space:nowrap;
+  & li + li {
+    margin-left: 8px;
+  }
+  & ul + ul {
+    margin-top: 8px;
+  }
+  // hide scrollbar
+  &::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .popup-content-trapezoid {
@@ -166,7 +214,7 @@
   &::after {
     content: '';
     position: absolute;
-    top: .7rem;
+    top: 11.2px;
     left: 83%;
     transform: translate(-50%,-50%);
     width: 30px;
