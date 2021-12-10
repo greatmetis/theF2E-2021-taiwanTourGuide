@@ -2,15 +2,15 @@ window.addEventListener('load', load);
 
 // dog-eating
 const activity = document.getElementById('activity-popover-content');
-const activityDefaule = document.getElementById('activity-popover-defaule');
-activityDefaule.addEventListener('click', () => {
-  if (activity.getAttribute('class').indexOf('active') === -1) {
-    activity.classList.add('active');
+const activityDefault = document.getElementById('activity-popover-default');
+activity.addEventListener('click',(e)=>{
+  if(e.currentTarget == e.target || e.target == activityDefault){
+    activity.classList.toggle("active");
   }
 });
 const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {
-  activity.classList.toggle('close');
+  activity.classList.toggle("active");
 });
 
 /** get activityApiData and render start */
@@ -18,6 +18,7 @@ axios
   .get('https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$format=JSON')
   .then((res) => {
     const { data } = res;
+    console.log(res)
     let now = new Date();
     let allActivities = data.filter((item) => {
       if (!item.Picture.PictureUrl1 || !item.Picture.PictureDescription1) {
@@ -378,7 +379,8 @@ function createActivityTags(items) {
   addTogglePopup();
 }());
 
-// TODO: dogScooter
+// ===== Progress bar ===== //
+//TODO: dogScooter
 
 var prev = document.getElementById('prev');
 var next = document.getElementById('next');

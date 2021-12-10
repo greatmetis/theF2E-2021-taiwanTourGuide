@@ -25,7 +25,7 @@
     height: 395px;
     width: 382px;
   }
-  &.active > .activity-popover-defaule {
+  &.active > .activity-popover-default {
     transition: all 0.1s linear;
     opacity: 0;
   }
@@ -39,7 +39,7 @@
     padding: 0 !important;
   }
 }
-.activity-popover-defaule {
+.activity-popover-default {
   transition: all 0.1s 0.18s linear;
 }
 .activity-popover-card {
