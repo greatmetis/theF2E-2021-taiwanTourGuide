@@ -155,12 +155,12 @@ function createStickyPopups({id,region,city,tempeture,weather,shortDescription, 
           <div class="popup-content-trapezoid"></div>
           <div class="popup-content popup-body-city">
             <p class="">我想去...</p>
-            <ul class="overflow-scroll bottom-popup-tag mb-3">
+            <ul class="overflow-scroll bottom-popup-tag mb-3 me-n6">
               ${cityTags}
             </ul>
             <div id="popup-activity" class="popup-body-activity">
               <p class="">我想要...</p>
-              <div class="overflow-scroll bottom-popup-tag">
+              <div class="overflow-scroll bottom-popup-tag me-n6">
                 ${activityTags}
               </div>
               <button
