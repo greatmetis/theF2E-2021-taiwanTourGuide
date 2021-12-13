@@ -139,10 +139,11 @@ const converDataForm = function (arr) {
   let dataArray = [];
   arr.forEach((item) => {
     let obj = {};
+    const time = new Date(item.EndTime);
     obj['title'] = item.Name;
     obj['imgUrl'] = item.Picture.PictureUrl1;
     obj['description'] = item.Description;
-    obj['endDate'] = moment(item.EndTime).format('YYYY.MM.DD');
+    obj['endDate'] = `${time.getFullYear()}.${(time.getMonth() + 1).toString().padStart(2, '0')}.${time.getDate().toString().padStart(2, '0')}`;
     obj['link'] = item.WebsiteUrl;
     dataArray.push(obj);
   });

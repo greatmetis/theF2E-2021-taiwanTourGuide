@@ -50,6 +50,8 @@ let envOptions = {
     src: [
       `${nodePath}/jquery/dist/jquery.slim.min.js`,
       `${nodePath}/bootstrap/dist/js/bootstrap.bundle.min.js`, // 已包含 popper.js
+      `${nodePath}/axios/dist/axios.min.js`,
+      `${nodePath}/jssha/dist/sha.js`,
     ],
     concat: 'vendors.js',
     path: `${distPath}/assets/js`,
