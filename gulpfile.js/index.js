@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer');
 const minimist = require('minimist');
 const browserSync = require('browser-sync').create();
 const { envOptions } = require('./envOptions');
+const webpack = require('webpack-stream');
 
 let options = minimist(process.argv.slice(2), envOptions);
 //現在開發狀態
@@ -58,12 +59,44 @@ function sass() {
 
 function babel() {
   return gulp.src(envOptions.javascript.src)
-    .pipe($.sourcemaps.init())
-    .pipe($.babel({
-      presets: ['@babel/env'],
-    }))
-    .pipe($.concat(envOptions.javascript.concat))
-    .pipe($.sourcemaps.write('.'))
+    .pipe($.if(options.env == 'pro',
+      webpack({
+        mode: 'production',
+        output: {
+          filename: 'all.js',
+        },
+        module: {
+          rules: [
+            {
+              test: /\.m?js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                loader: 'babel-loader',
+              },
+            },
+          ],
+        },
+      })
+    ))
+    .pipe($.if(options.env == 'dev',
+      webpack({
+        mode: 'development',
+        output: {
+          filename: 'all.js',
+        },
+        module: {
+          rules: [
+            {
+              test: /\.m?js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                loader: 'babel-loader',
+              },
+            },
+          ],
+        },
+      })
+    ))
     .pipe(gulp.dest(envOptions.javascript.path))
     .pipe(
       browserSync.reload({
