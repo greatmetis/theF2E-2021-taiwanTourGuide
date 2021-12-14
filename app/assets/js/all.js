@@ -1,9 +1,7 @@
 import {get_activity} from './modules/activity';
 import {render_stickyPopup,computed_stickyPopupWidth,selectedCity,selectedCategory} from './modules/stickyPopup'
 
-window.addEventListener('load', load);
-
-// 儲存使用者目前的選擇
+//===== 儲存使用者目前的選擇 ===== //
 let userSelection = null
 
 function UserSelection(city,category){
@@ -11,16 +9,14 @@ function UserSelection(city,category){
   this.category = category;
 }
 
-// Functions re-call when users resize the window
+//===== Functions re-call when users resize the window =====//
 window.addEventListener('resize', function () {
-  // activity cards
-  document.querySelector('.activity-popover-content')
-  .classList.remove('active');
-  // sticky popup
-  computed_stickyPopupWidth()
+    document.querySelector('.activity-popover-content').classList.remove('active'); // activity cards
+  
+  computed_stickyPopupWidth(); // sticky popup
 });
 
-// Functions are called in the first place
+// ===== Functions are called in the first place =====//
 function main(){
   get_activity();
   render_stickyPopup();
@@ -28,6 +24,8 @@ function main(){
   watch_userSelectedValue() // start watching user selected values
 };
 main();
+
+// ===== Methods/Functions =====//
 
 // watch radio button, if it's changed, modify the values inside the object
 function watch_userSelectedValue(){
@@ -48,21 +46,6 @@ function watch_userSelectedValue(){
     })
   })
 }
-
-// 活動 Togggle
-const activity = document.getElementById('activity-popover-content');
-const activityDefault = document.getElementById('activity-popover-default');
-activity.addEventListener('click',(e)=>{
-  if(e.currentTarget == e.target || e.target == activityDefault){
-    activity.classList.toggle("active");
-  }
-});
-const dogEating = document.getElementById('dog-eating');
-dogEating.addEventListener('click', () => {
-  activity.classList.toggle("active");
-});
-
-
 
 function load() {
   var $html = document.querySelector('html');
@@ -108,5 +91,21 @@ function load() {
 
   switcher.addEventListener('click', switchListener);
 }
+
+// ===== Event Listener =====//
+window.addEventListener('load', load);
+
+// 活動 Togggle
+const activity = document.getElementById('activity-popover-content');
+const activityDefault = document.getElementById('activity-popover-default');
+activity.addEventListener('click',(e)=>{
+  if(e.currentTarget == e.target || e.target == activityDefault){
+    activity.classList.toggle("active");
+  }
+});
+const dogEating = document.getElementById('dog-eating');
+dogEating.addEventListener('click', () => {
+  activity.classList.toggle("active");
+});
 
 //# sourceMappingURL=all.js.map
