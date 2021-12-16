@@ -14,7 +14,7 @@
   height: 34px;
   background-image: url(../images/color_theme_toggle_sun_LG.svg);
   cursor: pointer;
-  transition: .3s all ease;
+  transition: 0.3s all ease;
 }
 
 // loading 時彈跳效果
@@ -58,8 +58,8 @@
   }
   &.open .popup-header {
     padding: 12px 24px;
-    transform: translateY(.5px);
-    transition: .3s all;
+    transform: translateY(0.5px);
+    transition: 0.3s all;
   }
   &.open .popup-title {
     background: var(--bs-body-color);
@@ -67,7 +67,7 @@
     border-radius: 25px;
     font-size: 16px;
     padding: 8px 16px;
-    transition: opacity .5s linear;
+    transition: opacity 0.5s linear;
   }
   &.city .popup-body-city {
     height: 260px;
@@ -83,7 +83,7 @@
   }
   // &.open .popup-header .popup-title .dot-menu {
   &.open .popup-header .dot-menu {
-    .dot1{
+    .dot1 {
       transform: translateY(12px);
     }
     .dot2 {
@@ -104,10 +104,10 @@
 }
 // sticky_popup bottom 效果
 .open_sticky_popup {
-  -webkit-transition: bottom .6s;
-  -moz-transition: bottom .6s;
-  -o-transition: bottom .6s;
-  transition: bottom .6s;
+  -webkit-transition: bottom 0.6s;
+  -moz-transition: bottom 0.6s;
+  -o-transition: bottom 0.6s;
+  transition: bottom 0.6s;
 }
 
 .popup-header {
@@ -115,23 +115,23 @@
   background: var(--bs-gray-100);
   cursor: pointer;
   padding: 16px 24px;
-  transition: .1s;
+  transition: 0.1s;
   transform: translateY(10px);
   &:hover {
-    transform: translateY(.5px);
-    transition: .3s;
+    transform: translateY(0.5px);
+    transition: 0.3s;
   }
 }
 .popup-title {
   font-size: 24px;
-  transition: opacity .5s linear;
+  transition: opacity 0.5s linear;
 }
 .popup-content {
   width: 100%;
   overflow-x: hidden;
   background: var(--bs-gray-100);
   opacity: 0;
-  transition: opacity .8s;
+  transition: opacity 0.8s;
 }
 .popup-body-city {
   height: 0;
@@ -141,12 +141,16 @@
   transition: all 0.5s linear;
 }
 .popup-body-activity {
-  pointer-events: none;
-  opacity: .35;
+  pointer-events: auto;
+  opacity: 1;
   transition: all 0.5s linear;
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.35;
+  }
 }
 .bottom-popup-tag {
-  white-space:nowrap;
+  white-space: nowrap;
   & li + li {
     margin-left: 8px;
   }
@@ -166,7 +170,7 @@
   border-top: 8px solid var(--bs-body-color);
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 // dot scooter
@@ -212,11 +216,11 @@
   z-index: 1;
   margin-right: 18px;
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 11.2px;
     left: 83%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 30px;
     height: 30px;
     border: 2px solid var(--bs-secondary);
@@ -243,15 +247,31 @@
   z-index: 100;
   transform: translateY(-0) scaleX(-1);
   transition: 0.4s ease;
-  
-  .a{fill:#d980bb;}
-  .b{fill:#2d2d2d;}
-  .c{fill:#fff;}
-  .d{fill:#fcc11e;}
-  .e{fill:#335d2e;}
-  .f{fill:#0497b9;}
-  .g{fill:#ec132f;}
-  .h{fill:#fec920;}
+
+  .a {
+    fill: #d980bb;
+  }
+  .b {
+    fill: #2d2d2d;
+  }
+  .c {
+    fill: #fff;
+  }
+  .d {
+    fill: #fcc11e;
+  }
+  .e {
+    fill: #335d2e;
+  }
+  .f {
+    fill: #0497b9;
+  }
+  .g {
+    fill: #ec132f;
+  }
+  .h {
+    fill: #fec920;
+  }
 }
 
 .progress-bar {
