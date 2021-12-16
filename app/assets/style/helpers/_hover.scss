@@ -4,6 +4,14 @@
     transform: translateX(8px);
   }
 }
+.arrow-start-hover {
+  & img {
+    transition: all .25s linear;
+  }
+  &:hover > img{
+    transform: translateX(-8px);
+  }
+}
 .activity-arrow-prev-hover {
   .default-prev-hover {
     transition: all .3s cubic-bezier(.62,.02,.17,1.24);

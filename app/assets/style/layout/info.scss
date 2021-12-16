@@ -1,0 +1,60 @@
+.activity-search-card li + li {
+  margin-bottom: 1.25rem;
+}
+
+.btn-check {
+  position: absolute;
+  clip: rect(0,0,0,0);
+  pointer-events: none;
+}
+
+.list {
+  max-height: 0;
+  width: 353px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0,-0.14,0,.91);
+  border-radius: .5rem;
+  box-shadow: 0px 0px 25px rgba(45, 45, 45, 0.4);
+  background: #fff;
+}
+
+.city-collapse-select:hover {
+  background: var(--bs-primary);
+  box-shadow: 0px 0px 0px 5px rgba(252, 193, 30, 0.4);
+}
+
+.city-collapse-label {
+  // color: rgba(19, 19, 19, 0.6);
+  color: var(--bs-gray-700);
+}
+
+// .city-select {
+//   display: none;
+// }
+.city-select:checked + .list {
+  max-height: 100vh;
+  transition: max-height 0.55s linear;
+}
+
+.list .city-collapse-title {
+  background: var(--bs-gray-300);
+}
+
+.city-collapse-tag li {
+  display: inline;
+}
+
+.city-collapse-label:hover {
+  color: var(--bs-secondary);
+}
+
+.btn-check[type="radio"]:checked + .city-collapse-label { 
+  color: var(--bs-secondary);
+}
+
+.city-collapse-tag li + li {
+  margin-left: 1rem;
+}
