@@ -2,6 +2,10 @@
   margin-top: 145px;
 }
 
+.activity-card-height {
+  height: calc(50vh - 40px);
+}
+
 .activity-card-search li + li {
   margin-bottom: 1.25rem;
 }
@@ -70,13 +74,14 @@
     transform: translate(0, 0);
   }
   .activity-card {
-    margin-top: 145px;
+    // margin-top: 145px;
+    margin-top: 154px;
   }
 }
 
 @media (min-width: 768px) {
-  .activity-card {
-    margin-top: 154px;
+  .activity-card-height {
+    height: calc(100vh - 96px);
   }
 }
 
