@@ -73,6 +73,7 @@ $utilities: map-merge(
     ),
     "width": map-merge(
       map-get($utilities, "width"), (
+        responsive: true,
         values: map-merge(
           map-get(map-get($utilities, "width"), "values"), (
             '20': 20%,
@@ -88,6 +89,20 @@ $utilities: map-merge(
             '20': 20%,
           )
         )
+      )
+    ),
+    "height": map-merge(
+      map-get($utilities, "height"), (
+        responsive: true,
+      )
+    ),
+    "viewport-height": (
+      responsive: true,
+      property: height,
+      class: vh,
+      values: (
+        100: 100vh,
+        50: 50vh,
       )
     ),
     "object-fit": (

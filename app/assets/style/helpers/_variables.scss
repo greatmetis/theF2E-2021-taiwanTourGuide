@@ -88,6 +88,17 @@ $position-values: (
 
 $grid-gutter-width:                 .9375rem !default; // 15
 
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 414px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1366px
+) !default;
+
+
 $font-family-han:                  'source-han-serif-sc', serif;
 $font-family-noto:                 'Noto Sans TC', sans-serif;
 $line-height-base:                  1.5 !default;
