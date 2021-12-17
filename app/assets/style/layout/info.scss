@@ -2,6 +2,11 @@
   margin-top: 145px;
 }
 
+.activity-check-img {
+  width: 14px;
+  height: 14px;
+}
+
 .activity-card-height {
   height: calc(50vh - 40px);
 }
@@ -74,8 +79,11 @@
     transform: translate(0, 0);
   }
   .activity-card {
-    // margin-top: 145px;
     margin-top: 154px;
+  }
+  .activity-check-img {
+    width: 18px;
+    height: 18px;
   }
 }
 
