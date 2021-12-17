@@ -1,8 +1,6 @@
 import {get_activity} from './modules/activity';
 import {render_stickyPopup,computed_stickyPopupWidth,selectedCity,selectedCategory} from './modules/stickyPopup'
 
-window.addEventListener('load', load);
-
 //===== 儲存使用者目前的選擇 ===== //
 let userSelection = null
 
@@ -13,11 +11,8 @@ function UserSelection(city,category){
 
 //===== Functions re-call when users resize the window =====//
 window.addEventListener('resize', function () {
-  // activity cards
-  document.querySelector('.activity-popover-content')
-  .classList.remove('active');
-  // sticky popup
-  computed_stickyPopupWidth()
+    document.querySelector('.activity-popover-content').classList.remove('active'); // activity cards
+  computed_stickyPopupWidth(); // sticky popup
 });
 
 // ===== Functions are called in the first place =====//
@@ -97,6 +92,7 @@ function load() {
 }
 
 // ===== Event Listener =====//
+window.addEventListener('load', load);
 
 // 活動 Togggle
 const activity = document.getElementById('activity-popover-content');
@@ -110,8 +106,5 @@ const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {
   activity.classList.toggle("active");
 });
-
-
-
 
 //# sourceMappingURL=all.js.map
