@@ -76,11 +76,12 @@
     padding: 24px;
     transition: all 0.5s linear;
   }
-  &.city .popup-body-description {
-    height: 0;
-    padding: 0 !important;
-    transition: all 0.5s linear;
-  }
+  // FIXME: no css needed
+  // &.city .popup-body-description {
+  //   height: 0;
+  //   padding: 0 !important;
+  //   transition: all 0.5s linear;
+  // }
   // &.open .popup-header .popup-title .dot-menu {
   &.open .popup-header .dot-menu {
     .dot1 {
@@ -133,13 +134,14 @@
   opacity: 0;
   transition: opacity 0.8s;
 }
-.popup-body-city {
-  height: 0;
-}
-.popup-body-description {
-  height: 300px;
-  transition: all 0.5s linear;
-}
+// FIXME: no css needed
+// .popup-body-city {
+//   height: 0;
+// }
+// .popup-body-description {
+//   height: 300px;
+//   transition: all 0.5s linear;
+// }
 .popup-body-activity {
   pointer-events: auto;
   opacity: 1;
