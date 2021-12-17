@@ -34,13 +34,13 @@
   width: 285px;
   max-height: 0;
   position: absolute;
-  top: 118%;
+  top: 34%;
   left: 50%;
   overflow: hidden;
   border-radius: .5rem;
   box-shadow: 0px 0px 25px rgba(45, 45, 45, 0.4);
   background: #fff;
-  transform: translate(-50%, -57%);
+  transform: translateX(-50%);
   transition: max-height 0.3s cubic-bezier(0,-0.14,0,.91);
   & .city-collapse-title {
     background: var(--bs-gray-300);
