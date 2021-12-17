@@ -33,66 +33,89 @@
               <div class="d-flex align-items-center">
                 <div class="position-sm-relative">
                   <input type="checkbox" class="city-select btn-check" id="city-select">
-                  <ul role="group" class="city-select-list">
-                    <li>
-                      <p class="city-collapse-title fs-4 lh-sm px-4 py-3">北部地區</p>
-                      <ul class="city-collapse-tag pb-3">
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="台北市" id="cityRadio1" checked>
-                          <label class="city-collapse-label fs-1" for="cityRadio1">台北市</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio2">
-                          <label class="city-collapse-label fs-1" for="cityRadio2">新北市</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio3">
-                          <label class="city-collapse-label fs-1" for="cityRadio3">基隆市</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio4">
-                          <label class="city-collapse-label fs-1" for="cityRadio4">宜蘭縣</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio5">
-                          <label class="city-collapse-label fs-1" for="cityRadio5">桃園市</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio6">
-                          <label class="city-collapse-label fs-1" for="cityRadio6">新竹市</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio7">
-                          <label class="city-collapse-label fs-1" for="cityRadio7">新竹縣</label>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <p class="city-collapse-title fs-4 lh-sm px-4 py-3">中部地區</p>
-                      <ul class="city-collapse-tag pb-3">
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="苗栗縣" id="cityRadio8">
-                          <label class="city-collapse-label fs-1" for="cityRadio8">苗栗縣</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="台中市" id="cityRadio9">
-                          <label class="city-collapse-label fs-1" for="cityRadio9">台中市</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="彰化縣" id="cityRadio10">
-                          <label class="city-collapse-label fs-1" for="cityRadio10">彰化縣</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="南投縣" id="cityRadio11">
-                          <label class="city-collapse-label fs-1" for="cityRadio11">南投縣</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="city-radio" class="btn-check" value="雲林縣" id="cityRadio12">
-                          <label class="city-collapse-label fs-1" for="cityRadio12">雲林縣</label>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
+                  <div class="city-select-list">
+                    <div role="group" class="city-select-tab">
+                      <input type="radio" name="city-area-radio" class="city-area" value="北部地區" id="cityArea1" checked>
+                      <label class="city-collapse-title w-md-100 fs-0 lh-sm px-2 px-md-4 pt-3 pb-2 pb-md-3" for="cityArea1">
+                        <span class="fs-4">北部</span>
+                        <span class="d-none d-md-inline-block fs-4">地區</span>
+                      </label>
+                      <div class="city-area-list pb-3">
+                        <input type="radio" name="city-radio" class="btn-check" value="台北市" id="cityRadio1" checked>
+                        <label class="city-collapse-label fs-1" for="cityRadio1">台北市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio2">
+                        <label class="city-collapse-label fs-1" for="cityRadio2">新北市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio3">
+                        <label class="city-collapse-label fs-1" for="cityRadio3">基隆市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio4">
+                        <label class="city-collapse-label fs-1" for="cityRadio4">宜蘭縣</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio5">
+                        <label class="city-collapse-label fs-1" for="cityRadio5">桃園市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio6">
+                        <label class="city-collapse-label fs-1" for="cityRadio6">新竹市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="新北市" id="cityRadio7">
+                        <label class="city-collapse-label fs-1" for="cityRadio7">新竹縣</label>
+                      </div>
+                      <input type="radio" name="city-area-radio" class="city-area" value="中部地區" id="cityArea2">
+                      <label class="city-collapse-title w-md-100 fs-0 lh-sm px-2 px-md-4 pt-3 pb-2 pb-md-3" for="cityArea2">
+                        <span class="fs-4">中部</span>
+                        <span class="d-none d-md-inline-block fs-4">地區</span>
+                      </label>
+                      <div class="city-area-list pb-3">
+                        <input type="radio" name="city-radio" class="btn-check" value="苗栗縣" id="cityRadio8">
+                        <label class="city-collapse-label fs-1" for="cityRadio8">苗栗縣</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="台中市" id="cityRadio9">
+                        <label class="city-collapse-label fs-1" for="cityRadio9">台中市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="彰化縣" id="cityRadio10">
+                        <label class="city-collapse-label fs-1" for="cityRadio10">彰化縣</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="南投縣" id="cityRadio11">
+                        <label class="city-collapse-label fs-1" for="cityRadio11">南投縣</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="雲林縣" id="cityRadio12">
+                        <label class="city-collapse-label fs-1" for="cityRadio12">雲林縣</label>
+                      </div>
+                      <input type="radio" name="city-area-radio" class="city-area" value="南部地區" id="cityArea3">
+                      <label class="city-collapse-title w-md-100 fs-0 lh-sm px-2 px-md-4 pt-3 pb-2 pb-md-3" for="cityArea3">
+                        <span class="fs-4">南部</span>
+                        <span class="d-none d-md-inline-block fs-4">地區</span>
+                      </label>
+                      <div class="city-area-list pb-3">
+                        <input type="radio" name="city-radio" class="btn-check" value="嘉義縣" id="cityRadio13">
+                        <label class="city-collapse-label fs-1" for="cityRadio13">嘉義縣</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="嘉義市" id="cityRadio14">
+                        <label class="city-collapse-label fs-1" for="cityRadio14">嘉義市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="台南市" id="cityRadio15">
+                        <label class="city-collapse-label fs-1" for="cityRadio15">台南市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="高雄市" id="cityRadio16">
+                        <label class="city-collapse-label fs-1" for="cityRadio16">高雄市</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="屏東縣" id="cityRadio17">
+                        <label class="city-collapse-label fs-1" for="cityRadio17">屏東縣</label>
+                      </div>
+                      <input type="radio" name="city-area-radio" class="city-area" value="東部地區" id="cityArea4">
+                      <label class="city-collapse-title w-md-100 fs-0 lh-sm px-2 px-md-4 pt-3 pb-2 pb-md-3" for="cityArea4">
+                        <span class="fs-4">東部</span>
+                        <span class="d-none d-md-inline-block fs-4">地區</span>
+                      </label>
+                      <div class="city-area-list pb-3">
+                        <input type="radio" name="city-radio" class="btn-check" value="台東縣" id="cityRadio18">
+                        <label class="city-collapse-label fs-1" for="cityRadio18">台東縣</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="花蓮縣" id="cityRadio19">
+                        <label class="city-collapse-label fs-1" for="cityRadio19">花蓮縣</label>
+                      </div>
+                      <input type="radio" name="city-area-radio" class="city-area" value="離島地區" id="cityArea5">
+                      <label class="city-collapse-title w-md-100 fs-0 lh-sm px-2 px-md-4 pt-3 pb-2 pb-md-3" for="cityArea5">
+                        <span class="fs-4">離島</span>
+                        <span class="d-none d-md-inline-block fs-4">地區</span>
+                      </label>
+                      <div class="city-area-list pb-3">
+                        <input type="radio" name="city-radio" class="btn-check" value="澎湖縣" id="cityRadio20">
+                        <label class="city-collapse-label fs-1" for="cityRadio20">澎湖縣</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="金門縣" id="cityRadio21">
+                        <label class="city-collapse-label fs-1" for="cityRadio21">金門縣</label>
+                        <input type="radio" name="city-radio" class="btn-check" value="連江縣（馬祖）" id="cityRadio22">
+                        <label class="city-collapse-label fs-1" for="cityRadio22">連江縣（馬祖）</label>
+                      </div>
+                    </div>
+                  </div>
                   <label for="city-select" class="d-flex align-items-center city-collapse-select rounded fs-4 fw-7 py-3 px-4">
                     <span class="lh-1 fs-1 fs-xxl-4 me-6 me-xxl-8">台北市</span>
                     <div class="circle-item-triangle" style="border-color: var(--bs-dark) transparent transparent transparent;border-width: 8px 5px 0 5px;"></div>

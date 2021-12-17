@@ -42,8 +42,29 @@
   background: #fff;
   transform: translateX(-50%);
   transition: max-height 0.3s cubic-bezier(0,-0.14,0,.91);
-  & .city-collapse-title {
-    background: var(--bs-gray-300);
+}
+
+.city-select-tab {
+  width: 285px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.city-area {
+  display: none;
+}
+
+.city-area-list {
+  width: 100%;
+  display: none;
+  order: 1;
+}
+
+.city-area:checked + .city-collapse-title {
+  border-bottom: 3px solid var(--bs-secondary);
+  & + .city-area-list {
+    display: initial;
   }
 }
 
@@ -60,17 +81,11 @@
 }
 
 .city-collapse-label {
+  margin-top: .75rem;
+  margin-left: 1rem;
   color: var(--bs-gray-700);
   &:hover {
     color: var(--bs-secondary);
-  }
-}
-
-.city-collapse-tag {
-  & li {
-    display: inline-block;
-    margin-top: .75rem;
-    margin-left: 1rem;
   }
 }
 
@@ -95,6 +110,16 @@
 @media (min-width: 768px) {
   .activity-card-height {
     height: calc(100vh - 96px);
+  }
+  .city-collapse-title {
+    background: var(--bs-gray-300);
+  }
+  .city-area:checked + .city-collapse-title {
+    border-width: 0;
+  }
+  .city-area-list {
+    display: block;
+    order: 0;
   }
 }
 
