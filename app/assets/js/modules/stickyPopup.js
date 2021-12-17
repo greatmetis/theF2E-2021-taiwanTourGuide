@@ -70,23 +70,14 @@ export function render_stickyPopup(){
 
     // render sticky popups based on database(stickyPopupInfo)
     let strPopup = '';
-    let strActivity = '';
-    let activityTagColumn = [activityTags.slice(0, Math.ceil(activityTags.length / 2)), activityTags.slice(Math.ceil(activityTags.length / 2))]; //將活動切成兩行做呈現
-    // console.log(activityTagColumn);
-
-    // insert activity tags
-    activityTagColumn.forEach((item) => {
-        strActivity += /*html*/`
-        <div class="activity-btn-group" >
-        ${createActivityTags(item)}
-        </div>
-        `
-    });
 
     // render stickyPopup
     stickyPopupInfo.forEach((item,index)=>{
         let cityTags = [];
         let strCity = '';
+        let strActivity = '';
+        let activityTagColumn = [activityTags.slice(0, Math.ceil(activityTags.length / 2)), activityTags.slice(Math.ceil(activityTags.length / 2))]; //將活動切成兩行做呈現
+        // console.log(activityTagColumn);
 
         // dynamically insert city tags
         cityTags = item.cities;
@@ -96,6 +87,16 @@ export function render_stickyPopup(){
                 <label class="btn btn-outline-dark city-tags" for="city-btnradio-${item}">${item}</label>
             `
             strCity += tempCityHtml;
+        });
+
+        // dynamically insert activity tags
+        let rederTimes = index ;        
+        activityTagColumn.forEach((item) => {
+            strActivity += /*html*/`
+            <div class="activity-btn-group" >
+            ${createActivityTags(item,rederTimes)}
+            </div>
+            `
         });
         
         let tempStickyHtml = createStickyPopups({
@@ -167,15 +168,6 @@ function createStickyPopups({id,region,city,tempeture,weather,shortDescription, 
                     </div>
                     <span class="d-block text-muted fs-5">${city}今日早上</span>
                 </div>
-                <div class="popup-content popup-body-description border border-2 border-dark border-top-0 px-6 pb-6">
-                    <p class="mb-6 fw-6">
-                    ${shortDescription}
-                    </p>
-                    <button class="d-flex justify-content-center align-items-center bg-secondary w-100 rounded-2 border py-1 px-4 region-btn">
-                    選城市
-                    <img src="assets/images/arrow_expand.svg" class="arrow-hover ms-1" alt="arrow icon">
-                    </button>
-                </div>
             </div>
         </li>
         `;
@@ -187,15 +179,14 @@ function togglePopup(e) {
 
     stickyPopupArr.forEach((item) => {
         if (item.getAttribute('data-id') !== currentId) {
-        item.classList.remove('open');
+        item.classList.remove('open','city');
         selectedCity = '';
         selectedCategory ='';
         watch_tagStatus();
         }
     });
     currentCard.classList.toggle('open');
-    
-    
+    currentCard.classList.toggle('city');
 };
 function addEventToCityTag() {
     const cityTagBtn = document.querySelectorAll(".city-tags");
@@ -226,12 +217,12 @@ function addEventToFinalisedBtn(){
 }
 
 // FIXME: a horizontal line in the middle between activity tags
-function createActivityTags(items) {
+function createActivityTags(items,num) {
     let str = "";
     items.forEach((item) => {
         str += /*html*/`
-            <input type="radio" class="btn-check" name="activity-btnradio" id="activity-btnradio-${item}" autocomplete="off">
-            <label class="btn btn-outline-dark activity-tag" for="activity-btnradio-${item}">
+            <input type="radio" class="btn-check" name="activity-btnradio" id="activity-btnradio-${item}-${num}" autocomplete="off">
+            <label class="btn btn-outline-dark activity-tag" for="activity-btnradio-${item}-${num}">
             <span class="align-middle">${item}</span>
             <img src="assets/images/${item}.svg" class="ms-1" alt="${item} icon">
             </label>
@@ -243,7 +234,7 @@ function addEventToSelectedRegion(){
     const regionBtn = document.querySelectorAll(".region-btn");
     regionBtn.forEach((item,index)=>{
         item.addEventListener('click',function(){
-            stickyPopup[index].classList.add("city");
+            // stickyPopup[index].classList.add("city");
             setStage(1);
         })
     })
@@ -256,7 +247,5 @@ function watch_tagStatus(){
         activityTagSection.forEach(btn=>btn.classList.remove("disabled"))
     }
 };
-
-
 
 export {selectedCity,selectedCategory}

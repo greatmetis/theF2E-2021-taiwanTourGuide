@@ -53,9 +53,11 @@ $spacers: (
   13: $spacer * 3.25,      // 52
   14: $spacer * 3.5,       // 56
   'l': $spacer * 4.5,      // 72
+  'inherit': inherit,
 ) !default;
 
 $font-sizes: (
+  0: 0,
   1: 1rem,                 // 16
   2: 1.5rem,               // 24
   3: 1.25rem,              // 20
@@ -86,6 +88,17 @@ $position-values: (
 
 $grid-gutter-width:                 .9375rem !default; // 15
 
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 414px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1366px
+) !default;
+
+
 $font-family-han:                  'source-han-serif-sc', serif;
 $font-family-noto:                 'Noto Sans TC', sans-serif;
 $line-height-base:                  1.5 !default;
@@ -94,7 +107,7 @@ $body-color:                        $black !default;
 $paragraph-margin-bottom:           0 !default;
 $link-decoration:                   underline !default;
 $link-color:                        $black !default;
-$link-hover-color:                  shift-color($secondary, 20%) !default;
+// $link-hover-color:                  shift-color($secondary, 20%) !default;
 $text-muted:                        rgba(19, 19, 19, 0.6) !default;
 
 // h1~h6
@@ -124,3 +137,8 @@ $btn-link-hover-color:              shift-color($secondary, 20%) !default;
 $btn-border-radius-lg:              25px !default;
 $btn-border-radius-sm:              25px !default;
 $btn-border-radius:                 25px !default;
+
+// card
+$card-border-width:                 2px;
+$card-border-color:                 $black;
+$card-border-radius:                1rem;

@@ -1,6 +1,19 @@
 $utilities: map-merge(
   $utilities,
   (
+    "align": (
+      property: vertical-align,
+      class: align,
+      values: baseline top middle bottom text-bottom text-top sub
+    ),
+    "overflow-y": (
+      property: overflow-y,
+      values: auto hidden visible scroll,
+    ),
+    "overflow-x": (
+      property: overflow-x,
+      values: auto hidden visible scroll,
+    ),
     "font-weight": map-merge(
       map-get($utilities, "font-weight"),
       (
@@ -43,6 +56,11 @@ $utilities: map-merge(
         responsive: true
       )
     ),
+    "font-size": map-merge(
+      map-get($utilities, "font-size"), (
+        responsive: true
+      )
+    ),
     "border": map-merge(
       map-get($utilities, "border"),
       (
@@ -55,9 +73,11 @@ $utilities: map-merge(
     ),
     "width": map-merge(
       map-get($utilities, "width"), (
+        responsive: true,
         values: map-merge(
           map-get(map-get($utilities, "width"), "values"), (
             '20': 20%,
+            'inherit': inherit,
           )
         )
       )
@@ -70,6 +90,31 @@ $utilities: map-merge(
           )
         )
       )
+    ),
+    "height": map-merge(
+      map-get($utilities, "height"), (
+        responsive: true,
+        values: map-merge(
+          map-get(map-get($utilities, "height"), "values"), (
+            '0': 0,
+          )
+        )
+      )
+    ),
+    "viewport-height": (
+      responsive: true,
+      property: height,
+      class: vh,
+      values: (
+        100: 100vh,
+        50: 50vh,
+      )
+    ),
+    "object-fit": (
+      property: object-fit,
+      responsive: true,
+      class: obj,
+      values: fill contain cover none scale-down
     ),
   )
 );
