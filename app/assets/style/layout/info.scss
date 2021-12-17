@@ -1,10 +1,19 @@
-.activity-card {
-  margin-top: 145px;
+// dev test: map background image
+.map-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -999;
+  & img {
+    min-height: 100%;
+    width: 100%;
+  }
 }
 
-.activity-check-img {
-  width: 14px;
-  height: 14px;
+.activity-card {
+  margin-top: 140px;
 }
 
 .activity-card-height {
@@ -79,11 +88,7 @@
     transform: translate(0, 0);
   }
   .activity-card {
-    margin-top: 154px;
-  }
-  .activity-check-img {
-    width: 18px;
-    height: 18px;
+    margin-top: 150px;
   }
 }
 
@@ -95,12 +100,12 @@
 
 @media (min-width: 992px) {
   .activity-card {
-    margin-top: 170px;
+    margin-top: 166px;
   }
 }
 
 @media (min-width: 1366px) {
   .activity-card {
-    margin-top: 186px;
+    margin-top: 182px;
   }
 }

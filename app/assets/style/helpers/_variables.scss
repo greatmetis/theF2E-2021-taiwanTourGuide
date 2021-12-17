@@ -53,6 +53,7 @@ $spacers: (
   13: $spacer * 3.25,      // 52
   14: $spacer * 3.5,       // 56
   'l': $spacer * 4.5,      // 72
+  's': $spacer * .125,      // 2
   'inherit': inherit,
 ) !default;
 
@@ -65,7 +66,7 @@ $font-sizes: (
   5: .875rem,              // 14
   6: .75rem,               // 12
   7: .625rem,              // 10
-  'm': .6875rem,           // 11
+  'm': .5rem,              // 8
   'l': 2rem,               // 32
 ) !default;
 

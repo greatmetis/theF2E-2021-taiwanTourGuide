@@ -10,6 +10,10 @@
 </head>
 <body>
   <main class="container-fluid gx-6">
+    <!-- dev test: map-js -->
+    <div class="map-js">
+      <img src="./assets/images/map.png" alt="map test image">
+    </div>
     <div class="row">
       <div class="col-12">
         <div class="vh-50 h-md-0"></div>
@@ -89,8 +93,8 @@
                       </ul>
                     </li>
                   </ul>
-                  <label for="city-select" class="d-flex align-items-center city-collapse-select btn btn-lg rounded fs-4 fw-7 py-3">
-                    <span class="lh-xxl-sm fs-1 fs-xxl-4 me-6 me-xxl-8">台北市</span>
+                  <label for="city-select" class="d-flex align-items-center city-collapse-select rounded fs-4 fw-7 py-3 px-4">
+                    <span class="lh-1 fs-1 fs-xxl-4 me-6 me-xxl-8">台北市</span>
                     <div class="circle-item-triangle" style="border-color: var(--bs-dark) transparent transparent transparent;border-width: 8px 5px 0 5px;"></div>
                   </label>
                 </div>
@@ -98,7 +102,7 @@
                   <span class="material-icons fs-4">
                     fastfood
                   </span>
-                  <span class="d-none d-lg-inline-block fw-7 fs-1 fs-xxl-1 ms-1">找附近美食</span>
+                  <span class="d-none d-lg-inline-block lh-1 fw-7 fs-1 fs-xxl-1 ms-1">找附近美食</span>
                 </button>
               </div>
             </div>
@@ -118,6 +122,27 @@
                   <img src="assets/images/逛大自然風景.svg" class="activity-check-img" alt="逛大自然風景 icon">
                 </label>
               </li>
+              <li class="d-inline">
+                <input type="checkbox" name="activity-check" class="btn-check" value="逛大自然風景" id="activity-check3">
+                <label class="btn btn-outline-dark fs-1" for="activity-check3">
+                  <span class="align-middle fs-5 fs-sm-1 me-1">逛大自然風景</span>
+                  <img src="assets/images/逛大自然風景.svg" class="activity-check-img" alt="逛大自然風景 icon">
+                </label>
+              </li>
+              <li class="d-inline">
+                <input type="checkbox" name="activity-check" class="btn-check" value="逛大自然風景" id="activity-check4">
+                <label class="btn btn-outline-dark fs-1" for="activity-check4">
+                  <span class="align-middle fs-5 fs-sm-1 me-1">逛大自然風景</span>
+                  <img src="assets/images/逛大自然風景.svg" class="activity-check-img" alt="逛大自然風景 icon">
+                </label>
+              </li>
+              <li class="d-inline">
+                <input type="checkbox" name="activity-check" class="btn-check" value="逛大自然風景" id="activity-check5">
+                <label class="btn btn-outline-dark fs-1" for="activity-check5">
+                  <span class="align-middle fs-5 fs-sm-1 me-1">逛大自然風景</span>
+                  <img src="assets/images/逛大自然風景.svg" class="activity-check-img" alt="逛大自然風景 icon">
+                </label>
+              </li>
             </ul>
           </div>
         </div>
@@ -127,35 +152,32 @@
             <div class="p-4 p-sm-6">
               <div class="d-flex align-items-center fs-5 fs-sm-1 fs-md-4 mb-3 mb-sm-5">
                 <span class="">搜尋</span>
-                <ul class="activity-search d-flex ms-1 me-1">
-                  <li>
-                    <span href="" class="d-inline">台北市</span>
-                    <span>、</span>
-                  </li>
-                  <li>
-                    <span href="" class="d-inline">古蹟廟宇</span>
-                  </li>
-                </ul>
+                <span class="activity-search ms-1 me-1">台北市</span>
                 <span class="">一共有</span>
                 <span class="search-num ms-1 me-1">2</span>
                 <span class="">筆資料 :</span>
               </div>
               <!-- card -->
-              <ul class="activity-card-search mb-14">
+              <ul class="activity-card-search mb-5 mb-ms-10 mb-md-14">
                 <li>
                   <div class="card overflow-hidden mb-3">
                     <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="https://fakeimg.pl/365x187/?text=Hello" class="h-100 obj-cover">
+                      <div class="col-6 col-sm-4 col-lg-5 col-xxl-4">
+                        <img src="./assets/images/關渡宮.jpg" class="h-100 obj-cover">
                       </div>
-                      <div class="col-md-8">
+                      <div class="col-6 col-sm-8 col-lg-7 col-xxl-8">
                         <div class="card-body">
-                          <h2 class="card-title fw-7 fs-3 mb-2">台北關渡公</h2>
-                          <p class="card-text fw-6 fs-6 mb-2">關渡宮，俗稱關渡媽祖宮、關渡天后宮。 為主祀天上聖母媽祖之臺灣民間信仰廟宇，兼容佛教與道教，為北臺灣歷史最悠... 展開</p>
-                          <p class="card-text fw-6 fs-5 mb-2">開放時間 : 全天</p>
-                          <button class="d-flex justify-content-center align-items-center bg-secondary w-50 rounded-2 border py-1 px-4">
+                          <h2 class="card-title fw-7 fs-4 fs-md-1 fs-xxl-3 mb-2">台北關渡公</h2>
+                          <p class="card-text d-none d-sm-block fw-6 fs-m fs-sm-6 mb-2">關渡宮，俗稱關渡媽祖宮、關渡天后宮。 為主祀天上聖母媽祖之臺灣民間信仰廟宇，兼容佛教與道教，為北臺灣歷史最悠... 展開</p>
+                          <div class="d-flex align-items-center mb-2">
+                            <span class="material-icons text-success fs-4 ms-ns">
+                              event_available
+                            </span>
+                            <span class="card-text fw-6 fs-7 fs-sm-5 fs-md-6 fs-xxl-5 ms-1 ms-xxl-2">開放時間 : 全天</span>
+                          </div>
+                          <button class="d-flex justify-content-center align-items-center bg-secondary w-100 w-sm-50 w-md-60 w-xxl-40 rounded-2 border py-1 px-4">
                             <span class="fw-7 fw-sm-6 fs-7 fs-sm-6 fs-md-5 fs-lg-6 fs-xl-5 fs-xxl-1">導航</span>
-                            <i class="material-icons ms-1">map</i>
+                            <i class="material-icons fs-4 fs-md-3 fs-lg-4 fs-xl-3 fs-xxl-2 ms-1">map</i>
                           </button>
                         </div>
                       </div>
@@ -165,17 +187,22 @@
                 <li>
                   <div class="card overflow-hidden mb-3">
                     <div class="row g-0">
-                      <div class="col-md-4">
+                      <div class="col-6 col-sm-4 col-lg-5 col-xxl-4">
                         <img src="https://fakeimg.pl/365x187/?text=Hello" class="h-100 obj-cover">
                       </div>
-                      <div class="col-md-8">
+                      <div class="col-6 col-sm-8 col-lg-7 col-xxl-8">
                         <div class="card-body">
-                          <h2 class="card-title fw-7 fs-3 mb-2">台北關渡公</h2>
-                          <p class="card-text fw-6 fs-6 mb-2">關渡宮，俗稱關渡媽祖宮、關渡天后宮。 為主祀天上聖母媽祖之臺灣民間信仰廟宇，兼容佛教與道教，為北臺灣歷史最悠... 展開</p>
-                          <p class="card-text fw-6 fs-5 mb-2">開放時間 : 全天</p>
-                          <button class="d-flex justify-content-center align-items-center bg-secondary w-50 rounded-2 border py-1 px-4">
+                          <h2 class="card-title fw-7 fs-4 fs-md-1 fs-xxl-3 mb-2">台北關渡公</h2>
+                          <p class="card-text d-none d-sm-block fw-6 fs-m fs-sm-6 mb-2">關渡宮，俗稱關渡媽祖宮、關渡天后宮。 為主祀天上聖母媽祖之臺灣民間信仰廟宇，兼容佛教與道教，為北臺灣歷史最悠... 展開</p>
+                          <div class="d-flex align-items-center mb-2">
+                            <span class="material-icons text-success fs-4 ms-ns">
+                              event_available
+                            </span>
+                            <span class="card-text fw-6 fs-7 fs-sm-5 fs-md-6 fs-xxl-5 ms-1 ms-xxl-2">開放時間 : 全天</span>
+                          </div>
+                          <button class="d-flex justify-content-center align-items-center bg-secondary w-100 w-sm-50 w-md-60 w-xxl-40 rounded-2 border py-1 px-4">
                             <span class="fw-7 fw-sm-6 fs-7 fs-sm-6 fs-md-5 fs-lg-6 fs-xl-5 fs-xxl-1">導航</span>
-                            <i class="material-icons ms-1">map</i>
+                            <i class="material-icons fs-4 fs-md-3 fs-lg-4 fs-xl-3 fs-xxl-2 ms-1">map</i>
                           </button>
                         </div>
                       </div>
@@ -183,7 +210,7 @@
                   </div>
                 </li>
               </ul>
-              <p class="text-center fw-4 fs-l">哎呀，已經見底啦( ´ﾟДﾟ`)</p>
+              <p class="text-center fw-4 fs-4 fs-sm-2 fs-lg-l">哎呀，已經見底啦( ´ﾟДﾟ`)</p>
             </div>
           </div>
         </div>
