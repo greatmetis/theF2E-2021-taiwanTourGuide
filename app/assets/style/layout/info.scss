@@ -16,6 +16,19 @@
   margin-top: 140px;
 }
 
+.scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--bs-secondary);
+    border-radius: 10px;
+  }::-webkit-scrollbar-thumb {
+    background-color: var(--bs-secondary);
+    border-radius: 10px;
+  }
+}
+
 .activity-card-height {
   height: calc(50vh - 40px);
 }
@@ -103,7 +116,7 @@
     transform: translate(0, 0);
   }
   .activity-card {
-    margin-top: 150px;
+    margin-top: 149px;
   }
 }
 
