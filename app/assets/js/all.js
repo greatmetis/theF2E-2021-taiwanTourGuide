@@ -11,7 +11,7 @@ function UserSelection(city,category){
 
 //===== Functions re-call when users resize the window =====//
 window.addEventListener('resize', function () {
-    document.querySelector('.activity-popover-content').classList.remove('active'); // activity cards
+  document.querySelector('.activity-popover-content').classList.remove('active'); // activity cards
   computed_stickyPopupWidth(); // sticky popup
 });
 

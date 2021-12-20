@@ -63,7 +63,7 @@ function babel() {
       webpack({
         mode: 'production',
         output: {
-          filename: 'all.js',
+          filename: 'index.js',
         },
         module: {
           rules: [
@@ -82,7 +82,54 @@ function babel() {
       webpack({
         mode: 'development',
         output: {
-          filename: 'all.js',
+          filename: 'index.js',
+        },
+        module: {
+          rules: [
+            {
+              test: /\.m?js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                loader: 'babel-loader',
+              },
+            },
+          ],
+        },
+      })
+    ))
+    .pipe(gulp.dest(envOptions.javascript.path))
+    .pipe(
+      browserSync.reload({
+        stream: true,
+      }),
+    );
+}
+function babelInfo() {
+  return gulp.src(envOptions.javascript.src)
+    .pipe($.if(options.env == 'pro',
+      webpack({
+        mode: 'production',
+        output: {
+          filename: 'info.js',
+        },
+        module: {
+          rules: [
+            {
+              test: /\.m?js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                loader: 'babel-loader',
+              },
+            },
+          ],
+        },
+      })
+    ))
+    .pipe($.if(options.env == 'dev',
+      webpack({
+        mode: 'development',
+        output: {
+          filename: 'info.js',
         },
         module: {
           rules: [
@@ -138,6 +185,7 @@ function watch() {
   gulp.watch(envOptions.html.src, gulp.series(layoutHTML));
   gulp.watch(envOptions.html.ejsSrc, gulp.series(layoutHTML));
   gulp.watch(envOptions.javascript.src, gulp.series(babel));
+  gulp.watch(envOptions.javascript.src, gulp.series(babelInfo));
   gulp.watch(envOptions.img.src, gulp.series(copyFile));
   gulp.watch(envOptions.style.src, gulp.series(sass));
 }
@@ -146,6 +194,6 @@ exports.deploy = deploy;
 
 exports.clean = clean;
 
-exports.build = gulp.series(clean, copyFile, layoutHTML, sass, babel, vendorsJs);
+exports.build = gulp.series(clean, copyFile, layoutHTML, sass, babel, babelInfo, vendorsJs);
 
-exports.default = gulp.series(clean, copyFile, layoutHTML, sass, babel, vendorsJs, gulp.parallel(browser, watch));
+exports.default = gulp.series(clean, copyFile, layoutHTML, sass, babel, babelInfo, vendorsJs, gulp.parallel(browser, watch));
