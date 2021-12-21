@@ -1,49 +1,56 @@
-import {get_activity} from './modules/activity';
-import {render_stickyPopup,computed_stickyPopupWidth,selectedCity,selectedCategory} from './modules/stickyPopup'
+import { get_activity } from './modules/activity';
+import {
+  render_stickyPopup,
+  computed_stickyPopupWidth,
+  selectedCity,
+  selectedCategory,
+} from './modules/stickyPopup';
 
 //===== 儲存使用者目前的選擇 ===== //
-let userSelection = null
+let userSelection = null;
 
-function UserSelection(city,category){
+function UserSelection(city, category) {
   this.city = city;
   this.category = category;
 }
 
 //===== Functions re-call when users resize the window =====//
 window.addEventListener('resize', function () {
-    document.querySelector('.activity-popover-content').classList.remove('active'); // activity cards
+  document
+    .querySelector('.activity-popover-content')
+    .classList.remove('active'); // activity cards
   computed_stickyPopupWidth(); // sticky popup
 });
 
 // ===== Functions are called in the first place =====//
-function main(){
+function main() {
   get_activity();
   render_stickyPopup();
-  userSelection = new UserSelection(selectedCity,selectedCategory) // object to store user selections
-  watch_userSelectedValue() // start watching user selected values
-};
+  userSelection = new UserSelection(selectedCity, selectedCategory); // object to store user selections
+  watch_userSelectedValue(); // start watching user selected values
+}
 main();
 
 // ===== Methods/Functions =====//
 
 // watch radio button, if it's changed, modify the values inside the object
-function watch_userSelectedValue(){
-  const cityBtnGroup = document.querySelectorAll(".city-btn-group");
-  const activityBtnGroup = document.querySelectorAll(".activity-btn-group");
+function watch_userSelectedValue() {
+  const cityBtnGroup = document.querySelectorAll('.city-btn-group');
+  const activityBtnGroup = document.querySelectorAll('.activity-btn-group');
 
-  cityBtnGroup.forEach(item=>{
-    item.addEventListener('change',function(){
+  cityBtnGroup.forEach((item) => {
+    item.addEventListener('change', function () {
       userSelection.city = selectedCity;
-      console.log(userSelection)
-    })
-  })
+      console.log(userSelection);
+    });
+  });
 
-  activityBtnGroup.forEach(item=>{
-    item.addEventListener('change',function(){
+  activityBtnGroup.forEach((item) => {
+    item.addEventListener('change', function () {
       userSelection.category = selectedCategory;
-      console.log(userSelection)
-    })
-  })
+      console.log(userSelection);
+    });
+  });
 }
 
 function load() {
@@ -97,14 +104,14 @@ window.addEventListener('load', load);
 // 活動 Togggle
 const activity = document.getElementById('activity-popover-content');
 const activityDefault = document.getElementById('activity-popover-default');
-activity.addEventListener('click',(e)=>{
-  if(e.currentTarget == e.target || e.target == activityDefault){
-    activity.classList.toggle("active");
+activity.addEventListener('click', (e) => {
+  if (e.currentTarget == e.target || e.target == activityDefault) {
+    activity.classList.toggle('active');
   }
 });
 const dogEating = document.getElementById('dog-eating');
 dogEating.addEventListener('click', () => {
-  activity.classList.toggle("active");
+  activity.classList.toggle('active');
 });
 
 //# sourceMappingURL=all.js.map

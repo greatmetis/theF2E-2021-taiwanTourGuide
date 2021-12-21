@@ -1,4 +1,5 @@
-import {setStage,prevStage} from "./animation";
+import { setStage, prevStage } from './animation';
+import { fetchWeatherData, setStickyPopupInfoData } from './weather';
 
 const stickyPopup = document.getElementsByClassName('sticky-popup');
 const stickyPopupHeader = document.getElementsByClassName('popup-header');
@@ -6,131 +7,170 @@ const stickyPopups = document.querySelector('.sticky-popups');
 const popupContainer = document.querySelector('.sticky-popup-container');
 
 let stickyPopupInfo = [
-    {
-        region: '北部地區',
-        defaultCity: '台北市',
-        tempeture: 28,
-        weather: '多雲有太陽',
-        shortDescription:
-        '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。',
-        cities:['台北市','新北市','桃園市','基隆市','新竹市','新竹縣','宜蘭縣'],
-    },
-    {
-        region: '中部地區',
-        defaultCity: '台中市',
-        tempeture: 28,
-        weather: '多雲有太陽',
-        shortDescription:
-        '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。',
-        cities:['苗栗縣','台中市','彰化縣','南投縣','雲林縣']
-    },
-    {
-        region: '南部地區',
-        defaultCity: '高雄市',
-        tempeture: 28,
-        weather: '多雲有太陽',
-        shortDescription:
-        '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。',
-        cities:['嘉義縣','嘉義市','台南市','高雄市','屏東縣']
-    },
-    {
-        region: '東部地區',
-        defaultCity: '花蓮縣',
-        tempeture: 28,
-        weather: '多雲有太陽',
-        shortDescription:
-        '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。',
-        cities:['花蓮縣','台東縣']
-    },
-    {
-        region: '離島地區',
-        defaultCity: '澎湖縣',
-        tempeture: 28,
-        weather: '多雲有太陽',
-        shortDescription:
-        '臺灣東部地區包含花蓮縣及臺東縣，東臨浩瀚太平洋，西倚中央山脈，擁有臨山面海的優越地理位置這裡擁有豐富的生態資源、悠久的農業文化和純樸善良的在地居民，是臺灣的「後花園」，非常適合慢活養生之旅longstay是最好的行程安排。',
-        cities:['金門縣','澎湖縣','連江縣']
-    },
+  {
+    region: '北部地區',
+    defaultCity: '臺北市',
+    weather: {},
+    cities: [
+      '臺北市',
+      '新北市',
+      '桃園市',
+      '基隆市',
+      '新竹市',
+      '新竹縣',
+      '宜蘭縣',
+    ],
+  },
+  {
+    region: '中部地區',
+    defaultCity: '臺中市',
+    weather: {},
+    cities: ['苗栗縣', '臺中市', '彰化縣', '南投縣', '雲林縣'],
+  },
+  {
+    region: '南部地區',
+    defaultCity: '高雄市',
+    weather: {},
+    cities: ['嘉義縣', '嘉義市', '臺南市', '高雄市', '屏東縣'],
+  },
+  {
+    region: '東部地區',
+    defaultCity: '花蓮縣',
+    weather: {},
+    cities: ['花蓮縣', '台東縣'],
+  },
+  {
+    region: '離島地區',
+    defaultCity: '澎湖縣',
+    weather: {},
+    cities: ['金門縣', '澎湖縣', '連江縣'],
+  },
 ];
 const activityTags = [
-    "逛大自然風景", "樂活之旅", "古蹟廟宇", "國家風景區", "藝術文化", "溫泉之旅", "建築工廠", "想要戶外走看看", "其他"
+  '逛大自然風景',
+  '樂活之旅',
+  '古蹟廟宇',
+  '國家風景區',
+  '藝術文化',
+  '溫泉之旅',
+  '建築工廠',
+  '想要戶外走看看',
+  '其他',
 ];
 
-let scenicSpotData =[]; //store api data in the local
+let scenicSpotData = []; //store api data in the local
 
 let selectedCity = '';
 let selectedCategory = '';
+//TODO : 我想拿到資料後將data賦值給stickyPopupInfo[index].weather
+export const getData = function (city, index) {
+  fetchWeatherData(city).then((res) => {
+    stickyPopupInfo[index].weather = { ...res };
+  });
+  return stickyPopupInfo[index];
+};
+
+getData('臺北市', 0);
+//FIXME 這邊的stickyPopupInfo weather也有資料
+console.log(`stickyPopupInfo[0]`, stickyPopupInfo[0]);
+//FIXME 一但這樣選取就會變回{}空物件
+console.log(`stickyPopupInfo[0]`, stickyPopupInfo[0].weather);
 
 // Generate stickyPopups html from Database
-export function render_stickyPopup(){
-    selectedCity = '';
-    selectedCategory = '';
-    // calculate the container width based on clients' window
-    computed_stickyPopupWidth();
+export function render_stickyPopup() {
+  selectedCity = '';
+  selectedCategory = '';
+  // calculate the container width based on clients' window
+  computed_stickyPopupWidth();
 
-    // render sticky popups based on database(stickyPopupInfo)
-    let strPopup = '';
+  // render sticky popups based on database(stickyPopupInfo)
+  let strPopup = '';
 
-    // render stickyPopup
-    stickyPopupInfo.forEach((item,index)=>{
-        let cityTags = [];
-        let strCity = '';
-        let strActivity = '';
-        let activityTagColumn = [activityTags.slice(0, Math.ceil(activityTags.length / 2)), activityTags.slice(Math.ceil(activityTags.length / 2))]; //將活動切成兩行做呈現
-        // console.log(activityTagColumn);
+  // render stickyPopup
 
-        // dynamically insert city tags
-        cityTags = item.cities;
-        cityTags.forEach((item)=>{
-            let tempCityHtml = /*html*/`
+  stickyPopupInfo.forEach((item, index) => {
+    //FIXME 這個item有跟上面一樣的問題
+    console.log(item);
+    console.log(item.weather);
+    let cityTags = [];
+    let strCity = '';
+    let strActivity = '';
+    let activityTagColumn = [
+      activityTags.slice(0, Math.ceil(activityTags.length / 2)),
+      activityTags.slice(Math.ceil(activityTags.length / 2)),
+    ]; //將活動切成兩行做呈現
+    // console.log(activityTagColumn);
+
+    // dynamically insert city tags
+    cityTags = item.cities;
+    cityTags.forEach((item) => {
+      let tempCityHtml = /*html*/ `
                 <input type="radio" class="btn-check" name="city-btnradio" id="city-btnradio-${item}" autocomplete="off">
                 <label class="btn btn-outline-dark city-tags" for="city-btnradio-${item}">${item}</label>
-            `
-            strCity += tempCityHtml;
-        });
-
-        // dynamically insert activity tags
-        let rederTimes = index ;        
-        activityTagColumn.forEach((item) => {
-            strActivity += /*html*/`
-            <div class="activity-btn-group" >
-            ${createActivityTags(item,rederTimes)}
-            </div>
-            `
-        });
-        
-        let tempStickyHtml = createStickyPopups({
-            id:index, 
-            region:item.region, 
-            city:item.defaultCity, 
-            tempeture:item.defaultCity, 
-            weather:item.weather, 
-            shortDescription:item.shortDescription, 
-            cityTags:strCity, 
-            activityTags:strActivity});
-        strPopup += tempStickyHtml;
-        stickyPopups.innerHTML = strPopup;
+            `;
+      strCity += tempCityHtml;
     });
 
-    //**  Add event listener **//
+    // dynamically insert activity tags
+    let rederTimes = index;
+    activityTagColumn.forEach((item) => {
+      strActivity += /*html*/ `
+            <div class="activity-btn-group" >
+            ${createActivityTags(item, rederTimes)}
+            </div>
+            `;
+    });
 
-    for (let i = 0; i < stickyPopupHeader.length; i++) {
-        stickyPopupHeader[i].addEventListener('click', togglePopup);
-    };// stickyPopup toggle
-    
-    addEventToCityTag();// city selections
-    addEventToActivityTag();// activity selections
-    addEventToSelectedRegion();// region selection
-    addEventToFinalisedBtn(); // 下一步（開始推播）
-};
+    let tempStickyHtml = createStickyPopups({
+      id: index,
+      region: item.region,
+      city: item.defaultCity,
+      // tempeture: item.defaultCity,
+      weather: item.weather,
+      cityTags: strCity,
+      activityTags: strActivity,
+    });
+    strPopup += tempStickyHtml;
 
-export function computed_stickyPopupWidth(){
-    console.log(document.body.clientWidth, document.body.clientWidth - 280);
-    popupContainer.style.maxWidth = `${document.body.clientWidth - 280}px`;
-};
+    stickyPopups.innerHTML = strPopup;
+  });
 
-function createStickyPopups({id,region,city,tempeture,weather,shortDescription, cityTags, activityTags}){
-    return /*html*/`
+  //**  Add event listener **//
+
+  for (let i = 0; i < stickyPopupHeader.length; i++) {
+    //TODO
+    // stickyPopupHeader[i].addEventListener('click', (e) => {
+    //   let currentCard = e.currentTarget.parentNode;
+    //   let index = currentCard.getAttribute('data-id');
+    //   let city = stickyPopupInfo[index].defaultCity;
+    //   console.log('city', city);
+    //   getData(city, index);
+    //   console.log(`stickyPopupInfo`, stickyPopupInfo);
+    // });
+
+    stickyPopupHeader[i].addEventListener('click', togglePopup);
+  } // stickyPopup toggle
+
+  addEventToCityTag(); // city selections
+  addEventToActivityTag(); // activity selections
+  addEventToSelectedRegion(); // region selection
+  addEventToFinalisedBtn(); // 下一步（開始推播）
+}
+
+export function computed_stickyPopupWidth() {
+  console.log(document.body.clientWidth, document.body.clientWidth - 280);
+  popupContainer.style.maxWidth = `${document.body.clientWidth - 280}px`;
+}
+
+function createStickyPopups({
+  id,
+  region,
+  city,
+  weather,
+  cityTags,
+  activityTags,
+}) {
+  return /*html*/ `
         <li class="w-20">
             <div class="sticky-popup open_sticky_popup popup-content-bounce-in-up" data-id="${id}">
                 <div class="popup-header d-flex justify-content-between align-items-center">
@@ -161,91 +201,93 @@ function createStickyPopups({id,region,city,tempeture,weather,shortDescription, 
                     </div>
                 </div>
                 <div class="popup-content border border-2 border-dark border-bottom-0 px-6 py-6">
-                    <button class="btn btn-lg btn-yellow border border-2 lh-sm text-black mb-2">${tempeture}&#8451;</button>
+                    <button class="btn btn-lg btn-yellow border border-2 lh-sm text-black mb-2">${weather.temperature}&#8451;</button>
                     <div class="d-flex justify-content-center align-items-center">
-                    <h3 class="fs-l mb-1">${weather}</h3>
-                    <img src="assets/images/${weather}.svg" class="ms-1" alt="${weather} icon">
+                    <h3 class="fs-l mb-1">${weather.description}</h3>
+                    <img src="assets/images/${weather.iconName}.svg" class="ms-1" alt="${weather.iconName} icon">
                     </div>
-                    <span class="d-block text-muted fs-5">${city}今日早上</span>
+                    <span class="d-block text-muted fs-5">${city}${weather.timePriod}</span>
                 </div>
             </div>
         </li>
         `;
-};
+}
 function togglePopup(e) {
-    let currentCard = e.currentTarget.parentNode;
-    let currentId = currentCard.getAttribute('data-id');
-    let stickyPopupArr = [...stickyPopup];
+  let currentCard = e.currentTarget.parentNode;
+  let currentId = currentCard.getAttribute('data-id');
 
-    stickyPopupArr.forEach((item) => {
-        if (item.getAttribute('data-id') !== currentId) {
-        item.classList.remove('open','city');
-        selectedCity = '';
-        selectedCategory ='';
-        watch_tagStatus();
-        }
-    });
-    currentCard.classList.toggle('open');
-    currentCard.classList.toggle('city');
-};
+  let stickyPopupArr = [...stickyPopup];
+
+  stickyPopupArr.forEach((item) => {
+    if (item.getAttribute('data-id') !== currentId) {
+      item.classList.remove('open', 'city');
+      selectedCity = '';
+      selectedCategory = '';
+      watch_tagStatus();
+    }
+  });
+  currentCard.classList.toggle('open');
+  currentCard.classList.toggle('city');
+}
 function addEventToCityTag() {
-    const cityTagBtn = document.querySelectorAll(".city-tags");
-    for(let i = 0; i < cityTagBtn.length; i++){
-        cityTagBtn[i].addEventListener('click', function(){
-            selectedCity = this.textContent;
-            watch_tagStatus();
-            setStage(2);
-        })
-    }
-    
-};
-function addEventToActivityTag(){
-    const activityTagBtn = document.querySelectorAll(".activity-tag");
-     // activiy selection
-    for(let i = 0; i < activityTagBtn.length; i++){
-        activityTagBtn[i].addEventListener('click', function(){
-            selectedCategory = this.firstChild.nextElementSibling.textContent;
-            setStage(3);
-        })
-    }
-};
-function addEventToFinalisedBtn(){
-    const finalisedSelectionBtn = document.querySelector(".finalised-selection-btn");
-    finalisedSelectionBtn.addEventListener('click',function(){
-        setStage(4);
-    })
+  const cityTagBtn = document.querySelectorAll('.city-tags');
+  for (let i = 0; i < cityTagBtn.length; i++) {
+    cityTagBtn[i].addEventListener('click', function () {
+      selectedCity = this.textContent;
+      watch_tagStatus();
+      setStage(2);
+    });
+  }
+}
+function addEventToActivityTag() {
+  const activityTagBtn = document.querySelectorAll('.activity-tag');
+  // activiy selection
+  for (let i = 0; i < activityTagBtn.length; i++) {
+    activityTagBtn[i].addEventListener('click', function () {
+      selectedCategory = this.firstChild.nextElementSibling.textContent;
+      setStage(3);
+    });
+  }
+}
+function addEventToFinalisedBtn() {
+  const finalisedSelectionBtn = document.querySelector(
+    '.finalised-selection-btn'
+  );
+  finalisedSelectionBtn.addEventListener('click', function () {
+    setStage(4);
+  });
 }
 
 // FIXME: a horizontal line in the middle between activity tags
-function createActivityTags(items,num) {
-    let str = "";
-    items.forEach((item) => {
-        str += /*html*/`
+function createActivityTags(items, num) {
+  let str = '';
+  items.forEach((item) => {
+    str += /*html*/ `
             <input type="radio" class="btn-check" name="activity-btnradio" id="activity-btnradio-${item}-${num}" autocomplete="off">
             <label class="btn btn-outline-dark activity-tag" for="activity-btnradio-${item}-${num}">
             <span class="align-middle">${item}</span>
             <img src="assets/images/${item}.svg" class="ms-1" alt="${item} icon">
             </label>
-        `
+        `;
+  });
+  return str;
+}
+function addEventToSelectedRegion() {
+  const regionBtn = document.querySelectorAll('.region-btn');
+  regionBtn.forEach((item, index) => {
+    item.addEventListener('click', function () {
+      // stickyPopup[index].classList.add("city");
+      setStage(1);
     });
-    return str;
-};
-function addEventToSelectedRegion(){
-    const regionBtn = document.querySelectorAll(".region-btn");
-    regionBtn.forEach((item,index)=>{
-        item.addEventListener('click',function(){
-            // stickyPopup[index].classList.add("city");
-            setStage(1);
-        })
-    })
-};
-function watch_tagStatus(){
-    const activityTagSection = document.querySelectorAll(".popup-body-activity");
-    if(!selectedCity){
-        activityTagSection.forEach(btn=>btn.classList.add("disabled"))
-    }else{
-        activityTagSection.forEach(btn=>btn.classList.remove("disabled"))
-    }
-};
+  });
+}
+function watch_tagStatus() {
+  const activityTagSection = document.querySelectorAll('.popup-body-activity');
+  if (!selectedCity) {
+    activityTagSection.forEach((btn) => btn.classList.add('disabled'));
+  } else {
+    activityTagSection.forEach((btn) => btn.classList.remove('disabled'));
+  }
+}
 
-export {selectedCity,selectedCategory}
+export { selectedCity, selectedCategory };
