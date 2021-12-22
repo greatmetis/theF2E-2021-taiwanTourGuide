@@ -4,6 +4,7 @@ import {
   computed_stickyPopupWidth,
   selectedCity,
   selectedCategory,
+  getDefaultCityWeatherData,
 } from './modules/stickyPopup';
 
 //===== 儲存使用者目前的選擇 ===== //
@@ -25,9 +26,12 @@ window.addEventListener('resize', function () {
 // ===== Functions are called in the first place =====//
 function main() {
   get_activity();
-  render_stickyPopup();
-  userSelection = new UserSelection(selectedCity, selectedCategory); // object to store user selections
-  watch_userSelectedValue(); // start watching user selected values
+  // render_stickyPopup 執行前就要先準備好每個default city的 weather data
+  getDefaultCityWeatherData().then(() => {
+    render_stickyPopup();
+    userSelection = new UserSelection(selectedCity, selectedCategory); // object to store user selections
+    watch_userSelectedValue(); // start watching user selected values
+  });
 }
 main();
 

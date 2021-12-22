@@ -5,6 +5,7 @@ const stickyPopup = document.getElementsByClassName('sticky-popup');
 const stickyPopupHeader = document.getElementsByClassName('popup-header');
 const stickyPopups = document.querySelector('.sticky-popups');
 const popupContainer = document.querySelector('.sticky-popup-container');
+let currentStickyPopupData;
 
 let stickyPopupInfo = [
   {
@@ -37,7 +38,7 @@ let stickyPopupInfo = [
     region: '東部地區',
     defaultCity: '花蓮縣',
     weather: {},
-    cities: ['花蓮縣', '台東縣'],
+    cities: ['花蓮縣', '臺東縣'],
   },
   {
     region: '離島地區',
@@ -62,19 +63,32 @@ let scenicSpotData = []; //store api data in the local
 
 let selectedCity = '';
 let selectedCategory = '';
-//TODO : 我想拿到資料後將data賦值給stickyPopupInfo[index].weather
-export const getData = function (city, index) {
-  fetchWeatherData(city).then((res) => {
-    stickyPopupInfo[index].weather = { ...res };
+
+const setPopuptWeatherData = (popupData, city) => {
+  return new Promise((resolve, reject) => {
+    fetchWeatherData(city)
+      .then((res) => {
+        popupData.weather = { ...res };
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
   });
-  return stickyPopupInfo[index];
 };
 
-getData('臺北市', 0);
-//FIXME 這邊的stickyPopupInfo weather也有資料
-console.log(`stickyPopupInfo[0]`, stickyPopupInfo[0]);
-//FIXME 一但這樣選取就會變回{}空物件
-console.log(`stickyPopupInfo[0]`, stickyPopupInfo[0].weather);
+export const getDefaultCityWeatherData = () => {
+  const promiseArray = [];
+  for (let index = 0; index < stickyPopupInfo.length; index++) {
+    promiseArray.push(
+      setPopuptWeatherData(
+        stickyPopupInfo[index],
+        stickyPopupInfo[index].defaultCity
+      )
+    );
+  }
+  return Promise.all(promiseArray);
+};
 
 // Generate stickyPopups html from Database
 export function render_stickyPopup() {
@@ -87,11 +101,7 @@ export function render_stickyPopup() {
   let strPopup = '';
 
   // render stickyPopup
-
   stickyPopupInfo.forEach((item, index) => {
-    //FIXME 這個item有跟上面一樣的問題
-    console.log(item);
-    console.log(item.weather);
     let cityTags = [];
     let strCity = '';
     let strActivity = '';
@@ -138,20 +148,10 @@ export function render_stickyPopup() {
   //**  Add event listener **//
 
   for (let i = 0; i < stickyPopupHeader.length; i++) {
-    //TODO
-    // stickyPopupHeader[i].addEventListener('click', (e) => {
-    //   let currentCard = e.currentTarget.parentNode;
-    //   let index = currentCard.getAttribute('data-id');
-    //   let city = stickyPopupInfo[index].defaultCity;
-    //   console.log('city', city);
-    //   getData(city, index);
-    //   console.log(`stickyPopupInfo`, stickyPopupInfo);
-    // });
-
     stickyPopupHeader[i].addEventListener('click', togglePopup);
   } // stickyPopup toggle
 
-  addEventToCityTag(); // city selections
+  // addEventToCityTag(); // city selections
   addEventToActivityTag(); // activity selections
   addEventToSelectedRegion(); // region selection
   addEventToFinalisedBtn(); // 下一步（開始推播）
@@ -200,24 +200,29 @@ function createStickyPopups({
                         </button>
                     </div>
                 </div>
-                <div class="popup-content border border-2 border-dark border-bottom-0 px-6 py-6">
-                    <button class="btn btn-lg btn-yellow border border-2 lh-sm text-black mb-2">${weather.temperature}&#8451;</button>
-                    <div class="d-flex justify-content-center align-items-center">
-                    <h3 class="fs-l mb-1">${weather.description}</h3>
-                    <img src="assets/images/${weather.iconName}.svg" class="ms-1" alt="${weather.iconName} icon">
-                    </div>
-                    <span class="d-block text-muted fs-5">${city}${weather.timePriod}</span>
-                </div>
+                <div class="weather-info">
+                ${renderWeatherInfo(city, weather)}</div>
             </div>
         </li>
         `;
 }
+
+export const renderWeatherInfo = (city, weather) => {
+  return /*html*/ ` <div class="popup-content border border-2 border-dark border-bottom-0 px-6 py-6">
+  <button class="btn btn-lg btn-yellow border border-2 lh-sm text-black mb-2">${weather.temperature}&#8451;</button>
+  <div class="d-flex align-items-center">
+  <h3 class="fs-l mb-1 me-2">${weather.weatherDescription}</h3>
+  <img src="assets/images/${weather.iconName}.png" class="ms-1" alt="${weather.iconName} icon">
+  </div>
+  <span class="d-block text-muted fs-5">${city}${weather.timePriod}</span>
+</div> `;
+};
+
 function togglePopup(e) {
   let currentCard = e.currentTarget.parentNode;
   let currentId = currentCard.getAttribute('data-id');
-
+  const weatherInfoElements = document.querySelectorAll('.weather-info');
   let stickyPopupArr = [...stickyPopup];
-
   stickyPopupArr.forEach((item) => {
     if (item.getAttribute('data-id') !== currentId) {
       item.classList.remove('open', 'city');
@@ -228,14 +233,29 @@ function togglePopup(e) {
   });
   currentCard.classList.toggle('open');
   currentCard.classList.toggle('city');
+
+  currentStickyPopupData = stickyPopupInfo[currentId];
+  weatherInfoElements[currentId].innerHTML = renderWeatherInfo(
+    stickyPopupInfo[currentId].defaultCity,
+    stickyPopupInfo[currentId].weather
+  );
+  addEventToCityTag(currentId);
 }
-function addEventToCityTag() {
+function addEventToCityTag(popupIndex) {
   const cityTagBtn = document.querySelectorAll('.city-tags');
   for (let i = 0; i < cityTagBtn.length; i++) {
     cityTagBtn[i].addEventListener('click', function () {
       selectedCity = this.textContent;
       watch_tagStatus();
       setStage(2);
+      setPopuptWeatherData(currentStickyPopupData, selectedCity).then(() => {
+        const { weather } = currentStickyPopupData;
+        const weatherInfoElements = document.querySelectorAll('.weather-info');
+        weatherInfoElements[popupIndex].innerHTML = renderWeatherInfo(
+          selectedCity,
+          weather
+        );
+      });
     });
   }
 }
